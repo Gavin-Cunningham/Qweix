@@ -1,3 +1,19 @@
+/****************************************************************************
+*
+*  File              : Card.cs      
+*  Date Created      : 03/02/23   
+*  Description       : This script is designed to keep track of what is on the board.
+*
+*  Programmer(s)     : Robert Mimms
+*  Last Modification : 3/16/23
+*  Additional Notes  : 
+*  Flow Chart URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +21,13 @@ using UnityEngine;
 public class Board_Contents : MonoBehaviour
 {
     public GridManager gridManager;
-    
-
     public List<Transform> boardContents = new List<Transform>();
     public List<Transform> occupiedTiles = new List<Transform>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
+    // This is in fixed update because it worked when I made it fixed.
+    // This keeps a count of the things on the board, and the occupied tiles.
     private void FixedUpdate()
     {
-        //if (placing)
-        //{
-        //    Highlight();
-
-        //}
-        //else
-        //    unHighlight();
-
         if (boardContents.Count > 0)
         {
             for (int i = 0; i < boardContents.Count; i++)
@@ -55,6 +57,8 @@ public class Board_Contents : MonoBehaviour
         }
     }
 
+    
+    // This is called by the health component to remove the destroyed object from the array.
     public void RemoveObject(Transform transform)
     {
         Debug.Log("This was called when " + transform + " was destroyed");

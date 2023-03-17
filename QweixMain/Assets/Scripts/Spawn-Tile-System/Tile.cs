@@ -1,3 +1,18 @@
+/****************************************************************************
+*
+*  File              : Card.cs      
+*  Date Created      : 03/02/23   
+*  Description       : This script is designed to hold the logic and attributes of the tiles in the tile system. 
+*
+*  Programmer(s)     : Robert Mimms
+*  Last Modification : 3/16/23
+*  Additional Notes  : 
+*  Flow Chart URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +28,10 @@ public class Tile : MonoBehaviour
 
     public bool isForbidden;
     public bool isHighlighted;
- 
 
 
     public GridManager gridManager;
-   
+
     public PlaceByCard placeByCard;
 
 
@@ -28,7 +42,6 @@ public class Tile : MonoBehaviour
     {
         gridManager = GameObject.Find("GridManager").GetComponent<GridManager>();
         placeByCard = GameObject.Find("GridManager").GetComponent<PlaceByCard>();
-
     }
 
     void Start()
@@ -69,7 +82,6 @@ public class Tile : MonoBehaviour
         {
             Renderer.color = OriginalColor;
             Unhighlight();
-
         }
     }
 
@@ -87,32 +99,32 @@ public class Tile : MonoBehaviour
                 {
                     if (isForbidden)
                     {
+                        Renderer.color = ForbiddenColor;
+                        isHighlighted = true;
+
+
+                        foreach (Collider2D loc in placeByCard.following.GetComponent<Occupying_Component>()
+                                     .occupyingTiles)
+                        {
                             Renderer.color = ForbiddenColor;
                             isHighlighted = true;
-                           
-                           
-                                foreach (Collider2D loc in placeByCard.following.GetComponent<Occupying_Component>().occupyingTiles)
-                                {
-                                    Renderer.color = ForbiddenColor;
-                                    isHighlighted = true;
-                                    isForbidden = true;
-                                }
-                            }
+                            isForbidden = true;
                         }
+                    }
+                }
 
-                        foreach (Transform transform in placeByCard.GetComponent<Board_Contents>().occupiedTiles)
+                foreach (Transform transform in placeByCard.GetComponent<Board_Contents>().occupiedTiles)
                 {
-
                     if (transform.gameObject == gameObject)
                     {
-
                         Renderer.color = ForbiddenColor;
                         isForbidden = true;
                         isHighlighted = true;
 
                         if (isForbidden)
                         {
-                            foreach (Collider2D col in placeByCard.following.GetComponent<Occupying_Component>().occupyingTiles)
+                            foreach (Collider2D col in placeByCard.following.GetComponent<Occupying_Component>()
+                                         .occupyingTiles)
                             {
                                 Renderer.color = ForbiddenColor;
                                 isHighlighted = true;
@@ -125,33 +137,21 @@ public class Tile : MonoBehaviour
             else
                 Unhighlight();
         }
-
-        //if (placeByCard.following != null)
-        //{
-
-        //    Debug.Log(placeByCard.following.name);
-        //}
-
     }
 
     // Called by PlaceByCard during placing. 
     public void Highlight()
     {
-        
         foreach (Transform transform in placeByCard.GetComponent<Board_Contents>().occupiedTiles)
         {
-
             if (transform.gameObject == gameObject)
             {
-
                 Renderer.color = ForbiddenColor;
                 isHighlighted = true;
-
             }
-
         }
-        placeByCard.highlightedTiles.Clear();
 
+        placeByCard.highlightedTiles.Clear();
     }
 
     public bool shouldHighlight()
@@ -160,24 +160,22 @@ public class Tile : MonoBehaviour
         {
             for (int i = 0; i < placeByCard.following.GetComponent<Occupying_Component>().occupyingTiles.Length; i++)
             {
-                if (placeByCard.following.GetComponent<Occupying_Component>().occupyingTiles[i].transform == gameObject.transform)
+                if (placeByCard.following.GetComponent<Occupying_Component>().occupyingTiles[i].transform ==
+                    gameObject.transform)
                 {
                     return true;
-
                 }
-
             }
+
             return false;
         }
-            return false;
+
+        return false;
     }
+
     public void Unhighlight()
     {
-
         Renderer.color = OriginalColor;
         isHighlighted = false;
-
-
     }
-
 }
