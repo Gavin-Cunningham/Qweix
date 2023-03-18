@@ -32,14 +32,13 @@ public class PlaceByCard : MonoBehaviour
     // Represents the card being dragged onto the field and the unit that card will spawn.
     public GameObject spawningCard;
     public GameObject spawningUnit;
-
-    //Reference to the parent of the tile grid.
-    public GameObject gridParent;
+    
 
     // A list of the currently highlighted tiles in the grid.
     public List<Transform> highlightedTiles = new List<Transform>();
 
     // A reference to the GridManager script used to access the array of tiles.
+    public GameObject player;
     public GridManager gridManager;
     public Tile tile;
 
@@ -165,7 +164,7 @@ public class PlaceByCard : MonoBehaviour
                 spawnedCard.GetComponent<Spell>().OnCast();
 
             }
-            gridManager.GetComponent<Player_Qweix_Component>().qweixCount -= card.GetComponent<Card>().quiexCost;
+            player.GetComponent<Player_Qweix_Component>().qweixCount -= card.GetComponent<Card>().quiexCost;
 
             highlightedTiles.Clear();
 
@@ -194,7 +193,7 @@ public class PlaceByCard : MonoBehaviour
     public bool QweixCheck(Card card)
     {
 
-        if (gridManager.GetComponent<Player_Qweix_Component>().qweixCount >= card.GetComponent<Card>().quiexCost)
+        if (player.GetComponent<Player_Qweix_Component>().qweixCount >= card.GetComponent<Card>().quiexCost)
         {
             return true;
         }

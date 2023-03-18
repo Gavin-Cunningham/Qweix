@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &109410801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 109410802}
+  m_Layer: 0
+  m_Name: FogParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &109410802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109410801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.427637, y: 8.456351, z: -0.027319197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258861746
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +238,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1461872685}
+      - m_Target: {fileID: 424472953}
         m_TargetAssemblyTypeName: Player_Qweix_Component, Assembly-CSharp
         m_MethodName: AddQweix
         m_Mode: 1
@@ -486,6 +517,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &424472952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424472954}
+  - component: {fileID: 424472953}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &424472953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424472952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fb8505f5467664eb891b876fc79582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qweixCount: 0
+  textQweixtCount: {fileID: 978513341}
+--- !u!4 &424472954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424472952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -122.10154, y: -35.35539, z: -7.4318895}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469953614
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +860,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1461872685}
+      - m_Target: {fileID: 424472953}
         m_TargetAssemblyTypeName: Player_Qweix_Component, Assembly-CSharp
         m_MethodName: removeQweix
         m_Mode: 1
@@ -1209,7 +1286,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039251305
 GameObject:
@@ -1625,7 +1702,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1160299095
 PrefabInstance:
@@ -1636,7 +1713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8422092463608886368, guid: 6d1b5a4146fbab74f804828fd0d90351, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8422092463608886368, guid: 6d1b5a4146fbab74f804828fd0d90351, type: 3}
       propertyPath: m_LocalScale.x
@@ -1904,7 +1981,7 @@ Transform:
   - {fileID: 8131190779963544916}
   - {fileID: 1084995366}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461872680
 GameObject:
@@ -1918,7 +1995,6 @@ GameObject:
   - component: {fileID: 1461872682}
   - component: {fileID: 1461872683}
   - component: {fileID: 1461872684}
-  - component: {fileID: 1461872685}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -1954,8 +2030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 3364156802487901818, guid: 5979b532acd71b54588ee0131475a801, type: 3}
-  cam: {fileID: 1841783231}
   gridParent: {fileID: 1398126458}
+  fogParent: {fileID: 109410801}
 --- !u!114 &1461872683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,39 +2061,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   following: {fileID: 0}
   followParent: {fileID: 1025882456}
+  followSize: 0
   placeTile: {fileID: 0}
+  placing: 0
   spawningCard: {fileID: 0}
   spawningUnit: {fileID: 0}
-  gridParent: {fileID: 1398126458}
-  popUp: {fileID: 956863141}
-  placing: 0
-  followSize: 0
-  spawnables:
-  - {fileID: 5256719062459724438, guid: dd7ffb836fac16a46bdb1892aa00b091, type: 3}
-  - {fileID: 6461512105422409345, guid: 53de679be5b4cc348837a230261c6a47, type: 3}
   highlightedTiles: []
-  colliders: []
+  player: {fileID: 424472952}
   gridManager: {fileID: 1461872682}
   tile: {fileID: 3364156802487901818, guid: 5979b532acd71b54588ee0131475a801, type: 3}
---- !u!114 &1461872685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461872680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69fb8505f5467664eb891b876fc79582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qweixCount: 0
-  textQweixtCount: {fileID: 978513341}
---- !u!4 &1841783231 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1671646464845512089, guid: 4406b80a5cc9a6a45a4356946d70e45c, type: 3}
-  m_PrefabInstance: {fileID: 1852090332}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1841783233 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1671646464845512038, guid: 4406b80a5cc9a6a45a4356946d70e45c, type: 3}
@@ -2152,7 +2204,7 @@ Canvas:
   m_GameObject: {fileID: 1975310149}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1841783233}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2184,7 +2236,7 @@ RectTransform:
   - {fileID: 522446440}
   - {fileID: 956863142}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

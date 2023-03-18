@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6431373}
+  m_Color: {r: 0.73333335, g: 0.76470596, b: 0.73333335, a: 0.6431373}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,9 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 3610307483283018320}
   MouseOverColor: {r: 1, g: 0.92941177, b: 0.6117647, a: 0.85}
-  OriginalColor: {r: 0, g: 0, b: 0, a: 0.62352943}
+  OriginalColor: {r: 0.73430586, g: 0.764151, b: 0.7317106, a: 0.43137255}
   HighlightColor: {r: 0.2460395, g: 0.88132197, b: 0.9150943, a: 0}
   ForbiddenColor: {r: 0.7169812, g: 0.19953722, b: 0.19953722, a: 0.74509805}
+  FogOfWarColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0.95686275}
+  isForbidden: 0
   isHighlighted: 0
   gridManager: {fileID: 0}
   placeByCard: {fileID: 0}

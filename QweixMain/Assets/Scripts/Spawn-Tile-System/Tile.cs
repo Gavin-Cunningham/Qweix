@@ -25,10 +25,11 @@ public class Tile : MonoBehaviour
     public Color OriginalColor;
     public Color HighlightColor;
     public Color ForbiddenColor;
+    public Color FogOfWarColor;
 
     public bool isForbidden;
     public bool isHighlighted;
-
+    public bool inPlayerTerritory;
 
     public GridManager gridManager;
 
@@ -37,7 +38,7 @@ public class Tile : MonoBehaviour
 
     public int[] tilePosition;
 
-    // Creates the array for the Tile Position, and finds the GridManager and PlceByCard scripts
+    // Creates the array for the Tile Position, and finds the GridManager and PlaceByCard scripts
     private void Awake()
     {
         gridManager = GameObject.Find("GridManager").GetComponent<GridManager>();
@@ -61,6 +62,10 @@ public class Tile : MonoBehaviour
             {
                 isForbidden = false;
             }
+        }
+        if (tilePosition[0] < 16)
+        {
+            gameObject.GetComponent<Tile>().inPlayerTerritory = true;
         }
     }
 
@@ -87,6 +92,12 @@ public class Tile : MonoBehaviour
 
     private void Update()
     {
+
+        if (!gameObject.GetComponent<Tile>().inPlayerTerritory)
+        {
+            gameObject.GetComponent<Tile>().isForbidden = true;
+        }
+        
         // If there is a card being placed, the script checks if this tile should highlight. If it should, it does. If the card is hovering over the gap or another structure/unit the tiles highlight red. 
         if (placeByCard.following != null)
         {

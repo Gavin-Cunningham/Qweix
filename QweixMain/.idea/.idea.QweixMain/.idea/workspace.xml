@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2b8e637-540e-44d6-b978-1f9d1cefd25b" name="Changes" comment="" />
+    <list default="true" id="c2b8e637-540e-44d6-b978-1f9d1cefd25b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.QweixMain/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QweixMain/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BoardPrefabs/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BoardPrefabs/Tile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tile-Spawn-System.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tile-Spawn-System.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/PlaceByCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/PlaceByCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn-Tile-System/Tile.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,15 +33,23 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\rrmim\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\rrmim\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\rrmim\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\Robert\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Robert\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Robert\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds\QweixMain.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Robert\Documents\QWEIX\QWEIXNEW\Qweix\QweixMain\Builds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\2021.3.16f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\2021.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Robert\Documents\QWEIX\QWEIXNEW\Qweix\QweixMain -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Robert\Documents\QWEIX\QWEIXNEW\Qweix\QweixMain" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -42,7 +57,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\2021.3.16f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\2021.3.16f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Robert\Documents\QWEIX\QWEIXNEW\Qweix\QweixMain -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Robert\Documents\QWEIX\QWEIXNEW\Qweix\QweixMain" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -80,6 +95,7 @@
       <updated>1678999033733</updated>
       <workItem from="1678999035510" duration="47000" />
       <workItem from="1679003396863" duration="6541000" />
+      <workItem from="1679073685928" duration="3852000" />
     </task>
     <servers />
   </component>
