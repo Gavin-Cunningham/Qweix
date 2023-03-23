@@ -32,8 +32,9 @@ public class PlaceByCard : MonoBehaviour
     // Represents the card being dragged onto the field and the unit that card will spawn.
     public GameObject spawningCard;
     public GameObject spawningUnit;
-    
+    public Hand Hand;
 
+    public Player_Deck PlayerDeck;
     // A list of the currently highlighted tiles in the grid.
     public List<Transform> highlightedTiles = new List<Transform>();
 
@@ -42,6 +43,7 @@ public class PlaceByCard : MonoBehaviour
     public GridManager gridManager;
     public Tile tile;
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -164,11 +166,12 @@ public class PlaceByCard : MonoBehaviour
                 spawnedCard.GetComponent<Spell>().OnCast();
 
             }
-            player.GetComponent<Player_Qweix_Component>().qweixCount -= card.GetComponent<Card>().quiexCost;
+            player.GetComponent<Player_Qweix_Component>().qweixCount -= card.GetComponent<Card>().qwiexCost;
 
             highlightedTiles.Clear();
 
             placing = false;
+            DiscardandDraw(card);
 
         }
         // if it cannot be placed, it simply deletes the follower and unhighlights. 
@@ -193,7 +196,7 @@ public class PlaceByCard : MonoBehaviour
     public bool QweixCheck(Card card)
     {
 
-        if (player.GetComponent<Player_Qweix_Component>().qweixCount >= card.GetComponent<Card>().quiexCost)
+        if (player.GetComponent<Player_Qweix_Component>().qweixCount >= card.GetComponent<Card>().qwiexCost)
         {
             return true;
         }
@@ -226,8 +229,18 @@ public class PlaceByCard : MonoBehaviour
 
     }
 
+    public void DiscardandDraw(Card card)
+    {
+        
+        Hand.RemoveFromHand(card.gameObject);
+        
+       // Hand.DrawCards(1);
+    }
 
 }
+
+
+
 
 // unnecessary old function 
 //void unHighlight()

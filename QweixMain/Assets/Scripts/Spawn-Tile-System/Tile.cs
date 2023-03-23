@@ -54,24 +54,43 @@ public class Tile : MonoBehaviour
         if (tilePosition[0] > 13 && tilePosition[0] < 18)
         {
             isForbidden = true;
-            if (tilePosition[1] < 16 && tilePosition[1] > 12)
+            if (tilePosition[1] < 13 && tilePosition[1] > 10)
             {
                 isForbidden = false;
             }
-            else if (tilePosition[1] > 1 && tilePosition[1] < 5)
+            else if (tilePosition[1] > 3 && tilePosition[1] < 6)
             {
                 isForbidden = false;
             }
+        }
+
+        if (tilePosition[0] == 0)
+        {
+            if (tilePosition[1] < 13 && tilePosition[1] > 1)
+            {
+                isForbidden = true;
+            }
+            
+        }
+        if (tilePosition[0] == 31)
+        {
+            if (tilePosition[1] < 13 && tilePosition[1] > 1)
+            {
+                isForbidden = true;
+            }
+            
         }
         if (tilePosition[0] < 16)
         {
             gameObject.GetComponent<Tile>().inPlayerTerritory = true;
         }
+        gridManager.removeTiles();
     }
 
     void OnMouseOver()
     {
-        //As the mouse touches a tile it highlights, simple as that
+        //As long as the player isn't placing an object when the mouse touches a tile it highlights, simple as that
+        
         if (!placeByCard.placing)
         {
             Renderer.color = MouseOverColor;
