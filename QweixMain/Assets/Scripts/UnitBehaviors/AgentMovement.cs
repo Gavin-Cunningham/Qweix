@@ -1,3 +1,18 @@
+/****************************************************************************
+*
+*  File              : AgentMovement.cs
+*  Date Created      : 03/20/2023 
+*  Description       : This script is a temp system to show and test the Navmesh.
+*  It will make the character move around the scene following a mouse click.
+*
+*  Programmer(s)     : Tim Garfinkel
+*  Last Modification : 03/20/2023
+*  Additional Notes  : 
+*  External Documentation URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
