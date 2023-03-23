@@ -14,13 +14,15 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using Mono.CSharp;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
     // constants for the height and width of the grid
     public const int width = 32;
-    public const int height = 18;
+    public const int height = 16;
     
     // References to the Tile script as well as the grid parent.
     [SerializeField] private Tile tile;
@@ -29,6 +31,7 @@ public class GridManager : MonoBehaviour
     
     // This is the array the tiles are stored in, made it serialized so we could see it.
     [SerializeField] public Transform[,] tiles;
+    [SerializeField] public Transform[,] fogTiles;
 
 
 
@@ -37,7 +40,7 @@ public class GridManager : MonoBehaviour
         // Creates the grid and calls the generateNeighbors method for each tile.
         createGrid();
         generateNeighborArray();
-        generateFogOfWar();
+        // generateFogOfWar();
     }
 
     
@@ -53,31 +56,53 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-               
-                    var spawnedTile = Instantiate(tile, new Vector3(x, y), Quaternion.identity, gridParent.transform);
+                var spawnedTile = Instantiate(tile, new Vector3(x, y), Quaternion.identity, gridParent.transform);
                     tiles[x, y] = spawnedTile.gameObject.transform;
                     spawnedTile.name = $"Tile {x},{y}";
-                    
-                    
             }
-        }
 
+            
+        }
     }
 
-    public void generateFogOfWar()
+    public void removeTiles()
     {
 
+        foreach (Transform tile in tiles)
+        {
+            
+            if (tile.GetComponent<Tile>().isForbidden)
+            {
+                Destroy(tile.gameObject);
+                
+            }
+            
+        }
+
+        // foreach (Transform fogTile in fogTiles)
+        // {
+        //
+        //     if (fogTile.gameObject.GetComponent<Tile>().isForbidden)
+        //     {
+        //         Destroy(fogTile.gameObject);
+        //     }
+        //     
+        // }
+    }
+    public void generateFogOfWar()
+    {
+        fogTiles = new Transform[width, height];
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                if (x > 17)
+                if (x > 15)
                 {
-                    var spawnedTile = Instantiate(tile, new Vector3(x, y, 5), Quaternion.identity,
+                    var fogTile = Instantiate(tile, new Vector3(x, y, 5), Quaternion.identity,
                         fogParent.transform);
-                    tiles[x, y] = spawnedTile.gameObject.transform;
-                    spawnedTile.name = $"FOGOFWAR Tile {x},{y}";
-                    spawnedTile.GetComponent<Tile>().Renderer.color = spawnedTile.GetComponent<Tile>().FogOfWarColor;
+                    fogTiles[x, y] = fogTile.transform;
+                    fogTile.name = $"FOGOFWAR Tile {x},{y}";
+                    fogTile.GetComponent<Tile>().Renderer.color = fogTile.GetComponent<Tile>().FogOfWarColor;
                 }
             }
         }
