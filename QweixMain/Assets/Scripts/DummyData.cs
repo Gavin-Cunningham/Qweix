@@ -31,23 +31,17 @@ public class DummyData : MonoBehaviour
     // Player's current Qwiex level
     private float currentQwiex = 0f;
 
-    // Currently selected card in hand
-    //     0 = None
-    //     1 = Left
-    //     2 = Left-Center
-    //     3 = Right-Center
-    //     4 = Right
-    private int selectedCard = 0;
-
     // Start is called before the first frame update
     void Start()
     {
         UIController.SetPlayerInfo(dummyPlayerInfo, dummyOpponentInfo);
 
+        /*
         for(int i=0;i<5;i++)
         {
             UIController.SetCardInfo(dummyCardInfo[i], 4 - i);
         }
+        */
 
         isTimerRunning = false;
         SetTimer(timerMinutes);
@@ -89,34 +83,5 @@ public class DummyData : MonoBehaviour
     private void PauseTimer()
     {
         isTimerRunning = false;
-    }
-
-    public void UI_CardClick(ClickEvent evt)
-    {
-        Button button = evt.currentTarget as Button;
-        
-        switch(button.name)
-        {
-            case "CardButton1":
-                selectedCard = 1;
-                break;
-
-            case "CardButton2":
-                selectedCard = 2;
-                break;
-
-            case "CardButton3":
-                selectedCard = 3;
-                break;
-
-            case "CardButton4":
-                selectedCard = 4;
-                break;
-
-            default:
-                break;
-        }
-
-        UIController.SetSelectedCard(selectedCard);
     }
 }

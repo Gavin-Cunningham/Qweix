@@ -1,0 +1,117 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="FullScreenPanel" style="flex-grow: 1; background-image: none; flex-direction: row; background-color: rgba(255, 255, 255, 0);">
+        <ui:VisualElement name="CardPanel" style="flex-direction: column; width: 12.5%; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; background-color: rgb(128, 128, 128);">
+            <ui:VisualElement name="Card1Slot" style="height: 20%; -unity-background-scale-mode: stretch-to-fill;">
+                <ui:VisualElement name="ve_Card1Face" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-dark-princess.png?fileID=2800000&amp;guid=66be82235cdd0da4dab657bc24d0012a&amp;type=3#card-dark-princess&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="CardBanner" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-banner.png?fileID=2800000&amp;guid=40e822d24f26c2647a1a65ce5ebc7372&amp;type=3#card-banner&apos;); -unity-background-scale-mode: scale-to-fit;">
+                        <ui:VisualElement name="CardHalo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-halo-white.png?fileID=2800000&amp;guid=c5ffc112f75fe32468c77fd00734c3b9&amp;type=3#card-halo-white&apos;); align-items: center; justify-content: flex-end; -unity-background-scale-mode: scale-to-fit;">
+                            <ui:VisualElement name="CardQwiexOrb" style="width: 25%; height: 25%; background-color: rgb(255, 255, 255); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-background-scale-mode: stretch-to-fill;">
+                                <ui:Label text="4" display-tooltip-when-elided="true" name="lbl_Card1Cost" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold; font-size: 30%; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Card2Slot" style="height: 20%; -unity-background-scale-mode: stretch-to-fill;">
+                <ui:VisualElement name="ve_Card2Face" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-dark-princess.png?fileID=2800000&amp;guid=66be82235cdd0da4dab657bc24d0012a&amp;type=3#card-dark-princess&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="CardBanner" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-banner.png?fileID=2800000&amp;guid=40e822d24f26c2647a1a65ce5ebc7372&amp;type=3#card-banner&apos;); -unity-background-scale-mode: scale-to-fit;">
+                        <ui:VisualElement name="CardHalo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-halo-white.png?fileID=2800000&amp;guid=c5ffc112f75fe32468c77fd00734c3b9&amp;type=3#card-halo-white&apos;); align-items: center; justify-content: flex-end; -unity-background-scale-mode: scale-to-fit;">
+                            <ui:VisualElement name="CardQwiexOrb" style="width: 25%; height: 25%; background-color: rgb(255, 255, 255); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-background-scale-mode: stretch-to-fill;">
+                                <ui:Label text="4" display-tooltip-when-elided="true" name="lbl_Card2Cost" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold; font-size: 30%; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Card3Slot" style="height: 20%; -unity-background-scale-mode: stretch-to-fill;">
+                <ui:VisualElement name="ve_Card3Face" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-dark-princess.png?fileID=2800000&amp;guid=66be82235cdd0da4dab657bc24d0012a&amp;type=3#card-dark-princess&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="CardBanner" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-banner.png?fileID=2800000&amp;guid=40e822d24f26c2647a1a65ce5ebc7372&amp;type=3#card-banner&apos;); -unity-background-scale-mode: scale-to-fit;">
+                        <ui:VisualElement name="CardHalo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-halo-white.png?fileID=2800000&amp;guid=c5ffc112f75fe32468c77fd00734c3b9&amp;type=3#card-halo-white&apos;); align-items: center; justify-content: flex-end; -unity-background-scale-mode: scale-to-fit;">
+                            <ui:VisualElement name="CardQwiexOrb" style="width: 25%; height: 25%; background-color: rgb(255, 255, 255); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-background-scale-mode: stretch-to-fill;">
+                                <ui:Label text="4" display-tooltip-when-elided="true" name="lbl_Card3Cost" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold; font-size: 30%; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Card4Slot" style="height: 20%; -unity-background-scale-mode: stretch-to-fill;">
+                <ui:VisualElement name="ve_Card4Face" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-dark-princess.png?fileID=2800000&amp;guid=66be82235cdd0da4dab657bc24d0012a&amp;type=3#card-dark-princess&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="CardBanner" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-banner.png?fileID=2800000&amp;guid=40e822d24f26c2647a1a65ce5ebc7372&amp;type=3#card-banner&apos;); -unity-background-scale-mode: scale-to-fit;">
+                        <ui:VisualElement name="CardHalo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-halo-white.png?fileID=2800000&amp;guid=c5ffc112f75fe32468c77fd00734c3b9&amp;type=3#card-halo-white&apos;); align-items: center; justify-content: flex-end; -unity-background-scale-mode: scale-to-fit;">
+                            <ui:VisualElement name="CardQwiexOrb" style="width: 25%; height: 25%; background-color: rgb(255, 255, 255); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-background-scale-mode: stretch-to-fill;">
+                                <ui:Label text="4" display-tooltip-when-elided="true" name="lbl_Card4Cost" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold; font-size: 30%; position: relative; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+            <ui:VisualElement name="NextCardSlot" style="height: 17.5%;">
+                <ui:VisualElement name="CardNextFace" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/card-dark-princess.png?fileID=2800000&amp;guid=66be82235cdd0da4dab657bc24d0012a&amp;type=3#card-dark-princess&apos;); align-items: center; -unity-background-scale-mode: scale-to-fit; -unity-slice-top: 10; -unity-slice-left: 10; -unity-slice-right: 10; -unity-slice-bottom: 10;">
+                    <ui:VisualElement>
+                        <ui:Label text="Next" display-tooltip-when-elided="true" name="NextLabel" style="font-size: 27px; -unity-font-style: bold; color: rgb(0, 0, 0); margin-bottom: 0; padding-bottom: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPanel" style="flex-grow: 1;">
+            <ui:VisualElement name="NameTimePanel" style="flex-direction: row; height: 10%; margin-left: 20px; margin-right: 20px; margin-top: 20px;">
+                <ui:VisualElement name="PlayerNamePanel" style="align-items: flex-start; width: 30%;">
+                    <ui:Label text="Player Name" display-tooltip-when-elided="true" name="lbl_PlayerName" style="color: rgb(0, 0, 0); font-size: 60px; -unity-font-style: bold-and-italic; padding-left: 1px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+                <ui:VisualElement name="TimePanel" style="width: 13%; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; background-color: rgb(128, 128, 128); align-items: center; justify-content: center;">
+                    <ui:Label text="3:00" display-tooltip-when-elided="true" name="lbl_TimeLeftDisplay" style="-unity-font-style: bold; font-size: 60%; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+                <ui:VisualElement name="OpponentNamePanel" style="width: 30%; align-items: flex-end;">
+                    <ui:Label text="Opponent Name" display-tooltip-when-elided="true" name="lbl_OpponentName" style="color: rgb(0, 0, 0); font-size: 60px; -unity-font-style: bold-and-italic; padding-left: 1px; -unity-text-align: upper-right;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+            <ui:VisualElement name="QwiexEmotePanel" style="height: 13%; flex-direction: row; margin-left: 20px;">
+                <ui:VisualElement name="QwiexBarPanel" style="flex-direction: column-reverse; height: 130px;">
+                    <ui:VisualElement name="Helper" style="flex-direction: row;">
+                        <ui:VisualElement name="QwiexBar" style="flex-direction: row; translate: 80px 11px;">
+                            <ui:VisualElement name="EmptyBar1" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 5px; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 5px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar1" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar2" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar2" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar3" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar3" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar4" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar4" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar5" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar5" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar6" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar6" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar7" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar7" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar8" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar8" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar9" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 0; border-left-width: 2px; border-right-width: 2px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar9" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EmptyBar10" style="background-color: rgb(255, 255, 255); width: 70px; height: 50px; padding-left: 0; padding-top: 0; padding-bottom: 0; padding-right: 0; margin-left: 0; margin-top: 5px; margin-bottom: 5px; margin-right: 5px; border-left-width: 2px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                <ui:VisualElement name="ve_QwiexBar10" style="flex-grow: 1; background-color: rgb(255, 0, 224);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="QwiexTotal" style="width: 100px; height: 100px; align-items: center; background-color: rgb(255, 0, 224); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; translate: -700px -10px; justify-content: center; margin-bottom: 0;">
+                            <ui:Label text="10" display-tooltip-when-elided="true" name="lbl_QwiexTotal" style="color: rgb(0, 0, 0); font-size: 50px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); position: absolute;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+                <ui:VisualElement name="EmotePanel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
