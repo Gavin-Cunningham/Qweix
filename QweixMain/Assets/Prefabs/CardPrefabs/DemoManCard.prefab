@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeByCard: {fileID: 0}
-  cardObject: {fileID: 5256719062459724438, guid: dd7ffb836fac16a46bdb1892aa00b091, type: 3}
+  cardObject: {fileID: 1322303597163847443, guid: bfdf4325a0813a843b0613cb5a169006, type: 3}
   cardRenderer: {fileID: 5589941434517243780}
   cardName: DemoMan
   qwiexCost: 4

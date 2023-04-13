@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeByCard: {fileID: 0}
-  cardObject: {fileID: 6461512105422409345, guid: 53de679be5b4cc348837a230261c6a47, type: 3}
+  cardObject: {fileID: 6032134411759417397, guid: 5c099a6408d175740b6d7d124d31ec12, type: 3}
   cardRenderer: {fileID: 7422787589274509880}
   cardName: Dark Princess
   qwiexCost: 2
