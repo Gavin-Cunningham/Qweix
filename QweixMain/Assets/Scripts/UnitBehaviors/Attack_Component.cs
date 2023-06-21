@@ -74,7 +74,7 @@ public class Attack_Component : MonoBehaviour
 
             case AttackState.PursuingTarget:
 
-                if (targeting_Component.TargetInRange())
+                if (targeting_Component.targetInRange)
                 {
                     BeginAttackAnimation();
 

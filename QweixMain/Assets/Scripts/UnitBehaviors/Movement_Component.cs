@@ -1,3 +1,18 @@
+/****************************************************************************
+*
+*  File              : Movement_Component.cs
+*  Date Created      : 06/19/2023 
+*  Description       : This Component is a go between for behaviours and the NavMeshComponent
+*
+*  Programmer(s)     : Tim Garfinkel
+*  Last Modification : 06/21/2023
+*  Additional Notes  : 
+*  External Documentation URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

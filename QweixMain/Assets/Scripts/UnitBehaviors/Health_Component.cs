@@ -32,8 +32,6 @@ public class Health_Component : MonoBehaviour
     // Reference to health bar UI
     public Image healthBar;
 
-    private float damageTimer;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,20 +48,12 @@ public class Health_Component : MonoBehaviour
         {
             Debug.Log("Health Bar reference not set");
         }
-
-        damageTimer = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        damageTimer -= Time.deltaTime;
-
-        if(damageTimer < 0)
-        {
-            damageTimer = 1;
-            TakeDamage(10);
-        }
+        
     }
 
 

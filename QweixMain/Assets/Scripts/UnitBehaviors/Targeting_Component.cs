@@ -1,3 +1,18 @@
+/****************************************************************************
+*
+*  File              : Targeting_Component.cs
+*  Date Created      : 06/19/2023 
+*  Description       : This Component manages the Targeting Systems of Units
+*
+*  Programmer(s)     : Tim Garfinkel
+*  Last Modification : 06/21/2023
+*  Additional Notes  : 
+*  External Documentation URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,10 +31,10 @@ public class Targeting_Component : MonoBehaviour
     [SerializeField] bool canTargetGround;
     [SerializeField] bool canTargetBuilding;
     [SerializeField] float agroRange;
-    GameObject KingTower;
+    public GameObject KingTower;
 
 
-    GameObject currentTarget;
+    public GameObject currentTarget;
     NavMeshAgent agent;
 
     public enum UnitType
@@ -35,8 +50,9 @@ public class Targeting_Component : MonoBehaviour
     void Awake()
     {
         targetInRange = false;
-        gameObject.SendMessage("SetNewTarget", KingTower);
-        myType = UnitType.isFlying;
+        currentTarget = KingTower;
+        setTarget(currentTarget);
+        agent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -53,7 +69,8 @@ public class Targeting_Component : MonoBehaviour
 
         foreach (Collider2D enemy in targetArray)
         {
-            GameObject enemyGO = enemy.transform.parent.gameObject;
+            GameObject enemyGO = enemy.transform.gameObject;
+
             if (testTarget(enemyGO) == true)
             {
 
@@ -80,18 +97,18 @@ public class Targeting_Component : MonoBehaviour
         gameObject.SendMessage("SetNewTarget", newTarget);
     }
 
-    void onTriggerEnter2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other == currentTarget)
+        if (other == currentTarget.GetComponent<Collider2D>())
         {
             targetInRange = true;
             agent.isStopped = true;
         }
     }
 
-    void onTriggerExit2D(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (other == currentTarget)
+        if (other == currentTarget.GetComponent<Collider2D>())
         {
             targetInRange = false;
             agent.isStopped = false;

@@ -39,7 +39,7 @@ public class MeleeAttack_Component : Attack_Component
 
     public void ApplyDamage()
     {
-        if (targeting_Component.CurrentTarget != null)
+        if (targeting_Component.currentTarget != null)
         {
             attackTarget.SendMessage("TakeDamage", attackDamage);
 
