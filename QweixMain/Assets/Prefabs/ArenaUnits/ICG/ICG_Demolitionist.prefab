@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackFrequency: 1
   attackCountdown: 1
-  attackDamage: 1
+  attackDamage: 0.1
 --- !u!114 &5140284626449575786
 MonoBehaviour:
   m_ObjectHideFlags: 0

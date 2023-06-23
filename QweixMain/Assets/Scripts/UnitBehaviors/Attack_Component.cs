@@ -135,6 +135,8 @@ public class Attack_Component : MonoBehaviour
     {
         attackCountdown = attackFrequency;
 
+        animation_Component.AnimationFinished();
+
         attackState = AttackState.CoolingDown;
     }
 

@@ -55,6 +55,12 @@ public class Animation_Component : MonoBehaviour
 
     public void BeginAttackAnimation()
     {
+        controller.SetBool("isAttacking", true);
+        controller.Play("Shoot");
+    }
 
+    public void AnimationFinished()
+    {
+        controller.SetBool("isAttacking", false);
     }
 }
