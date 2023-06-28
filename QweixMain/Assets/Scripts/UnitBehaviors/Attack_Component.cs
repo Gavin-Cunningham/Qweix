@@ -42,8 +42,6 @@ public class Attack_Component : MonoBehaviour
 
     private protected AttackState attackState;
 
-    private protected bool hasDealtDamage = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -140,8 +138,6 @@ public class Attack_Component : MonoBehaviour
         animation_Component.AnimationFinished();
 
         attackState = AttackState.CoolingDown;
-
-        hasDealtDamage = false;
     }
 
 }

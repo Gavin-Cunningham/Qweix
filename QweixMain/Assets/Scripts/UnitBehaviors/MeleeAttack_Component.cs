@@ -39,13 +39,11 @@ public class MeleeAttack_Component : Attack_Component
 
     public void ApplyDamage()
     {
-        if (targeting_Component.currentTarget != null && hasDealtDamage == false)
+        if (targeting_Component.currentTarget != null)
         {
             attackTarget.SendMessage("TakeDamage", attackDamage);
 
             attackState = AttackState.WaitingToFinishAnimation;
-
-            hasDealtDamage = true;
         }
     }
 }
