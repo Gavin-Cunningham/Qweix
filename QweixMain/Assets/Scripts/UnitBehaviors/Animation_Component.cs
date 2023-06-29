@@ -23,17 +23,31 @@ public class Animation_Component : MonoBehaviour
 {
     NavMeshAgent agent;
     Animator controller;
+    Transform targetTransform;
+    Transform parentTransform;
 
     //Gets the components necessary to reference
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+
         controller = GetComponent<Animator>();
+        parentTransform = GetComponent<Transform>();
     }
 
     private void Update()
     {
-        FindMoveDirection();
+        if (agent != null)
+        {
+            FindMoveDirection();
+        }
+        if (targetTransform != null)
+        {
+            FindTargetDirection();
+        }
     }
 
     //Tell the animator how fast the agent is moving and what direction.
@@ -47,10 +61,18 @@ public class Animation_Component : MonoBehaviour
         controller.SetFloat("Speed", speed);
         if (speed >= 0.1f)
         {
-            controller.SetFloat("XInput", xMove);
-            controller.SetFloat("YInput", yMove);
+            controller.SetFloat("XMove", xMove);
+            controller.SetFloat("YMove", yMove);
         }
 
+    }
+
+    private void FindTargetDirection()
+    {
+        Vector3 targetVector = targetTransform.position - parentTransform.position;
+        Vector3 targetDirection = Vector3.Normalize(targetVector);
+        controller.SetFloat("XTarget", targetDirection.x);
+        controller.SetFloat("YTarget", targetDirection.y);
     }
 
     public void BeginAttackAnimation()
@@ -62,5 +84,10 @@ public class Animation_Component : MonoBehaviour
     public void AnimationFinished()
     {
         controller.SetBool("isAttacking", false);
+    }
+
+    private void SetNewTarget(GameObject newTarget)
+    {
+        targetTransform = newTarget.GetComponent<Transform>();
     }
 }
