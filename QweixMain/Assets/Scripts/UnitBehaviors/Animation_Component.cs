@@ -6,7 +6,7 @@
 *  the movement from the navmesh system.
 *
 *  Programmer(s)     : Gavin Cunningham
-*  Last Modification : 03/23/2023
+*  Last Modification : 07/03/2023
 *  Additional Notes  : 
 *  External Documentation URL :
 *****************************************************************************
@@ -67,6 +67,13 @@ public class Animation_Component : MonoBehaviour
 
     }
 
+    //Called by a send.message from the Targeting_Component
+    private void SetNewTarget(GameObject newTarget)
+    {
+        targetTransform = newTarget.GetComponent<Transform>();
+    }
+
+    //This is to pick the right direction for attack animations
     private void FindTargetDirection()
     {
         Vector3 targetVector = targetTransform.position - parentTransform.position;
@@ -75,19 +82,16 @@ public class Animation_Component : MonoBehaviour
         controller.SetFloat("YTarget", targetDirection.y);
     }
 
+    //Called by the Attack_Component its children
     public void BeginAttackAnimation()
     {
         controller.SetBool("isAttacking", true);
         controller.Play("Shoot");
     }
 
+    //Called by the animator to let the Attack_Component know the animation is done
     public void AnimationFinished()
     {
         controller.SetBool("isAttacking", false);
-    }
-
-    private void SetNewTarget(GameObject newTarget)
-    {
-        targetTransform = newTarget.GetComponent<Transform>();
     }
 }

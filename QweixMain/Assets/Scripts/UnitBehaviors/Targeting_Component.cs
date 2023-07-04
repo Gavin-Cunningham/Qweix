@@ -5,7 +5,7 @@
 *  Description       : This Component manages the Targeting Systems of Units
 *
 *  Programmer(s)     : Tim Garfinkel
-*  Last Modification : 06/21/2023
+*  Last Modification : 07/03/2023
 *  Additional Notes  : 
 *  External Documentation URL :
 *****************************************************************************
@@ -52,7 +52,10 @@ public class Targeting_Component : MonoBehaviour
         targetInRange = false;
         currentTarget = KingTower;
         setTarget(currentTarget);
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        if (gameObject.GetComponent<NavMeshAgent>() != null)
+        {
+            agent = gameObject.GetComponent<NavMeshAgent>();
+        }
     }
 
     void Update()
@@ -102,7 +105,11 @@ public class Targeting_Component : MonoBehaviour
         if (other == currentTarget.GetComponent<Collider2D>())
         {
             targetInRange = true;
-            agent.isStopped = true;
+
+            if (agent != null)
+            {
+                agent.isStopped = true;
+            }
         }
     }
 
@@ -111,7 +118,11 @@ public class Targeting_Component : MonoBehaviour
         if (other == currentTarget.GetComponent<Collider2D>())
         {
             targetInRange = false;
-            agent.isStopped = false;
+
+            if (agent != null)
+            {
+                agent.isStopped = false;
+            }
         }
     }
 
