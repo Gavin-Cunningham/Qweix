@@ -31,12 +31,12 @@ public class RangedAttack_Component : Attack_Component
 {
 	[SerializeField]
 	public GameObject projectile;
-    //private Transform parentTransform;
+    private Transform parentTransform;
 
-    //public override void Start()
-    //{
-    //    parentTransform = GetComponent<Transform>();
-    //}
+    public override void Start()
+    {
+        parentTransform = GetComponent<Transform>();
+    }
 
     public override void AnimationTrigger()
 	{
@@ -45,8 +45,8 @@ public class RangedAttack_Component : Attack_Component
 
 	private void FireProjectile()
 	{
-		//GameObject proj = Instantiate(projectile, parentTransform);
-        GameObject proj = Instantiate(projectile);
+		GameObject proj = Instantiate(projectile, parentTransform);
+        //GameObject proj = Instantiate(projectile);
 
         proj.SendMessage("SetTarget", attackTarget);
 	}
