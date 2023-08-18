@@ -15,8 +15,8 @@
 *                      Animation_Component
 *
 *  Programmer(s)     : Gabe Burch
-*  Last Modification : 06/07/2023
-*  Additional Notes  : 
+*  Last Modification : 08/18/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Made Start virtual so RangedAttack_Component can override.
 *  External Documentation URL : https://trello.com/c/hIyVrf0V/6-attackcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -43,7 +43,7 @@ public class Attack_Component : MonoBehaviour
     private protected AttackState attackState;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         targeting_Component = GetComponentInChildren<Targeting_Component>();
 

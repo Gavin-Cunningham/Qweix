@@ -11,8 +11,8 @@
 *  Requirements      : A Health Bar on the game object with the UI Image referenced as the healthBar variable
 *
 *  Programmer(s)     : Gabe Burch
-*  Last Modification : 05/31/2023
-*  Additional Notes  : 
+*  Last Modification : 08/18/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Added the OnUnitDeath event
 *  External Documentation URL : https://trello.com/c/LVPox6UR/8-healthcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -22,12 +22,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Health_Component : MonoBehaviour    
 {
     // Maximum health available
     public float maxHealth;
     private float currentHealth;
+
+    public static event Action<GameObject> OnUnitDeath;
+    private GameObject thisUnit;
 
     // Reference to health bar UI
     public Image healthBar;
@@ -48,6 +52,8 @@ public class Health_Component : MonoBehaviour
         {
             Debug.Log("Health Bar reference not set");
         }
+
+        thisUnit = gameObject;
     }
 
     // Update is called once per frame
@@ -82,6 +88,8 @@ public class Health_Component : MonoBehaviour
         {
             spawnOnDeath.Spawn();
         }
+
+        OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
 

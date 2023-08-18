@@ -5,8 +5,9 @@
 *  Description       : This Component manages the Targeting Systems of Units
 *
 *  Programmer(s)     : Tim Garfinkel
-*  Last Modification : 07/03/2023
-*  Additional Notes  : 
+*  Last Modification : 08/18/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Moved all NavMeshAgent logic to Movement component and replaced it with a SendMessage: TargetInRange & TargetLeftRange.
+*                      -(08/18/2023) [Gavin] Also added the listener for the OnUnitDeath event from the Health_Component
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -52,10 +53,6 @@ public class Targeting_Component : MonoBehaviour
         targetInRange = false;
         currentTarget = KingTower;
         setTarget(currentTarget);
-        if (gameObject.GetComponent<NavMeshAgent>() != null)
-        {
-            agent = gameObject.GetComponent<NavMeshAgent>();
-        }
     }
 
     void Update()
@@ -106,10 +103,7 @@ public class Targeting_Component : MonoBehaviour
         {
             targetInRange = true;
 
-            if (agent != null)
-            {
-                agent.isStopped = true;
-            }
+            SendMessage("TargetInRange");
         }
     }
 
@@ -119,10 +113,27 @@ public class Targeting_Component : MonoBehaviour
         {
             targetInRange = false;
 
-            if (agent != null)
-            {
-                agent.isStopped = false;
-            }
+            SendMessage("TargetLeftRange");
+        }
+    }
+
+    //This safely engages and disengages the component from the OnUnitDeath event
+    private void OnEnable()
+    {
+        Health_Component.OnUnitDeath += UnitDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health_Component.OnUnitDeath -= UnitDeath;
+    }
+
+    //This helps the unit realize its target is dead
+    private void UnitDeath(GameObject deadUnit)
+    {
+        if (deadUnit = currentTarget)
+        {
+            SendMessage("TargetLeftRange");
         }
     }
 

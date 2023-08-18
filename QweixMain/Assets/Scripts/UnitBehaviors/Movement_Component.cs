@@ -5,8 +5,8 @@
 *  Description       : This Component is a go between for behaviours and the NavMeshComponent
 *
 *  Programmer(s)     : Tim Garfinkel
-*  Last Modification : 06/21/2023
-*  Additional Notes  : 
+*  Last Modification : 08/18/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -28,7 +28,10 @@ public class Movement_Component : MonoBehaviour
 
     void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (gameObject.GetComponent<NavMeshAgent>() != null)
+        {
+            agent = gameObject.GetComponent<NavMeshAgent>();
+        }
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
@@ -58,5 +61,21 @@ public class Movement_Component : MonoBehaviour
         if (currentTarget != null)
             agent.SetDestination(new Vector3(currentDestination.x, currentDestination.y, transform.position.z));
 
+    }
+
+    void TargetInRange()
+    {
+        if (agent != null)
+        {
+            agent.isStopped = true;
+        }
+    }
+
+    void TargetLeftRange()
+    {
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
     }
 }
