@@ -63,7 +63,7 @@ public class Movement_Component : MonoBehaviour
 
     }
 
-    void TargetInRange()
+    void TargetEnterRange()
     {
         if (agent != null)
         {

@@ -96,7 +96,7 @@ public class Animation_Component : MonoBehaviour
         controller.SetBool("isAttacking", false);
     }
 
-    public void TargetInRange()
+    public void TargetEnterRange()
     {
         controller.SetBool("isStopped", true);
     }

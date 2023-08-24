@@ -71,6 +71,11 @@ public class Targeting_Component : MonoBehaviour
         {
             GameObject enemyGO = enemy.transform.gameObject;
 
+            if (enemyGO.GetComponent<Targeting_Component>() == null)
+            {
+                continue;
+            }
+
             if (testTarget(enemyGO) == true)
             {
 
@@ -95,25 +100,67 @@ public class Targeting_Component : MonoBehaviour
     void setTarget(GameObject newTarget)
     {
         gameObject.SendMessage("SetNewTarget", newTarget);
+
+        CheckCurrentRange(newTarget);
+    }
+
+    //This is to check whether the new target is currently inside the collider so we know whether to stop.
+    void CheckCurrentRange(GameObject Target)
+    {
+        Collider2D targetCollider = null;
+        Collider2D myTrigger = null;
+
+        Collider2D[] targetColliders = Target.GetComponents<Collider2D>();
+        foreach (Collider2D collider in targetColliders)
+        {
+            //if its a Trigger, skip to next one
+            if (collider.isTrigger) { continue; }
+
+            targetCollider = collider;
+        }
+
+        Collider2D[] myColliders = this.GetComponents<Collider2D>();
+        foreach (Collider2D collider in myColliders)
+        {
+            //if its not a Trigger, skip to next one
+            if (!collider.isTrigger) { continue; }
+
+            myTrigger = collider;
+        }
+
+        if(myTrigger != null && targetCollider != null)
+        {
+            if (myTrigger.IsTouching(targetCollider))
+            {
+                SendTargetEnterRange();
+            }
+            else
+            {
+                SendTargetLeftRange();
+            }
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.isTrigger) { return; }
+        if(other == null) { return; }
+
         if (other == currentTarget.GetComponent<Collider2D>())
         {
-            targetInRange = true;
-
-            SendMessage("TargetInRange");
+            SendTargetEnterRange();
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+        if (other.isTrigger) { return; }
+        if (other == null) { return; }
+
         if (other == currentTarget.GetComponent<Collider2D>())
         {
-            targetInRange = false;
-
-            SendMessage("TargetLeftRange");
+            SendTargetLeftRange();
         }
     }
 
@@ -133,10 +180,23 @@ public class Targeting_Component : MonoBehaviour
     {
         if (deadUnit = currentTarget)
         {
-            SendMessage("TargetLeftRange");
+            SendTargetLeftRange();
         }
     }
 
+    private void SendTargetEnterRange()
+    {
+        targetInRange = true;
+
+        SendMessage("TargetEnterRange");
+    }
+
+    private void SendTargetLeftRange()
+    {
+        targetInRange = false;
+
+        SendMessage("TargetLeftRange");
+    }
 
     private bool testTarget(GameObject enemy)
     {

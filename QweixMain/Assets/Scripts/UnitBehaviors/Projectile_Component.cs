@@ -12,7 +12,7 @@
 *
 *  Programmer(s)     : Gabe Burch
 *  Last Modification : 06/12/2023
-*  Additional Notes  : 
+*  Additional Notes  : -Need to have projectile check whether the targetGameObject is still there and delete itself if it is already dead.
 *  External Documentation URL : https://trello.com/c/8pkDW1QT/13-projectilecomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -28,7 +28,7 @@ public class Projectile_Component : MonoBehaviour
     [SerializeField]
     private GameObject target;
 
-    private Collider projectileCollider;
+    private Collider2D projectileCollider;
 
     public float projectileDamage;
 
@@ -42,7 +42,7 @@ public class Projectile_Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        projectileCollider = GetComponentInChildren<Collider>();
+        projectileCollider = GetComponent<Collider2D>();
 
         if (projectileCollider == null)
         {
@@ -99,6 +99,8 @@ public class Projectile_Component : MonoBehaviour
 
                 break;
         }
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
     }
 
     private void SetTarget(GameObject newTarget)
@@ -113,13 +115,33 @@ public class Projectile_Component : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider hit)
+    private void OnTriggerEnter2D(Collider2D hit)
     {
-        Debug.Log("Projectile trigger enter");
+        if (hit.isTrigger) { return; }
 
         if (hit.gameObject == target)
         {
             ApplyDamage();
+        }
+    }
+
+    //This safely engages and disengages the component from the OnUnitDeath event
+    private void OnEnable()
+    {
+        Health_Component.OnUnitDeath += UnitDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health_Component.OnUnitDeath -= UnitDeath;
+    }
+
+    //This helps the unit realize its target is dead
+    private void UnitDeath(GameObject deadUnit)
+    {
+        if(target == deadUnit)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  projectileDamage: 5
+  projectileDamage: 1
   flightTime: 1
   projectileType: 0
 --- !u!58 &6745081560833712080

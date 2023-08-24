@@ -41,6 +41,7 @@ public class Attack_Component : MonoBehaviour
     private protected Animation_Component animation_Component;
 
     private protected AttackState attackState;
+    private protected bool canAttack = true;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -100,6 +101,7 @@ public class Attack_Component : MonoBehaviour
                 if (attackCountdown <= 0)
                 {
                     attackState = AttackState.PursuingTarget;
+                    canAttack = true;
                 }
 
                 break;

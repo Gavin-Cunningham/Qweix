@@ -31,23 +31,29 @@ public class RangedAttack_Component : Attack_Component
 {
 	[SerializeField]
 	public GameObject projectile;
-    private Transform parentTransform;
+    private Transform originTransform;
 
     public override void Start()
     {
-        parentTransform = GetComponent<Transform>();
+        originTransform = GetComponent<Transform>();
+        base.Start();
     }
 
     public override void AnimationTrigger()
 	{
 		FireProjectile();
-	}
+    }
 
 	private void FireProjectile()
 	{
-		GameObject proj = Instantiate(projectile, parentTransform);
+        if (!canAttack) { return; }
+
+		GameObject proj = Instantiate(projectile, new Vector3 (originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion (0, 0, 0, 0));
         //GameObject proj = Instantiate(projectile);
 
         proj.SendMessage("SetTarget", attackTarget);
-	}
+
+        attackState = AttackState.WaitingToFinishAnimation;
+        canAttack = false;
+    }
 }
