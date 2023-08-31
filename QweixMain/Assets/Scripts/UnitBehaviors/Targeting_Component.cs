@@ -8,6 +8,7 @@
 *  Last Modification : 08/18/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Moved all NavMeshAgent logic to Movement component and replaced it with a SendMessage: TargetInRange & TargetLeftRange.
 *                      -(08/18/2023) [Gavin] Also added the listener for the OnUnitDeath event from the Health_Component
+*                      -(08/30/2023) [Gavin] Moved findTarget to InvokeRepeating to slow down the calls. shortestDist now only gets set to 1000 if there is no target.
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -34,7 +35,6 @@ public class Targeting_Component : MonoBehaviour
     [SerializeField] float agroRange;
     public GameObject KingTower;
 
-
     public GameObject currentTarget;
     NavMeshAgent agent;
 
@@ -47,6 +47,11 @@ public class Targeting_Component : MonoBehaviour
 
     [SerializeField] public UnitType myType;
 
+    //Alter the second float in invoke repeatings to change how many seconds between each run of "findTarget"
+    void Start()
+    {
+        InvokeRepeating("findTarget", 2.0f, 1.5f);
+    }
 
     void Awake()
     {
@@ -57,12 +62,23 @@ public class Targeting_Component : MonoBehaviour
 
     void Update()
     {
-        findTarget();
+        //findTarget();
     }
 
     void findTarget()
     {
-        float shortestDist = 1000.0f;
+        float shortestDist;
+
+        if (currentTarget != null)
+        {
+            shortestDist = Vector3.Distance(currentTarget.transform.position, transform.position);
+        }
+        else
+        {
+            shortestDist = 1000.0f;
+        }
+
+        Debug.Log(shortestDist);
         GameObject closestTarget = currentTarget;
 
         Collider2D[] targetArray = Physics2D.OverlapCircleAll(transform.position, agroRange);
@@ -78,7 +94,7 @@ public class Targeting_Component : MonoBehaviour
 
             if (testTarget(enemyGO) == true)
             {
-
+                //Debug.Log(this + "TestTarget = True" + currentTarget);
                 float distCheck = Vector3.Distance(enemy.transform.position, transform.position);
 
                 if (distCheck < shortestDist)
@@ -90,6 +106,7 @@ public class Targeting_Component : MonoBehaviour
 
             if (closestTarget != currentTarget)
             {
+                Debug.Log(currentTarget + ": " + closestTarget);
                 currentTarget = closestTarget;
                 setTarget(currentTarget);
             }
@@ -109,6 +126,8 @@ public class Targeting_Component : MonoBehaviour
     {
         Collider2D targetCollider = null;
         Collider2D myTrigger = null;
+
+        Debug.Log(this);
 
         Collider2D[] targetColliders = Target.GetComponents<Collider2D>();
         foreach (Collider2D collider in targetColliders)
@@ -136,7 +155,7 @@ public class Targeting_Component : MonoBehaviour
             }
             else
             {
-                SendTargetLeftRange();
+                SendTargetLeftRange("Check Current Range");
             }
         }
 
@@ -160,7 +179,7 @@ public class Targeting_Component : MonoBehaviour
 
         if (other == currentTarget.GetComponent<Collider2D>())
         {
-            SendTargetLeftRange();
+            SendTargetLeftRange("On Trigger Exit 2D");
         }
     }
 
@@ -180,7 +199,7 @@ public class Targeting_Component : MonoBehaviour
     {
         if (deadUnit = currentTarget)
         {
-            SendTargetLeftRange();
+            SendTargetLeftRange("Unit Death Event");
         }
     }
 
@@ -191,10 +210,10 @@ public class Targeting_Component : MonoBehaviour
         SendMessage("TargetEnterRange");
     }
 
-    private void SendTargetLeftRange()
+    private void SendTargetLeftRange(string source)
     {
         targetInRange = false;
-
+        Debug.Log(source);
         SendMessage("TargetLeftRange");
     }
 
@@ -202,6 +221,7 @@ public class Targeting_Component : MonoBehaviour
     {
         if (enemy.GetComponent<Targeting_Component>().teamCheck != teamCheck)
         {
+            Debug.Log(this + "teamCheck != teamCheck" + enemy);
             UnitType enemyTC = enemy.GetComponent<Targeting_Component>().myType;
 
             if (canTargetFlying && enemyTC == UnitType.isFlying)
