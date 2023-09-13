@@ -35,6 +35,7 @@ public class Health_Component : MonoBehaviour
 
     // Reference to health bar UI
     public Image healthBar;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,9 +58,12 @@ public class Health_Component : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        if(isDead)
+        {
+            Destroy(gameObject);
+        }
     }
 
 
@@ -93,6 +97,6 @@ public class Health_Component : MonoBehaviour
 
         // Room for other *OnDeath script references here
 
-        Destroy(gameObject);
+        isDead = true;
     }
 }

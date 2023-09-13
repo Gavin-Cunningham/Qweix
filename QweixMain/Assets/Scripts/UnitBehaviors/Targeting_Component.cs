@@ -115,7 +115,7 @@ public class Targeting_Component : MonoBehaviour
 
     void setTarget(GameObject newTarget)
     {
-        gameObject.SendMessage("SetNewTarget", newTarget);
+        SendMessage("SetNewTarget", newTarget);
 
         CheckCurrentRange(newTarget);
     }
@@ -126,7 +126,7 @@ public class Targeting_Component : MonoBehaviour
         Collider2D targetCollider = null;
         Collider2D myTrigger = null;
 
-        Debug.Log(this);
+        //Debug.Log(this);
 
         Collider2D[] targetColliders = Target.GetComponents<Collider2D>();
         foreach (Collider2D collider in targetColliders)
@@ -162,6 +162,7 @@ public class Targeting_Component : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(currentTarget == null) { return; }
         if(other.isTrigger) { return; }
         if(other == null) { return; }
 
@@ -173,6 +174,7 @@ public class Targeting_Component : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+        if(currentTarget == null) { return;}
         if (other.isTrigger) { return; }
         if (other == null) { return; }
 
@@ -213,7 +215,7 @@ public class Targeting_Component : MonoBehaviour
     private void SendTargetLeftRange(string source)
     {
         targetInRange = false;
-        //Debug.Log(source + " on " + this);
+        Debug.Log(source + " on " + this);
         SendMessage("TargetLeftRange");
     }
 
