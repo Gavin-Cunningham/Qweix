@@ -717,7 +717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7369118179760287026, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851268476903529798, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: KingTower
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9f96d1bdff9e44ea1010b876c6ec34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamCheck: 1
+  teamCheck: 2
   canTargetFlying: 0
   canTargetGround: 0
   canTargetBuilding: 0
@@ -1610,11 +1610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180592987099893995, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.352562
+      value: 24.51
       objectReference: {fileID: 0}
     - target: {fileID: 3180592987099893995, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.600121
+      value: 8.93
       objectReference: {fileID: 0}
     - target: {fileID: 3180592987099893995, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1654,7 +1654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7369118179760287026, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851268476903529798, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
       propertyPath: KingTower
@@ -1845,7 +1845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
@@ -2295,11 +2295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5388155
+      value: 11.86
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.951107
+      value: 11.84
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3145,7 +3145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
@@ -3217,7 +3217,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.677616
+  orthographic size: 9.2678995
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3319,11 +3319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.49
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.21
+      value: 11.48
       objectReference: {fileID: 0}
     - target: {fileID: 5515275447777580981, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3368,14 +3368,6 @@ PrefabInstance:
     - target: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515275447777580989, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
-      propertyPath: attackCountdown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515275447777580989, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
-      propertyPath: attackFrequency
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}

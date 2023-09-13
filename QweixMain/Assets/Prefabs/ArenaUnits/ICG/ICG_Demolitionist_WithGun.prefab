@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackFrequency: 1
   attackCountdown: 1
-  projectile: {fileID: 4803431861211981086, guid: 77f3a1b21bc4c7242b0a8ef204a7b79b, type: 3}
+  projectile: {fileID: 5836375932857795507, guid: 1d94226ca3b88bb47be70404cea93338, type: 3}
 --- !u!58 &7417250800821014170
 CircleCollider2D:
   m_ObjectHideFlags: 0

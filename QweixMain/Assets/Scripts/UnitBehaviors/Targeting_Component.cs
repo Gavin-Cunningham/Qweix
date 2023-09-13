@@ -78,7 +78,6 @@ public class Targeting_Component : MonoBehaviour
             shortestDist = 1000.0f;
         }
 
-        Debug.Log(shortestDist);
         GameObject closestTarget = currentTarget;
 
         Collider2D[] targetArray = Physics2D.OverlapCircleAll(transform.position, agroRange);
@@ -106,7 +105,7 @@ public class Targeting_Component : MonoBehaviour
 
             if (closestTarget != currentTarget)
             {
-                Debug.Log(currentTarget + ": " + closestTarget);
+                //Debug.Log(currentTarget + ": " + closestTarget);
                 currentTarget = closestTarget;
                 setTarget(currentTarget);
             }
@@ -179,6 +178,7 @@ public class Targeting_Component : MonoBehaviour
 
         if (other == currentTarget.GetComponent<Collider2D>())
         {
+            //Debug.Log("OnTriggerExit2D Beacuse" + other + "left");
             SendTargetLeftRange("On Trigger Exit 2D");
         }
     }
@@ -213,7 +213,7 @@ public class Targeting_Component : MonoBehaviour
     private void SendTargetLeftRange(string source)
     {
         targetInRange = false;
-        Debug.Log(source);
+        //Debug.Log(source + " on " + this);
         SendMessage("TargetLeftRange");
     }
 
@@ -221,7 +221,7 @@ public class Targeting_Component : MonoBehaviour
     {
         if (enemy.GetComponent<Targeting_Component>().teamCheck != teamCheck)
         {
-            Debug.Log(this + "teamCheck != teamCheck" + enemy);
+            //Debug.Log(this + "teamCheck != teamCheck" + enemy);
             UnitType enemyTC = enemy.GetComponent<Targeting_Component>().myType;
 
             if (canTargetFlying && enemyTC == UnitType.isFlying)
