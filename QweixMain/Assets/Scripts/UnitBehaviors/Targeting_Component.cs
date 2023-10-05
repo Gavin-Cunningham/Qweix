@@ -4,11 +4,13 @@
 *  Date Created      : 06/19/2023 
 *  Description       : This Component manages the Targeting Systems of Units
 *
-*  Programmer(s)     : Tim Garfinkel
-*  Last Modification : 08/18/2023
+*  Programmer(s)     : Tim Garfinkel, Gavin Cunningham
+*  Last Modification : 10/04/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Moved all NavMeshAgent logic to Movement component and replaced it with a SendMessage: TargetInRange & TargetLeftRange.
 *                      -(08/18/2023) [Gavin] Also added the listener for the OnUnitDeath event from the Health_Component
 *                      -(08/30/2023) [Gavin] Moved findTarget to InvokeRepeating to slow down the calls. shortestDist now only gets set to 1000 if there is no target.
+*                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
+*                      -Made the Unit find the enemy KingTower itself. Prevents issues with not knowing it when it needs to.
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -26,17 +28,19 @@ public class Targeting_Component : MonoBehaviour
 {
     //Int value 1 for player 1 and 2 for player 2
     public int teamCheck = 1;
-    [NonSerialized] public bool targetInRange;
+    /*[NonSerialized]*/ public bool targetInRange;
 
 
     [SerializeField] bool canTargetFlying;
     [SerializeField] bool canTargetGround;
-    [SerializeField] bool canTargetBuilding;
+    //See my notes in TestTarget as why canTargetBuilding is disabled
+    //[SerializeField] bool canTargetBuilding;
     [SerializeField] float agroRange;
-    public GameObject KingTower;
+    private GameObject KingTower;
 
     public GameObject currentTarget;
-    NavMeshAgent agent;
+    private Collider2D myTrigger;
+
 
     public enum UnitType
     {
@@ -50,14 +54,33 @@ public class Targeting_Component : MonoBehaviour
     //Alter the second float in invoke repeatings to change how many seconds between each run of "findTarget"
     void Start()
     {
-        InvokeRepeating("findTarget", 2.0f, 1.5f);
+        targetInRange = false;
+        GetKingTower();
+        currentTarget = KingTower;
+        setTarget(currentTarget);
+
+        InvokeRepeating("findTarget", 2.0f, 0.75f);
+        InvokeRepeating("CheckCurrentRangeCT", 2.5f, 0.8f);
+        GetMyTrigger();
     }
 
     void Awake()
     {
-        targetInRange = false;
-        currentTarget = KingTower;
-        setTarget(currentTarget);
+        
+    }
+
+    //This will need to be fixed when there are more than two players.
+    void GetKingTower()
+    {
+        GameObject[] kingTowers = GameObject.FindGameObjectsWithTag("KingTower");
+        foreach (GameObject tower in kingTowers)
+        {
+            if (testTarget(tower))
+            {
+                KingTower = tower;
+            }
+        }
+
     }
 
     void Update()
@@ -93,7 +116,6 @@ public class Targeting_Component : MonoBehaviour
 
             if (testTarget(enemyGO) == true)
             {
-                //Debug.Log(this + "TestTarget = True" + currentTarget);
                 float distCheck = Vector3.Distance(enemy.transform.position, transform.position);
 
                 if (distCheck < shortestDist)
@@ -105,7 +127,6 @@ public class Targeting_Component : MonoBehaviour
 
             if (closestTarget != currentTarget)
             {
-                //Debug.Log(currentTarget + ": " + closestTarget);
                 currentTarget = closestTarget;
                 setTarget(currentTarget);
             }
@@ -115,35 +136,37 @@ public class Targeting_Component : MonoBehaviour
 
     void setTarget(GameObject newTarget)
     {
-        SendMessage("SetNewTarget", newTarget);
+        SendMessage("SetNewTarget", newTarget, SendMessageOptions.DontRequireReceiver);
 
         CheckCurrentRange(newTarget);
+    }
+
+    void GetMyTrigger()
+    {
+        Collider2D[] myColliders = GetComponents<Collider2D>();
+        foreach (Collider2D collider in myColliders)
+        {
+            if (collider.isTrigger)
+            {
+                myTrigger = collider;
+            }
+        }
     }
 
     //This is to check whether the new target is currently inside the collider so we know whether to stop.
     void CheckCurrentRange(GameObject Target)
     {
         Collider2D targetCollider = null;
-        Collider2D myTrigger = null;
-
-        //Debug.Log(this);
 
         Collider2D[] targetColliders = Target.GetComponents<Collider2D>();
         foreach (Collider2D collider in targetColliders)
         {
             //if its a Trigger, skip to next one
-            if (collider.isTrigger) { continue; }
-
-            targetCollider = collider;
-        }
-
-        Collider2D[] myColliders = this.GetComponents<Collider2D>();
-        foreach (Collider2D collider in myColliders)
-        {
-            //if its not a Trigger, skip to next one
-            if (!collider.isTrigger) { continue; }
-
-            myTrigger = collider;
+            if (!collider.isTrigger)
+            {
+                targetCollider = collider;
+            }
+            
         }
 
         if(myTrigger != null && targetCollider != null)
@@ -158,6 +181,14 @@ public class Targeting_Component : MonoBehaviour
             }
         }
 
+    }
+
+    void CheckCurrentRangeCT()
+    {
+        if(currentTarget != null)
+        {
+            CheckCurrentRange(currentTarget);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -180,7 +211,6 @@ public class Targeting_Component : MonoBehaviour
 
         if (other == currentTarget.GetComponent<Collider2D>())
         {
-            //Debug.Log("OnTriggerExit2D Beacuse" + other + "left");
             SendTargetLeftRange("On Trigger Exit 2D");
         }
     }
@@ -209,28 +239,34 @@ public class Targeting_Component : MonoBehaviour
     {
         targetInRange = true;
 
-        SendMessage("TargetEnterRange");
+        SendMessage("TargetEnterRange", null, SendMessageOptions.DontRequireReceiver);
     }
 
     private void SendTargetLeftRange(string source)
     {
         targetInRange = false;
-        Debug.Log(source + " on " + this);
-        SendMessage("TargetLeftRange");
+        //Debug.Log(source + " on " + this);
+        SendMessage("TargetLeftRange", null, SendMessageOptions.DontRequireReceiver);
     }
 
     private bool testTarget(GameObject enemy)
     {
-        if (enemy.GetComponent<Targeting_Component>().teamCheck != teamCheck)
-        {
-            //Debug.Log(this + "teamCheck != teamCheck" + enemy);
-            UnitType enemyTC = enemy.GetComponent<Targeting_Component>().myType;
+        Targeting_Component enemyTC = enemy.GetComponent<Targeting_Component>();
 
-            if (canTargetFlying && enemyTC == UnitType.isFlying)
+        if (enemyTC.teamCheck != teamCheck)
+        {
+            UnitType enemyType = enemyTC.myType;
+
+            if (canTargetFlying && enemyType == UnitType.isFlying)
                 return true;
-            if (canTargetGround && enemyTC == UnitType.isGround)
+            if (canTargetGround && enemyType == UnitType.isGround)
                 return true;
-            if (canTargetBuilding && enemyTC == UnitType.isBuilding)
+            //We are assuming for the moment that everything can attack buildings for 2 reasons
+            //  1: A game state could occur where units that cannot attack buildings are left with their only target being a tower
+            //  2: It really F*@($ it up to not be able to attack the king tower
+            //if (canTargetBuilding && enemyType == UnitType.isBuilding)
+            //return true;
+            if (enemyType == UnitType.isBuilding)
                 return true;
         }
         return false;

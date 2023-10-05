@@ -4,9 +4,10 @@
 *  Date Created      : 06/19/2023 
 *  Description       : This Component is a go between for behaviours and the NavMeshComponent
 *
-*  Programmer(s)     : Tim Garfinkel
-*  Last Modification : 08/18/2023
+*  Programmer(s)     : Tim Garfinkel, Gavin Cunningham
+*  Last Modification : 10/04/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
+*                      -(10/04/2023) [Gavin] Managed to finally find the correct Exception check for TargetIn and LeftRange
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -34,7 +35,6 @@ public class Movement_Component : MonoBehaviour
         }
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
 
     }
 
@@ -65,7 +65,7 @@ public class Movement_Component : MonoBehaviour
 
     void TargetEnterRange()
     {
-        if (agent != null)
+        if (agent.navMeshOwner != null)
         {
             agent.isStopped = true;
         }
@@ -73,7 +73,7 @@ public class Movement_Component : MonoBehaviour
 
     void TargetLeftRange()
     {
-        if (agent != null)
+        if (agent.navMeshOwner != null)
         {
             agent.isStopped = false;
         }

@@ -10,9 +10,9 @@
 *                      
 *  Requirements      : 
 *
-*  Programmer(s)     : Gabe Burch
+*  Programmer(s)     : Gabe Burch, Gavin Cunningham
 *  Last Modification : 05/31/2023
-*  Additional Notes  : 
+*  Additional Notes  : -(10/04/2023) [Gavin] Added originTransform and changed instantiate to place at transform of parent(the originTransform)
 *  External Documentation URL : https://trello.com/c/dPLmYeCo/12-spawnondeathcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -20,11 +20,13 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpawnOnDeath_Component : MonoBehaviour
 {
     public List<GameObject> objectsToSpawn;
+	private Transform originTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,9 @@ public class SpawnOnDeath_Component : MonoBehaviour
 				}
 			}
 		}
-	}
+
+        originTransform = GetComponent<Transform>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,8 +58,8 @@ public class SpawnOnDeath_Component : MonoBehaviour
 	public void Spawn()
 	{
 		foreach (GameObject objectToSpawn in objectsToSpawn)
-		{
-			Instantiate(objectToSpawn);
-		}
+        {
+            Instantiate(objectToSpawn, new Vector3(originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+        }
 	}
 }

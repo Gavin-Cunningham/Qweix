@@ -14,9 +14,9 @@
 *  Requirements      : Targeting_Component
 *                      Animation_Component
 *
-*  Programmer(s)     : Gabe Burch
-*  Last Modification : 06/07/2023
-*  Additional Notes  : 
+*  Programmer(s)     : Gabe Burch, Gavin Cunningham
+*  Last Modification : 10/04/2023
+*  Additional Notes  : -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *  External Documentation URL : https://trello.com/c/vd4jnEws/35-meleeattackcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -43,7 +43,7 @@ public class MeleeAttack_Component : Attack_Component
 
         if (targeting_Component.currentTarget != null && canAttack == true)
         {
-            attackTarget.SendMessage("TakeDamage", attackDamage);
+            attackTarget.SendMessage("TakeDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
 
             attackState = AttackState.WaitingToFinishAnimation;
             canAttack = false;
