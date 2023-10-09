@@ -11,10 +11,11 @@
 *  Requirements      : Collider
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 10/04/2023
+*  Last Modification : 10/09/2023
 *  Additional Notes  : -[Gavin] Need to have projectile check whether the targetGameObject is still there and delete itself if it is already dead.
 *                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *                      -Changed damage amount to be fed by RangedAttack_Component to Projectile_Component on projectile. Keeps unit settings on unit.
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/8pkDW1QT/13-projectilecomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -27,6 +28,7 @@ using UnityEngine;
 
 public class Projectile_Component : MonoBehaviour
 {
+    [Tooltip("What will the projectile fly towards. Should be set by parent upon spawning. Do not change here.")]
     [SerializeField]
     private GameObject target;
 
@@ -34,11 +36,13 @@ public class Projectile_Component : MonoBehaviour
 
     private float projectileDamage;
 
+    [Tooltip("How long with the projectile be in the air")]
     public float flightTime;
     private float timeElapsed;
 
     private Vector3 initialPosition;
 
+    [Tooltip("Will the projectile move straight at the target or fly in a low or high arch?")]
     public ProjectileType projectileType;
 
     // Start is called before the first frame update

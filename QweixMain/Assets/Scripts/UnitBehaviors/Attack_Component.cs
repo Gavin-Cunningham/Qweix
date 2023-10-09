@@ -15,9 +15,10 @@
 *                      Animation_Component
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 08/18/2023
+*  Last Modification : 10/09/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Made Start virtual so RangedAttack_Component can override.
 *                      -(10/04/2023) [Gavin] Changed GetComponentInChildren to GetComponent. Made attackCountdown private.
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/hIyVrf0V/6-attackcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -31,6 +32,7 @@ using UnityEngine;
 public class Attack_Component : MonoBehaviour
 {
     //The length of the pause between attacks
+    [Tooltip("How long should the unit pause between attack animations (in seconds)")]
     [SerializeField]
     private protected float attackFrequency = 1.0f;
     //The countdown variable for attackFrequency

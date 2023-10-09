@@ -5,12 +5,13 @@
 *  Description       : This Component manages the Targeting Systems of Units
 *
 *  Programmer(s)     : Tim Garfinkel, Gavin Cunningham
-*  Last Modification : 10/04/2023
+*  Last Modification : 10/09/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Moved all NavMeshAgent logic to Movement component and replaced it with a SendMessage: TargetInRange & TargetLeftRange.
 *                      -(08/18/2023) [Gavin] Also added the listener for the OnUnitDeath event from the Health_Component
 *                      -(08/30/2023) [Gavin] Moved findTarget to InvokeRepeating to slow down the calls. shortestDist now only gets set to 1000 if there is no target.
 *                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *                      -Made the Unit find the enemy KingTower itself. Prevents issues with not knowing it when it needs to.
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -27,20 +28,23 @@ using UnityEngine.AI;
 public class Targeting_Component : MonoBehaviour
 {
     //Int value 1 for player 1 and 2 for player 2
+    [Tooltip("What team is the unit on. Currently 1 is left side, 2 is right side. In multiplayer it will be 1 is host and 2 is client. 0 is enemy to all.")]
     public int teamCheck = 1;
-    /*[NonSerialized]*/ public bool targetInRange;
+    [NonSerialized] public bool targetInRange;
 
-
+    [Tooltip("Whether unit should make a flying enemy its target. Usually only ranged or flying units can do this.")]
     [SerializeField] bool canTargetFlying;
+    [Tooltip("Whether unit should make a ground enemy its target. Should always be true except for melee flying units.")]
     [SerializeField] bool canTargetGround;
     //See my notes in TestTarget as why canTargetBuilding is disabled
     //[SerializeField] bool canTargetBuilding;
+    [Tooltip("How far out should the unit be looking for the next target to walk towards.")]
     [SerializeField] float agroRange;
     private GameObject KingTower;
 
+    [Tooltip("What enemy the unit is currently targeting. Set by script, do not change.")]
     public GameObject currentTarget;
     private Collider2D myTrigger;
-
 
     public enum UnitType
     {
@@ -49,6 +53,7 @@ public class Targeting_Component : MonoBehaviour
 		isBuilding,
 	}
 
+    [Tooltip("Does this unit fly, walk or is it stationary? isFlying will ignore terrain in future.")]
     [SerializeField] public UnitType myType;
 
     //Alter the second float in invoke repeatings to change how many seconds between each run of "findTarget"

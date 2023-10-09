@@ -9,10 +9,11 @@
 *                      Object can spawn either a set number of times, or continue spawning until it is dead
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 06/12/2023
+*  Last Modification : 10/09/2023
 *  Additional Notes  : -(10/04/2023) Added originTransform and changed instantiate to place at transform of parent(the originTransform)
 *                      -Added ability to set Team with spawner (how this information gets here will be changed later)
 *                      -Added reset of Countdown timer after Spawn() call to stop infinite spawning
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/mpPbmfpc/11-timedspawnercomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -26,13 +27,18 @@ using UnityEngine;
 
 public class TimedSpawner_Component : MonoBehaviour
 {
+    [Tooltip("What prefab should this object spawn?")]
     public GameObject objectToSpawn;
+    [Tooltip("How many seconds between each prefab spawned?")]
     public float spawnRate;
     private float spawnCountdown;
+    [Tooltip("What is the maximum amount spawns this object should do? (ignored if Spawn Forever is checked)")]
     public int maxSpawnCount;
     private int spawnCount;
+    [Tooltip("If checked the object will keep spawning prefabs until it is destroyed or otherwise removed.")]
     public bool spawnForever;
     private Transform originTransform;
+    [Tooltip("What team should the spawned prefabs take?")]
     public int team;
 
     // Start is called before the first frame update
