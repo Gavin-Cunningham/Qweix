@@ -14,9 +14,11 @@
 *  Requirements      : Targeting_Component
 *                      Animation_Component
 *
-*  Programmer(s)     : Gabe Burch
-*  Last Modification : 06/07/2023
-*  Additional Notes  : 
+*  Programmer(s)     : Gabe Burch, Gavin Cunningham
+*  Last Modification : 10/09/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Made Start virtual so RangedAttack_Component can override.
+*                      -(10/04/2023) [Gavin] Changed GetComponentInChildren to GetComponent. Made attackCountdown private.
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/hIyVrf0V/6-attackcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -29,10 +31,11 @@ using UnityEngine;
 
 public class Attack_Component : MonoBehaviour
 {
+    //The length of the pause between attacks
+    [Tooltip("How long should the unit pause between attack animations (in seconds)")]
     [SerializeField]
-    private protected float attackFrequency;
-
-    [SerializeField]
+    private protected float attackFrequency = 1.0f;
+    //The countdown variable for attackFrequency
     private protected float attackCountdown;
 
     private protected GameObject attackTarget;
@@ -41,18 +44,19 @@ public class Attack_Component : MonoBehaviour
     private protected Animation_Component animation_Component;
 
     private protected AttackState attackState;
+    private protected bool canAttack = true;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        targeting_Component = GetComponentInChildren<Targeting_Component>();
+        targeting_Component = GetComponent<Targeting_Component>();
 
         if (targeting_Component == null)
         {
             Debug.Log("Targeting_Component not found");
         }
 
-        animation_Component = GetComponentInChildren<Animation_Component>();
+        animation_Component = GetComponent<Animation_Component>();
 
         if (animation_Component == null)
         {
@@ -100,6 +104,7 @@ public class Attack_Component : MonoBehaviour
                 if (attackCountdown <= 0)
                 {
                     attackState = AttackState.PursuingTarget;
+                    canAttack = true;
                 }
 
                 break;

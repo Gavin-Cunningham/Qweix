@@ -6,8 +6,8 @@
 *  the movement from the navmesh system.
 *
 *  Programmer(s)     : Gavin Cunningham
-*  Last Modification : 07/03/2023
-*  Additional Notes  : 
+*  Last Modification : 08/18/2023
+*  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class Animation_Component : MonoBehaviour
 {
@@ -86,12 +87,22 @@ public class Animation_Component : MonoBehaviour
     public void BeginAttackAnimation()
     {
         controller.SetBool("isAttacking", true);
-        controller.Play("Shoot");
+        controller.Play("Attack");
     }
 
     //Called by the animator to let the Attack_Component know the animation is done
     public void AnimationFinished()
     {
         controller.SetBool("isAttacking", false);
+    }
+
+    public void TargetEnterRange()
+    {
+        controller.SetBool("isStopped", true);
+    }
+
+    public void TargetLeftRange()
+    {
+        controller.SetBool("isStopped", false);
     }
 }

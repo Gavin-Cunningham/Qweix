@@ -10,9 +10,12 @@
 *                      
 *  Requirements      : Collider
 *
-*  Programmer(s)     : Gabe Burch
-*  Last Modification : 06/12/2023
-*  Additional Notes  : 
+*  Programmer(s)     : Gabe Burch, Gavin Cunningham
+*  Last Modification : 10/09/2023
+*  Additional Notes  : -[Gavin] Need to have projectile check whether the targetGameObject is still there and delete itself if it is already dead.
+*                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
+*                      -Changed damage amount to be fed by RangedAttack_Component to Projectile_Component on projectile. Keeps unit settings on unit.
+*                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/8pkDW1QT/13-projectilecomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -25,24 +28,27 @@ using UnityEngine;
 
 public class Projectile_Component : MonoBehaviour
 {
+    [Tooltip("What will the projectile fly towards. Should be set by parent upon spawning. Do not change here.")]
     [SerializeField]
     private GameObject target;
 
-    private Collider projectileCollider;
+    private Collider2D projectileCollider;
 
-    public float projectileDamage;
+    private float projectileDamage;
 
+    [Tooltip("How long with the projectile be in the air")]
     public float flightTime;
     private float timeElapsed;
 
     private Vector3 initialPosition;
 
+    [Tooltip("Will the projectile move straight at the target or fly in a low or high arch?")]
     public ProjectileType projectileType;
 
     // Start is called before the first frame update
     void Start()
     {
-        projectileCollider = GetComponentInChildren<Collider>();
+        projectileCollider = GetComponent<Collider2D>();
 
         if (projectileCollider == null)
         {
@@ -52,6 +58,9 @@ public class Projectile_Component : MonoBehaviour
         initialPosition = transform.position;
 
         timeElapsed = 0f;
+
+        //First float is time till first call, second float is time between calls
+        InvokeRepeating("IsTargetActive", 0.5f, 0.1f);
     }
 
     // Update is called once per frame
@@ -62,42 +71,58 @@ public class Projectile_Component : MonoBehaviour
         switch (projectileType)
         {
             case ProjectileType.Straight:
-
-                transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
+                if (target != null)
+                {
+                    transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
+                }
 
                 break;
 
 
             case ProjectileType.LowLob:
 
-                transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
+                if (target != null)
+                {
+                    transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
 
-                Vector3 arcCenter = (initialPosition + target.transform.position) / 2f;
-                arcCenter -= new Vector3(0, Vector3.Distance(initialPosition, target.transform.position), 0);
+                    Vector3 arcCenter = (initialPosition + target.transform.position) / 2f;
+                    arcCenter -= new Vector3(0, Vector3.Distance(initialPosition, target.transform.position), 0);
 
-                Vector3 initialRelCenter = initialPosition - arcCenter;
-                Vector3 targetRelCenter = target.transform.position - arcCenter;
+                    Vector3 initialRelCenter = initialPosition - arcCenter;
+                    Vector3 targetRelCenter = target.transform.position - arcCenter;
 
-                transform.position = Vector3.Slerp(initialRelCenter, targetRelCenter, timeElapsed / flightTime);
-                transform.position += arcCenter;
-
+                    transform.position = Vector3.Slerp(initialRelCenter, targetRelCenter, timeElapsed / flightTime);
+                    transform.position += arcCenter;
+                }
                 break;
 
 
             case ProjectileType.HighLob:
+                if (target != null)
+                {
+                    transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
 
-                transform.position = Vector3.Lerp(initialPosition, target.transform.position, timeElapsed / flightTime);
+                    Vector3 arcCenter = (initialPosition + target.transform.position) / 2f;
+                    arcCenter -= new Vector3(0, Vector3.Distance(initialPosition, target.transform.position) / 5, 0);
 
-                arcCenter = (initialPosition + target.transform.position) / 2f;
-                arcCenter -= new Vector3(0, Vector3.Distance(initialPosition, target.transform.position) / 5, 0);
+                    Vector3 initialRelCenter = initialPosition - arcCenter;
+                    Vector3 targetRelCenter = target.transform.position - arcCenter;
 
-                initialRelCenter = initialPosition - arcCenter;
-                targetRelCenter = target.transform.position - arcCenter;
-
-                transform.position = Vector3.Slerp(initialRelCenter, targetRelCenter, timeElapsed / flightTime);
-                transform.position += arcCenter;
-
+                    transform.position = Vector3.Slerp(initialRelCenter, targetRelCenter, timeElapsed / flightTime);
+                    transform.position += arcCenter;
+                }
                 break;
+        }
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
+    }
+
+    //Destroys projectile when target is killed before projectile arrives. Called by Invoke Repeating.
+    private void IsTargetActive()
+    {
+        if (target == null || !target.activeInHierarchy)
+        {
+            Destroy(this.gameObject);
         }
     }
 
@@ -106,20 +131,49 @@ public class Projectile_Component : MonoBehaviour
         target = newTarget;
     }
 
-    private void ApplyDamage()
+    private void SetDamage(float damage)
     {
-        target.SendMessage("TakeDamage", projectileDamage);
-
-        Destroy(this.gameObject);
+        projectileDamage = damage;
     }
 
-    private void OnTriggerEnter(Collider hit)
+    private void ApplyDamage()
     {
-        Debug.Log("Projectile trigger enter");
+        if(target != null)
+        {
+            target.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver );
+
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D hit)
+    {
+        if (hit.isTrigger) { return; }
 
         if (hit.gameObject == target)
         {
             ApplyDamage();
+        }
+    }
+
+    //This safely engages and disengages the component from the OnUnitDeath event
+    private void OnEnable()
+    {
+        Health_Component.OnUnitDeath += UnitDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health_Component.OnUnitDeath -= UnitDeath;
+    }
+
+    //This helps the unit realize its target is dead
+    private void UnitDeath(GameObject deadUnit)
+    {
+        if(target == deadUnit)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
