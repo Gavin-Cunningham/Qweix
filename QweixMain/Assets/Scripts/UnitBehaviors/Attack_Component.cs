@@ -80,9 +80,17 @@ public class Attack_Component : MonoBehaviour
 
                 if (targeting_Component.targetInRange)
                 {
-                    BeginAttackAnimation();
-
-                    attackState = AttackState.WaitingForAnimationTrigger;
+                    if (animation_Component != null)
+                    {
+                        BeginAttackAnimation();
+                        attackState = AttackState.WaitingForAnimationTrigger;
+                    }
+                    else
+                    {
+                        AnimationTrigger();
+                        attackCountdown = attackFrequency;
+                        attackState = AttackState.CoolingDown;
+                    }
                 }
 
                 break;
