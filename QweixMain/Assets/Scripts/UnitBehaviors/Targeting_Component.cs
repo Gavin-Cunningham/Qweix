@@ -30,7 +30,7 @@ public class Targeting_Component : MonoBehaviour
     //Int value 1 for player 1 and 2 for player 2
     [Tooltip("What team is the unit on. Currently 1 is left side, 2 is right side. In multiplayer it will be 1 is host and 2 is client. 0 is enemy to all.")]
     public int teamCheck = 1;
-    /*[NonSerialized]*/ public bool targetInRange;
+    [NonSerialized] public bool targetInRange;
 
     [Tooltip("Whether unit should make a flying enemy its target. Usually only ranged or flying units can do this.")]
     [SerializeField] bool canTargetFlying;

@@ -124,7 +124,6 @@ public class Attack_Component : MonoBehaviour
         if(newTarget != null)
         {
             attackTarget = newTarget;
-
             if (attackState != AttackState.CoolingDown)
             {
                 attackState = AttackState.PursuingTarget;
