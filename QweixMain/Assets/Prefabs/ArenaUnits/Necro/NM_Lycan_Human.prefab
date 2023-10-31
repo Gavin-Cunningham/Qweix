@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 450944544691094271}
   - component: {fileID: 4539426728506377415}
   m_Layer: 0
-  m_Name: NM_Lycan_Human_UNFINISHED
+  m_Name: NM_Lycan_Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 4.5
+  m_Speed: 2
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -191,7 +191,7 @@ SpriteRenderer:
   m_SortingLayerID: 292047
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1243396166, guid: 9a557b8faaee0cf49abdff61c14dc19e, type: 3}
+  m_Sprite: {fileID: -1015324898, guid: ceb5d5a99a591674897e30cf3d2aa00e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -258,7 +258,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!58 &4539426728506377415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.25
 --- !u!1001 &8508981751847179351
 PrefabInstance:
   m_ObjectHideFlags: 0
