@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3181648202535984080, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.019824
+      value: 8.96
       objectReference: {fileID: 0}
     - target: {fileID: 3181648202535984080, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.949312
+      value: 8.03
       objectReference: {fileID: 0}
     - target: {fileID: 3181648202535984080, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -173,6 +173,22 @@ PrefabInstance:
     - target: {fileID: 3181648202535984080, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181648202535984081, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181648202535984081, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181648202535984081, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181648202535984081, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3181648202535984081, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -2117,6 +2133,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450771470866326833, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604730891790213648, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
