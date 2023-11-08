@@ -1,6 +1,21 @@
+/****************************************************************************
+*
+*  File              : LycanTransformation_Component.cs
+*  Date Created      : 11/08/2023 
+*  Description       : This script handles all the custom behaviors for the Lycan_Human form
+*  and its transformation into the Lycan_Beast.
+*
+*  Programmer(s)     : Gavin Cunningham
+*  Last Modification : 11/08/2023 
+*  Additional Notes  : 
+*  External Documentation URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+****************************************************************************/
+
+
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,12 +61,18 @@ public class LycanTransformation_Component : MonoBehaviour
         //Make the mutation bar drop as the time gets less.
         mutationBar.fillAmount = mutationRemainingTime / mutationTime;
 
-        //Its mutation time
+        //Its mutation time!
         if (mutationRemainingTime <= 0.0f)
         {
-            //Animator.Play;
+            GetComponent<Animation_Component>().enabled = false;
+            GetComponent<Movement_Component>().enabled = false;
+            GetComponent<Animator>().Play("Transform");
         }
+    }
 
+    public void TransformEvent()
+    {
+        //Instantiate() stuff.
     }
 
     //The Lycan starts off with a slow speed and low damage.
