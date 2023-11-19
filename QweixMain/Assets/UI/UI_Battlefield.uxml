@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_Battlefield.uss?fileID=7433441132597879392&amp;guid=321e266d3e4d59841ad449d7e81beac2&amp;type=3#UI_Battlefield" />
+    <ui:VisualElement name="FullscreenPanel" style="justify-content: flex-start; align-items: flex-start;">
+        <ui:VisualElement name="TopPanel" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            <ui:VisualElement name="HandPanel" style="width: auto; height: 930px; align-items: center;" />
+            <ui:VisualElement name="TopRightPanel" style="flex-grow: 1;">
+                <ui:VisualElement name="PlayerInfoPanel" style="height: 100px; flex-direction: row;">
+                    <ui:VisualElement name="PlayerInfo" style="width: 600px;" />
+                    <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="OpponentInfo" style="width: 600px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomPanel" style="flex-direction: row; height: 150px; justify-content: flex-start;">
+            <ui:VisualElement name="QwiexPanel" class="qwiexPanel" />
+            <ui:VisualElement name="TimerPanel" style="flex-grow: 1; flex-shrink: 0; justify-content: center; margin-left: 115px; margin-right: 0;" />
+            <ui:VisualElement name="EmotePanel" style="flex-direction: row; flex-grow: 1; justify-content: flex-end; align-items: center;" />
+            <ui:VisualElement name="TeamTogglePanel" style="justify-content: flex-end;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GhostIcon" class="ghostIcon" style="visibility: hidden; opacity: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

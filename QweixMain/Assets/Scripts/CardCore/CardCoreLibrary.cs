@@ -37,11 +37,10 @@ public class CardCoreLibrary : MonoBehaviour
         {
             Destroy(this);
         }
-    }
 
-    private void Start()
-    {
-        foreach(CardCore cardCore in GetComponentsInChildren<CardCore>())
+        cardCoreList = new List<CardCore>();
+
+        foreach (CardCore cardCore in GetComponentsInChildren<CardCore>())
         {
             cardCoreList.Add(cardCore);
         }
