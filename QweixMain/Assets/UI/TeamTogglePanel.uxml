@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-direction: row-reverse;">
+        <ui:Button text="Team 1" display-tooltip-when-elided="true" name="btn_TeamToggle" style="width: 225px; height: 75px; font-size: 54px;" />
+    </ui:VisualElement>
+</ui:UXML>

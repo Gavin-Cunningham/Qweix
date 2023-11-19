@@ -1,0 +1,300 @@
+.cardSlot {
+    width: 180px;
+    height: 180px;
+}
+
+.cardFace {
+    background-image: url('project://database/Assets/UI/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
+    flex-grow: 1;
+}
+
+.cardBanner {
+    background-image: url('project://database/Assets/UI/card-banner.png?fileID=2800000&guid=40e822d24f26c2647a1a65ce5ebc7372&type=3#card-banner');
+    flex-grow: 1;
+}
+
+.cardHalo {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/card-halo-white.png?fileID=2800000&guid=c5ffc112f75fe32468c77fd00734c3b9&type=3#card-halo-white');
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cardQwiexCostOrb {
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    height: 30%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    align-items: center;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    justify-content: center;
+}
+
+.cardQwiexCost {
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    -unity-font-style: bold;
+}
+
+.ghostIcon {
+    position: Absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 75px;
+    border-bottom-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+}
+
+.nextCardPanel {
+    width: 150px;
+    height: 180px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.nextLabel {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+.nextCardFace {
+    width: 150px;
+    height: 150px;
+    background-image: url('project://database/Assets/UI/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.qwiexPanel {
+    flex-direction: row;
+    padding-top: 30px;
+    margin-left: 20px;
+}
+
+.qwiexMeter {
+    flex-direction: row;
+    translate: 80px 11px;
+}
+
+.qwiexTotalOrb {
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    background-color: rgb(255, 0, 224);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    translate: -700px -10px;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.qwiexTotalLabel {
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    position: absolute;
+}
+
+.qwiexEmptyBarLeftEnd {
+    background-color: rgb(255, 255, 255);
+    width: 70px;
+    height: 50px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    border-left-width: 5px;
+    border-right-width: 2px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0.5);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.qwiexEmptyBarInner {
+    background-color: rgb(255, 255, 255);
+    width: 70px;
+    height: 50px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgba(0, 0, 0, 0.5);
+    border-right-color: rgba(0, 0, 0, 0.5);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.qwiexEmptyBarRightEnd {
+    background-color: rgb(255, 255, 255);
+    width: 70px;
+    height: 50px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-left-width: 2px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-left-color: rgba(0, 0, 0, 0.5);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.qwiexFullBar {
+    flex-grow: 1;
+    background-color: rgb(255, 0, 224);
+}
+
+.timerBackground {
+    width: 200px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.timerLabel {
+    font-size: 75px;
+    color: rgb(255, 255, 255);
+}
+
+.emoteChoices {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.emoteButton {
+    width: 125px;
+    height: 125px;
+    background-image: none;
+    background-color: rgba(88, 88, 88, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.emoteMenuButton {
+    width: 125px;
+    height: 125px;
+    background-image: none;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: rgb(255, 255, 255);
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.emoteMenuButtonIcon {
+    background-image: url('project://database/Assets/UI/Chat%20Bubble.png?fileID=2800000&guid=61feedd282027cb4a93f92c030b33dee&type=3#Chat Bubble');
+    width: auto;
+    height: auto;
+    flex-grow: 1;
+}
+
+.teamToggleButton {
+    font-size: 24px;
+    width: 100px;
+    margin-bottom: 10px;
+    padding-left: 0;
+    margin-left: 10px;
+}

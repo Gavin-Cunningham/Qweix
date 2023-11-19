@@ -23,27 +23,27 @@ public class CardCore : MonoBehaviour
     public int cardID;
 
     [SerializeField]
-    string cardName;
+    public string cardName;
 
     [SerializeField]
-    Texture cardPicture;
+    public Texture2D cardPicture;
 
     [SerializeField]
-    int QwiexCost;
+    public int qwiexCost;
 
     [SerializeField]
-    GameObject prefabToSpawn;
+    public GameObject prefabToSpawn;
 
     [SerializeField]
-    CardTribe cardTribe;
+    public CardTribe cardTribe;
 
     [SerializeField]
-    CardRarity cardRarity;
+    public CardRarity cardRarity;
 
     [SerializeField]
-    CardType cardType;
+    public CardType cardType;
 }
 
-enum CardTribe { IronCreekGang, NecroMasters, Mercenary }
-enum CardRarity { Common, Uncommon, Rare, Epic }
-enum CardType { Troop, Building, Spell }
+public enum CardTribe { IronCreekGang, NecroMasters, Mercenary }
+public enum CardRarity { Common, Uncommon, Rare, Epic }
+public enum CardType { Troop, Building, Spell }

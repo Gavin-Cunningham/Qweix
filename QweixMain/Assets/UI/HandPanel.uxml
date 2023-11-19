@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Hand.uss?fileID=7433441132597879392&amp;guid=d050207bf56ff254192569e4763190a7&amp;type=3#Hand" />
+    <ui:VisualElement name="HandPanel" class="handPanel" style="padding-top: 0;">
+        <ui:VisualElement name="CardSlotContainer" class="cardSlotContainer" style="flex-grow: 1; align-items: flex-start;">
+            <ui:VisualElement name="CardSlot1" class="cardSlot" />
+            <ui:VisualElement name="CardSlot2" class="cardSlot" />
+            <ui:VisualElement name="CardSlot3" class="cardSlot" />
+            <ui:VisualElement name="CardSlot4" class="cardSlot" />
+            <ui:VisualElement name="CardSlotNext" class="cardSlot" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GhostIcon" class="ghostIcon" style="visibility: hidden; opacity: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
