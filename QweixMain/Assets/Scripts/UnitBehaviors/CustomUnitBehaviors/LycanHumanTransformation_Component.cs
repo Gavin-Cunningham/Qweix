@@ -16,14 +16,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class LycanTransformation_Component : MonoBehaviour
+public class LycanHumanTransformation_Component : UnitSwap_Component
 {
-    [SerializeField] private GameObject beastFormPrefab;
     [SerializeField] private float mutationTime;
     private float mutationRemainingTime;
     private float mutationWarningPause = 1.0f;
@@ -32,7 +29,6 @@ public class LycanTransformation_Component : MonoBehaviour
     [SerializeField] private Color mutationWarnColor = new Color(255, 255, 255, 255);
     [SerializeField] private Color warnColorFade = new Color(10, 10, 10, 255);
     private SpriteRenderer spriteRenderer;
-    bool transformEventCalled = false;
 
     private void Awake()
     {
@@ -67,38 +63,7 @@ public class LycanTransformation_Component : MonoBehaviour
         //Its mutation time!
         if (mutationRemainingTime <= 0.0f)
         {
-
-            GetComponent<Animation_Component>().enabled = false;
-            GetComponent<Movement_Component>().enabled = false;
-            GetComponent<NavMeshAgent>().isStopped = true;
-            GetComponent<Animator>().Play("Transform");
+            PlaySwapAnimation("Transform");
         }
     }
-
-    public void TransformEvent()
-    {
-        if (!transformEventCalled)
-        {
-            transformEventCalled = true;
-
-            //Spawn in Beast Form
-            GameObject beastForm = Instantiate(beastFormPrefab, transform.position, new Quaternion(0, 0, 0, 0));
-            //Copy team to Beast Form
-            beastForm.GetComponent<Targeting_Component>().teamCheck = GetComponent<Targeting_Component>().teamCheck;
-
-            //Copy over Health percentage from human to beast.
-            /*Health_Component beastHealth = beastForm.GetComponent<Health_Component>();
-            Health_Component humanHealth = GetComponent<Health_Component>();
-            float damageAmount = beastHealth.maxHealth * (1 - (humanHealth.currentHealth / humanHealth.maxHealth));
-            beastHealth.TakeDamage(damageAmount);*/
-
-            //Destroy human form so that the beast may reign.
-            Destroy(gameObject);
-        }
-
-    }
-
-    //The Lycan starts off with a slow speed and low damage.
-    //Both a bar counts down and he flashes red faster to indicate that he is about to change. 
-    //Then he stops, does his transformation animation and then instantiates the new character.
 }

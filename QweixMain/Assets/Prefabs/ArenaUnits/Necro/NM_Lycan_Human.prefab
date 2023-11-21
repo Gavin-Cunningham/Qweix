@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
   agroRange: 200
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  attackState: 0
   attackDamage: 3
 --- !u!114 &3181648202535984090
 MonoBehaviour:
@@ -366,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beastFormPrefab: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
-  mutationTime: 10
+  mutationTime: 3
   mutationBar: {fileID: 5586237765793703001}
   mutationWarnColor: {r: 1, g: 0, b: 0, a: 255}
   warnColorFade: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 255}
