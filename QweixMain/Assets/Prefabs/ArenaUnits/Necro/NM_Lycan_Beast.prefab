@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3431885501068774726}
   - component: {fileID: 3431885501068774725}
   - component: {fileID: 1862059918754176432}
-  - component: {fileID: 8898799993301705538}
+  - component: {fileID: 7969122913187299015}
   - component: {fileID: 3431885501068774720}
   - component: {fileID: 3431885501068774721}
   - component: {fileID: 3431885501068774731}
@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8898799993301705539}
   - component: {fileID: 416000414938879077}
   - component: {fileID: 4429489313002492509}
+  - component: {fileID: 2667157783240225979}
   m_Layer: 0
   m_Name: NM_Lycan_Beast
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
   agroRange: 200
@@ -74,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 20
   healthBar: {fileID: 1930273758070423476}
 --- !u!195 &3431885501068774725
 NavMeshAgent:
@@ -112,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToSpawn:
   - {fileID: 4592109077468454849, guid: 25aacbd9458c31a44881af3ab7b0306a, type: 3}
---- !u!114 &8898799993301705538
+--- !u!114 &7969122913187299015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,6 +277,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &2667157783240225979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431885501068774723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a23f8579c21d64ea88a74d172391ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8471838602866688717
 PrefabInstance:
   m_ObjectHideFlags: 0

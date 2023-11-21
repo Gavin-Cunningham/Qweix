@@ -43,7 +43,8 @@ public class Attack_Component : MonoBehaviour
     private protected Targeting_Component targeting_Component;
     private protected Animation_Component animation_Component;
 
-    private protected AttackState attackState;
+    [Tooltip("Set by code. Used to see what the current state is while running")]
+    [SerializeField] private protected AttackState attackState;
     private protected bool canAttack = true;
 
     // Start is called before the first frame update

@@ -5,13 +5,14 @@
 *  Description       : This Component manages the Targeting Systems of Units
 *
 *  Programmer(s)     : Tim Garfinkel, Gavin Cunningham
-*  Last Modification : 10/09/2023
+*  Last Modification : 11/20/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Moved all NavMeshAgent logic to Movement component and replaced it with a SendMessage: TargetInRange & TargetLeftRange.
 *                      -(08/18/2023) [Gavin] Also added the listener for the OnUnitDeath event from the Health_Component
 *                      -(08/30/2023) [Gavin] Moved findTarget to InvokeRepeating to slow down the calls. shortestDist now only gets set to 1000 if there is no target.
 *                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *                      -Made the Unit find the enemy KingTower itself. Prevents issues with not knowing it when it needs to.
 *                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
+*                      -(11/20/2023) [Gavin] Removed debug string parameter from SendTargetLeftRange()
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -30,7 +31,7 @@ public class Targeting_Component : MonoBehaviour
     //Int value 1 for player 1 and 2 for player 2
     [Tooltip("What team is the unit on. Currently 1 is left side, 2 is right side. In multiplayer it will be 1 is host and 2 is client. 0 is enemy to all.")]
     public int teamCheck = 1;
-    [NonSerialized] public bool targetInRange;
+    /*[NonSerialized]*/ public bool targetInRange;
 
     [Tooltip("Whether unit should make a flying enemy its target. Usually only ranged or flying units can do this.")]
     [SerializeField] bool canTargetFlying;
@@ -182,7 +183,7 @@ public class Targeting_Component : MonoBehaviour
             }
             else
             {
-                SendTargetLeftRange("Check Current Range");
+                SendTargetLeftRange();
             }
         }
 
@@ -216,7 +217,7 @@ public class Targeting_Component : MonoBehaviour
 
         if (other == currentTarget.GetComponent<Collider2D>())
         {
-            SendTargetLeftRange("On Trigger Exit 2D");
+            SendTargetLeftRange();
         }
     }
 
@@ -236,7 +237,7 @@ public class Targeting_Component : MonoBehaviour
     {
         if (deadUnit = currentTarget)
         {
-            SendTargetLeftRange("Unit Death Event");
+            SendTargetLeftRange();
         }
     }
 
@@ -247,10 +248,9 @@ public class Targeting_Component : MonoBehaviour
         SendMessage("TargetEnterRange", null, SendMessageOptions.DontRequireReceiver);
     }
 
-    private void SendTargetLeftRange(string source)
+    private void SendTargetLeftRange()
     {
         targetInRange = false;
-        //Debug.Log(source + " on " + this);
         SendMessage("TargetLeftRange", null, SendMessageOptions.DontRequireReceiver);
     }
 
