@@ -1265,6 +1265,8 @@ MonoBehaviour:
   - {fileID: 335427479}
   - {fileID: 1642073897}
   - {fileID: 510146989}
+  useTestingCardCores: 0
+  testTribe: 1
 --- !u!4 &786284443
 Transform:
   m_ObjectHideFlags: 0
@@ -2327,14 +2329,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 784968400855175255, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 862360396625559787, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 975437983474361788, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2379,66 +2373,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1591146067093703829, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1591146067093703829, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: prefabToSpawn
-      value: 
-      objectReference: {fileID: 7369118179760287026, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
-    - target: {fileID: 2088423979463429922, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102982865072220264, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3135955501398030492, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477293054171692203, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4356210612692090488, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: m_Name
       value: CardCoreLibrary
       objectReference: {fileID: 0}
-    - target: {fileID: 4629167533219906113, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4629167533219906113, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: prefabToSpawn
-      value: 
-      objectReference: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
-    - target: {fileID: 5784386349849093595, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6476056795307788387, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6612963377675323504, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919266371759311412, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364649304740938176, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: qwiexCost
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364649304740938176, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: prefabToSpawn
-      value: 
-      objectReference: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
 --- !u!4 &8422092464630674999

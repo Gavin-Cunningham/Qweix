@@ -20,9 +20,6 @@ using UnityEngine.UIElements;
 
 public class HandUIController : MonoBehaviour
 {
-    // How many card slots are available
-    public const int numberOfCardSlots = 4;
-
     // List of all card slots
     private List<CardSlot> cardSlots = new List<CardSlot>();
 
@@ -54,7 +51,7 @@ public class HandUIController : MonoBehaviour
         VisualElement handPanel = uiRoot.Q<VisualElement>("HandPanel");
 
         // Create CardSlot UI elements and add them to the list and the HandPanel
-        for(int i=0;i<numberOfCardSlots;i++)
+        for(int i=0;i<QwiexHand.HandSize;i++)
         {
             CardSlot slot = new CardSlot();
 
@@ -78,7 +75,6 @@ public class HandUIController : MonoBehaviour
 
         // Add the GhostIcon and set its event handlers
         ghostIcon = uiRoot.Q<VisualElement>("GhostIcon");
-
         ghostIcon.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         ghostIcon.RegisterCallback<PointerUpEvent>(OnPointerUp);
     }
@@ -171,5 +167,33 @@ public class HandUIController : MonoBehaviour
     public void SetNextCard(Texture2D cardTexture)
     {
         nextCardFace.style.backgroundImage = new StyleBackground(Background.FromTexture2D(cardTexture));
+    }
+
+    // Enables/disables each card slot depending on the Qwiex level
+    public void UpdateCardAvailability(float qwiexLevel)
+    {
+        foreach(CardSlot cardSlot in cardSlots)
+        {
+            if(qwiexLevel < cardSlot.cardQwiexCost)
+            {
+                cardSlot.DisableSlot();
+            }
+            else
+            {
+                cardSlot.EnableSlot();
+            }
+        }
+    }
+
+    // Removes a card from the player's hand UI
+    public void RemoveCardFromHand(int cardID)
+    {
+        foreach(CardSlot cardSlot in cardSlots)
+        {
+            if(cardSlot.cardID == cardID)
+            {
+                cardSlot.cardID = -1;
+            }
+        }
     }
 }

@@ -4,18 +4,18 @@
 }
 
 .cardFace {
-    background-image: url('project://database/Assets/UI/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
+    background-image: url('project://database/Assets/UI/Cards/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
     flex-grow: 1;
 }
 
 .cardBanner {
-    background-image: url('project://database/Assets/UI/card-banner.png?fileID=2800000&guid=40e822d24f26c2647a1a65ce5ebc7372&type=3#card-banner');
+    background-image: url('project://database/Assets/UI/Cards/card-banner.png?fileID=2800000&guid=40e822d24f26c2647a1a65ce5ebc7372&type=3#card-banner');
     flex-grow: 1;
 }
 
 .cardHalo {
     flex-grow: 1;
-    background-image: url('project://database/Assets/UI/card-halo-white.png?fileID=2800000&guid=c5ffc112f75fe32468c77fd00734c3b9&type=3#card-halo-white');
+    background-image: url('project://database/Assets/UI/Cards/card-halo-white.png?fileID=2800000&guid=c5ffc112f75fe32468c77fd00734c3b9&type=3#card-halo-white');
     align-items: center;
     justify-content: flex-end;
 }
@@ -84,7 +84,7 @@
 .nextCardFace {
     width: 150px;
     height: 150px;
-    background-image: url('project://database/Assets/UI/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
+    background-image: url('project://database/Assets/UI/Cards/card-demoman.png?fileID=2800000&guid=f6f93a394ef34b64688a1f609092e083&type=3#card-demoman');
     justify-content: flex-end;
     flex-direction: column-reverse;
     align-items: center;
