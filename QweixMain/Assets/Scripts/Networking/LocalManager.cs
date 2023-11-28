@@ -15,6 +15,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class LocalManager : MonoBehaviour
@@ -195,6 +196,8 @@ public class LocalManager : MonoBehaviour
         if(prefabToSpawn != null)
         {
             spawnedUnit = Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
+            //THIS SHOULD END UP ON SERVERSIDE
+            spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
             //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
             if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
             {
