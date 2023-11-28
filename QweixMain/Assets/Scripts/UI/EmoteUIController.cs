@@ -68,28 +68,30 @@ public class EmoteUIController : MonoBehaviour
 
         VisualElement emoteLaughButton = new VisualElement { name = "EmoteLaughButton" };
         emoteLaughButton.AddToClassList("emoteButton");
+        emoteLaughButton.RegisterCallback<ClickEvent>(EmoteMenuClick);
         emoteLaughButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(testEmoteTextureList[0]));
         emoteChoices.Add(emoteLaughButton);
 
         VisualElement emoteSmugButton = new VisualElement { name = "EmoteSmugButton" };
         emoteSmugButton.AddToClassList("emoteButton");
+        emoteSmugButton.RegisterCallback<ClickEvent>(EmoteMenuClick);
         emoteSmugButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(testEmoteTextureList[1]));
         emoteChoices.Add(emoteSmugButton);
 
         VisualElement emoteFrustratedButton = new VisualElement { name = "EmoteFrustratedButton" };
         emoteFrustratedButton.AddToClassList("emoteButton");
+        emoteFrustratedButton.RegisterCallback<ClickEvent>(EmoteMenuClick);
         emoteFrustratedButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(testEmoteTextureList[2]));
         emoteChoices.Add(emoteFrustratedButton);
 
         VisualElement emoteDisappointedButton = new VisualElement { name = "EmoteDisappointedButton" };
         emoteDisappointedButton.AddToClassList("emoteButton");
+        emoteDisappointedButton.RegisterCallback<ClickEvent>(EmoteMenuClick);
         emoteDisappointedButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(testEmoteTextureList[3]));
         emoteChoices.Add(emoteDisappointedButton);
 
         Button emoteMenuButton = new Button { name = "EmoteMenuButton" };
         emoteMenuButton.AddToClassList("emoteMenuButton");
-        //emoteMenuButton.RegisterCallback<MouseDownEvent>(EmoteMenuClick);
-        //emoteMenuButton.RegisterCallback<PointerDownEvent>(EmoteMenuClick);
         emoteMenuButton.RegisterCallback<ClickEvent>(EmoteMenuClick);
         emotePanel.Add(emoteMenuButton);
 
@@ -98,6 +100,7 @@ public class EmoteUIController : MonoBehaviour
         emoteMenuButton.Add(emoteMenuButtonIcon);
     }
 
+    // Opens or closes the emote menu
     private void EmoteMenuClick(ClickEvent evt)
     {
         if (evt.button == 0)
@@ -113,5 +116,11 @@ public class EmoteUIController : MonoBehaviour
                 emoteChoices.style.visibility = Visibility.Visible;
             }
         }
+    }
+
+    // Emote button was clicked
+    private void EmoteButtonClick(ClickEvent evt)
+    {
+        
     }
 }

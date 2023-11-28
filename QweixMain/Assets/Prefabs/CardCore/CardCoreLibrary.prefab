@@ -47,8 +47,8 @@ MonoBehaviour:
   cardID: 3
   cardName: Lycan
   cardPicture: {fileID: 2800000, guid: 6b32b18d1973f0b4386ca883f0492712, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 2
+  prefabToSpawn: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   cardID: 7
   cardName: Deadites
   cardPicture: {fileID: 2800000, guid: d3c1ea3bac3a3ac438aa021145d05683, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 4
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
   cardID: 1
   cardName: Demolitionist
   cardPicture: {fileID: 2800000, guid: f6f93a394ef34b64688a1f609092e083, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 1322303597163847443, guid: bfdf4325a0813a843b0613cb5a169006, type: 3}
+  qwiexCost: 1
+  prefabToSpawn: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
   cardTribe: 0
   cardRarity: 2
   cardType: 0
@@ -203,10 +203,62 @@ MonoBehaviour:
   cardID: 5
   cardName: Iron Brawler
   cardPicture: {fileID: 2800000, guid: d9fafe9c9e0370f4896ec70ed85c43e2, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 3
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 2
+  cardType: 0
+--- !u!1 &1905432115695324177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5958612159851979298}
+  - component: {fileID: 7462186125470486234}
+  m_Layer: 0
+  m_Name: ICGRobot_CardCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5958612159851979298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905432115695324177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 975437983474361788}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7462186125470486234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905432115695324177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da6ffa99536d494e806c4d0c5659e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: 14
+  cardName: ICG Robot
+  cardPicture: {fileID: 2800000, guid: 50cdb75057c44a346861792e342cd19c, type: 3}
+  qwiexCost: 5
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  cardTribe: 0
+  cardRarity: 1
   cardType: 0
 --- !u!1 &3078130555575350784
 GameObject:
@@ -255,8 +307,8 @@ MonoBehaviour:
   cardID: 13
   cardName: Necromancer
   cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 0
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -302,6 +354,7 @@ Transform:
   - {fileID: 89084218894348577}
   - {fileID: 2245282398705487976}
   - {fileID: 5796058834302687326}
+  - {fileID: 5958612159851979298}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -364,8 +417,8 @@ MonoBehaviour:
   cardID: 11
   cardName: Elder Demon
   cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 0
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0
@@ -416,8 +469,8 @@ MonoBehaviour:
   cardID: 4
   cardName: Scrappers
   cardPicture: {fileID: 2800000, guid: 98e5453781144ff4ab597ad37b7c24f9, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 2
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0
@@ -468,8 +521,8 @@ MonoBehaviour:
   cardID: 12
   cardName: Elder Demon
   cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 0
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0
@@ -520,8 +573,8 @@ MonoBehaviour:
   cardID: 2
   cardName: Dark Princess
   cardPicture: {fileID: 2800000, guid: 66be82235cdd0da4dab657bc24d0012a, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 1
+  prefabToSpawn: {fileID: 7369118179760287026, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
   cardTribe: 1
   cardRarity: 3
   cardType: 0
@@ -572,8 +625,8 @@ MonoBehaviour:
   cardID: 6
   cardName: Dread Lord
   cardPicture: {fileID: 2800000, guid: 3bcb556ef1f25564eaffa1bd9a0140cd, type: 3}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  qwiexCost: 3
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -623,9 +676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 8
   cardName: Vamphire
-  cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  cardPicture: {fileID: 2800000, guid: c28cef0bc70b4334aa1d745f385fbeb6, type: 3}
+  qwiexCost: 5
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -675,9 +728,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 9
   cardName: Elder Demon
-  cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  cardPicture: {fileID: 2800000, guid: c97883b7cff844c4895a9ea87c332ac6, type: 3}
+  qwiexCost: 6
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -727,9 +780,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 10
   cardName: Elder Demon
-  cardPicture: {fileID: 0}
-  QwiexCost: 3
-  prefabToSpawn: {fileID: 0}
+  cardPicture: {fileID: 2800000, guid: d507a6817b693db4d9e09e09fc995c3f, type: 3}
+  qwiexCost: 4
+  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0

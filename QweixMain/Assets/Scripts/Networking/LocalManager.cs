@@ -31,15 +31,22 @@ public class LocalManager : MonoBehaviour
     // Team variable for testing purposes
     public int currentTeam = 1;
 
-    // Qwiex level variable for testing purposes
-    private float testQwiexLevel;
-
     // Timer variable for testing purposes
     private float testTimer;
 
-    // Card IDs for testing purposes
-    public CardCore[] testingCardCores = new CardCore[HandUIController.numberOfCardSlots];
+    // CardCores for testing purposes
+    public CardCore[] testingCardCores = new CardCore[QwiexHand.HandSize];
+    public bool useTestingCardCores;
 
+    // Decks for testing purposes
+    private QwiexDeck ironCreekGangTestDeck;
+    private QwiexDeck necroMastersTestDeck;
+
+    // Player for testing purposes
+    private QwiexPlayer testPlayer;
+
+    // Which deck to use for testing
+    public CardTribe testTribe;
 
     void Start()
     {
@@ -63,16 +70,76 @@ public class LocalManager : MonoBehaviour
             Debug.Log("TimerUIController reference not set");
         }
 
-        // Add test cards to hand UI
-        foreach (CardCore cardCore in testingCardCores)
+        ironCreekGangTestDeck = new QwiexDeck();
+        necroMastersTestDeck = new QwiexDeck();
+
+        for (int i = 1; i < 15; i++)
         {
-            if (cardCore == null)
+            CardCore cardCore = cardCoreLibrary.GetCardCore(i);
+
+            // Only grab cards that have an icon
+            if (cardCore.cardPicture != null)
             {
-                Debug.Log("Testing CardCore missing");
+                if (cardCore.cardTribe == CardTribe.IronCreekGang)
+                {
+                    ironCreekGangTestDeck.AddCard(cardCore);
+                }
+                else if (cardCore.cardTribe == CardTribe.NecroMasters)
+                {
+                    necroMastersTestDeck.AddCard(cardCore);
+                }
             }
-            else
+        }
+
+        testPlayer = new QwiexPlayer();
+
+        if(testTribe == CardTribe.IronCreekGang)
+        {
+            testPlayer.playerDeck = ironCreekGangTestDeck;
+        }
+        else if(testTribe == CardTribe.NecroMasters)
+        {
+            testPlayer.playerDeck = necroMastersTestDeck;
+        }
+        else
+        {
+            Debug.Log("No test deck found for " + testTribe.ToString());
+        }
+
+        testPlayer.playerDeck.ShuffleDeck();
+        testPlayer.playerHand = new QwiexHand();
+
+        if(useTestingCardCores)
+        {
+            // Create a new deck of the test cards
+            QwiexDeck testCardDeck = new QwiexDeck();
+
+            // Add test cards to hand UI
+            foreach (CardCore cardCore in testingCardCores)
             {
+                if (cardCore == null)
+                {
+                    Debug.Log("Testing CardCore missing");
+                }
+                else
+                {
+                    testCardDeck.AddCard(cardCore);
+                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.qwiexCost);
+                }
+            }
+
+            testPlayer.playerDeck = testCardDeck;
+        }
+        else
+        {
+            // Draw cards from deck
+            for (int i = 0; i < QwiexHand.HandSize; i++)
+            {
+                CardCore cardCore = testPlayer.playerDeck.DrawCard();
+
                 handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.qwiexCost);
+
+                testPlayer.playerHand.AddCard(cardCore);
             }
         }
 
@@ -84,9 +151,9 @@ public class LocalManager : MonoBehaviour
         }
         */
 
-        handUIController.SetNextCard(cardCoreLibrary.GetCardCore(HandUIController.numberOfCardSlots + 1).cardPicture);
+        handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
 
-        testQwiexLevel = 0f;
+        testPlayer.Qwiex = 0f;
 
         testTimer = 120f;
     }
@@ -94,12 +161,13 @@ public class LocalManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        qwiexBarUIController.SetQwiexLevel(testQwiexLevel);
-
-        if(testQwiexLevel <= QwiexBarUIController.numberOfQuiexBars)
+        if(testPlayer.Qwiex <= QwiexBarUIController.numberOfQuiexBars)
         {
-            testQwiexLevel += Time.deltaTime * 0.5f;
+            testPlayer.Qwiex += Time.deltaTime * 0.5f;
         }
+
+        qwiexBarUIController.SetQwiexLevel(testPlayer.Qwiex);
+        handUIController.UpdateCardAvailability(testPlayer.Qwiex);
 
         testTimer -= Time.deltaTime;
 
@@ -120,6 +188,31 @@ public class LocalManager : MonoBehaviour
         Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.25f);
 
         // Instantiate the prefab
-        Instantiate(cardCoreLibrary.GetCardCore(cardID).prefabToSpawn, worldDropLocation, Quaternion.identity);
+        GameObject prefabToSpawn = cardCoreLibrary.GetCardCore(cardID).prefabToSpawn;
+
+        if(prefabToSpawn != null)
+        {
+            Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("No prefab found in CardCoreLibrary for " + cardCoreLibrary.GetCardCore(cardID).cardName);
+        }
+
+        // Spend the Qwiex
+        testPlayer.Qwiex -= cardCoreLibrary.GetCardCore(cardID).qwiexCost;
+
+        // Remove the card from hand
+        testPlayer.playerHand.RemoveCard(cardID);
+        testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
+        handUIController.RemoveCardFromHand(cardID);
+
+        // Draw a new card
+        CardCore drawnCard = testPlayer.playerDeck.DrawCard();
+        testPlayer.playerHand.AddCard(drawnCard);
+        handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
+
+        // Set the next card image
+        handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
     }
 }

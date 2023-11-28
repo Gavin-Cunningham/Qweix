@@ -21,8 +21,9 @@ using UnityEngine.UIElements;
 public class CardSlot : VisualElement
 {
     public int cardID;
+    public int cardQwiexCost;
     private VisualElement cardFace;
-    private Label cardQwiexCost;
+    private Label cardQwiexCostLabel;
     public bool enabled;
     
     public CardSlot()
@@ -54,14 +55,14 @@ public class CardSlot : VisualElement
         cardQwiexCostOrb.AddToClassList("cardQwiexCostOrb");
         cardHalo.Add(cardQwiexCostOrb);
 
-        cardQwiexCost = new Label { name = "cardQwiexCost" };
-        cardQwiexCost.AddToClassList("cardQwiexCost");
-        cardQwiexCostOrb.Add(cardQwiexCost);
+        cardQwiexCostLabel = new Label { name = "cardQwiexCost" };
+        cardQwiexCostLabel.AddToClassList("cardQwiexCost");
+        cardQwiexCostOrb.Add(cardQwiexCostLabel);
     }
 
     private void OnPointerDown(PointerDownEvent evt)
     {
-        if(evt.button == 0)
+        if(evt.button == 0 && enabled)
         {
             HandUIController.StartDrag(evt.position, this);
 
@@ -76,7 +77,8 @@ public class CardSlot : VisualElement
 
     public void SetQwiexCost(int qwiexCost)
     {
-        cardQwiexCost.text = qwiexCost.ToString();
+        cardQwiexCost = qwiexCost;
+        cardQwiexCostLabel.text = qwiexCost.ToString();
     }
 
     public void DisableSlot()
