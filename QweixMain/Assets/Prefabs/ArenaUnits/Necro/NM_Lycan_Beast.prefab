@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3431885501068774730}
+  - component: {fileID: 6501732238312621234}
   - component: {fileID: 3431885501068774727}
   - component: {fileID: 3431885501068774726}
   - component: {fileID: 3431885501068774725}
   - component: {fileID: 1862059918754176432}
-  - component: {fileID: 8898799993301705538}
+  - component: {fileID: 7969122913187299015}
   - component: {fileID: 3431885501068774720}
   - component: {fileID: 3431885501068774721}
   - component: {fileID: 3431885501068774731}
@@ -44,6 +45,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6501732238312621234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431885501068774723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d9603b88b06ae448c69ea9ae414af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInitialAnimation: 1
+  initializeTimer: 0.1
 --- !u!114 &3431885501068774727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
   agroRange: 200
@@ -74,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 20
   healthBar: {fileID: 1930273758070423476}
 --- !u!195 &3431885501068774725
 NavMeshAgent:
@@ -112,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToSpawn:
   - {fileID: 4592109077468454849, guid: 25aacbd9458c31a44881af3ab7b0306a, type: 3}
---- !u!114 &8898799993301705538
+--- !u!114 &7969122913187299015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  attackState: 0
   attackDamage: 3
 --- !u!114 &3431885501068774720
 MonoBehaviour:

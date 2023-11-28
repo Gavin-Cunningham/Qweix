@@ -43,7 +43,8 @@ public class Attack_Component : MonoBehaviour
     private protected Targeting_Component targeting_Component;
     private protected Animation_Component animation_Component;
 
-    private protected AttackState attackState;
+    [Tooltip("Set by code. Used to see what the current state is while running")]
+    [SerializeField] private protected AttackState attackState;
     private protected bool canAttack = true;
 
     // Start is called before the first frame update
@@ -80,9 +81,17 @@ public class Attack_Component : MonoBehaviour
 
                 if (targeting_Component.targetInRange)
                 {
-                    BeginAttackAnimation();
-
-                    attackState = AttackState.WaitingForAnimationTrigger;
+                    if (animation_Component != null)
+                    {
+                        BeginAttackAnimation();
+                        attackState = AttackState.WaitingForAnimationTrigger;
+                    }
+                    else
+                    {
+                        AnimationTrigger();
+                        attackCountdown = attackFrequency;
+                        attackState = AttackState.CoolingDown;
+                    }
                 }
 
                 break;
@@ -116,7 +125,6 @@ public class Attack_Component : MonoBehaviour
         if(newTarget != null)
         {
             attackTarget = newTarget;
-
             if (attackState != AttackState.CoolingDown)
             {
                 attackState = AttackState.PursuingTarget;
@@ -126,7 +134,7 @@ public class Attack_Component : MonoBehaviour
 
     public virtual void AnimationTrigger()
     {
-
+        
     }
 
     private void BeginAttackAnimation()

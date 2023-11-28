@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5515275447777580981}
+  - component: {fileID: 3050665930593444947}
   - component: {fileID: 5515275447777580984}
   - component: {fileID: 5515275447777580985}
   - component: {fileID: 5515275447777580989}
@@ -44,6 +45,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3050665930593444947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5515275447777580988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d9603b88b06ae448c69ea9ae414af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInitialAnimation: 0
+  initializeTimer: 0.1
 --- !u!114 &5515275447777580984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  attackState: 0
   attackDamage: 1
   projectile: {fileID: 4803431861211981086, guid: 77f3a1b21bc4c7242b0a8ef204a7b79b, type: 3}
 --- !u!195 &5515275447777580986
@@ -214,7 +230,7 @@ Animator:
   m_GameObject: {fileID: 5515275447777580988}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e96993a4c0fd354418807c2d818dfc8b, type: 2}
+  m_Controller: {fileID: 9100000, guid: aad8a13d45ce423428fc8cb164de6934, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

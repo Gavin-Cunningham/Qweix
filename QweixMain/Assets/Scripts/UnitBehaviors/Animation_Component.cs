@@ -96,11 +96,13 @@ public class Animation_Component : MonoBehaviour
         controller.SetBool("isAttacking", false);
     }
 
+    //Called by Targeting_Component with send.message.
     public void TargetEnterRange()
     {
         controller.SetBool("isStopped", true);
     }
 
+    //Called by Targeting_Component with send.message
     public void TargetLeftRange()
     {
         controller.SetBool("isStopped", false);

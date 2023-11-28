@@ -11,10 +11,11 @@
 *  Requirements      : A Health Bar on the game object with the UI Image referenced as the healthBar variable
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 08/18/2023
+*  Last Modification : 11/20/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added the OnUnitDeath event
 *                      -(10/04/2023) [Gavin] Added hiding of the health bar if the unit is at full health.
 *                      -This now requires that the Healthbar Hierarchy remains HealthbarBorder>HealthBarBackground>HealthBar in the prefab
+*                      -(11/20/2023) [Gavin] Made currentHealth public get, private set.
 *  External Documentation URL : https://trello.com/c/LVPox6UR/8-healthcomponent
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -30,7 +31,7 @@ public class Health_Component : MonoBehaviour
 {
     // Maximum health available
     public float maxHealth;
-    private float currentHealth;
+    public float currentHealth { get; private set; }
 
     public static event Action<GameObject> OnUnitDeath;
     private GameObject thisUnit;
