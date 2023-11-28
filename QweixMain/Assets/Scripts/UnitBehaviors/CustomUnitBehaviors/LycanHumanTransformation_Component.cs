@@ -23,11 +23,12 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
 {
     [SerializeField] private float mutationTime;
     private float mutationRemainingTime;
-    private float mutationWarningPause = 1.0f;
+
     private float mutationWarningCountdown;
     [SerializeField] private Image mutationBar;
-    [SerializeField] private Color mutationWarnColor = new Color(255, 255, 255, 255);
-    [SerializeField] private Color warnColorFade = new Color(10, 10, 10, 255);
+    [SerializeField] private float mutationWarningBlinkLength = 1.0f;
+    [SerializeField, Range(0.0f, 2.0f)] private float warnColorFadeRate = 1.0f;
+    [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -42,12 +43,12 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationRemainingTime -= Time.deltaTime;
 
         //Make the Character blink faster the closer it is to mutation time.
-        mutationWarningPause -= Time.deltaTime / mutationTime;
+        mutationWarningBlinkLength -= Time.deltaTime / mutationTime;
 
         //Make the character the warning color if the interval has passed.
         if (mutationWarningCountdown <= 0.0f)
         {
-            mutationWarningCountdown = mutationWarningPause;
+            mutationWarningCountdown = mutationWarningBlinkLength;
             spriteRenderer.color = mutationWarnColor;
         }
 
@@ -55,7 +56,8 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationWarningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.color = spriteRenderer.color + warnColorFade;
+        spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / mutationWarningBlinkLength));
+        //spriteRenderer.color = spriteRenderer.color + warnColorFade;
 
         //Make the mutation bar drop as the time gets less.
         mutationBar.fillAmount = mutationRemainingTime / mutationTime;

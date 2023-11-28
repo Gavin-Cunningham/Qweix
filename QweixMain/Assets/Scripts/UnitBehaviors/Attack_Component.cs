@@ -134,7 +134,7 @@ public class Attack_Component : MonoBehaviour
 
     public virtual void AnimationTrigger()
     {
-
+        
     }
 
     private void BeginAttackAnimation()

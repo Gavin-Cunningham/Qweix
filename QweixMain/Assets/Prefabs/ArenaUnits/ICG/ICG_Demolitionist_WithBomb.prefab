@@ -57,6 +57,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newUnitPrefab: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
+  bombTargetDistance: 2
+  bombPrefab: {fileID: 1794551663722227435, guid: dbf0d186f9053664ab4a11a4c0ff3410, type: 3}
+  bombCountdownTime: 3
 --- !u!114 &5515275447777580984
 MonoBehaviour:
   m_ObjectHideFlags: 0

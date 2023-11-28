@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3181648202535984080}
+  - component: {fileID: 3651784785052158610}
   - component: {fileID: 3181648202535984093}
   - component: {fileID: 3181648202535984092}
   - component: {fileID: 3181648202535984095}
@@ -92,12 +93,11 @@ GameObject:
   - component: {fileID: 8717032582351517144}
   - component: {fileID: 3181648202535984090}
   - component: {fileID: 3181648202535984091}
-  - component: {fileID: 3181648202535984081}
+  - component: {fileID: 8074328881024480474}
   - component: {fileID: 3181648202535984094}
   - component: {fileID: 8717032582351517145}
   - component: {fileID: 450944544691094271}
   - component: {fileID: 4539426728506377415}
-  - component: {fileID: 2605756875332383952}
   m_Layer: 0
   m_Name: NM_Lycan_Human
   m_TagString: Untagged
@@ -122,6 +122,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3651784785052158610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181648202535984089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa1c5f47fdeb834da2d8f830b0555d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newUnitPrefab: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
+  mutationTime: 10
+  mutationBar: {fileID: 5586237765793703001}
+  mutationWarningBlinkLength: 1
+  warnColorFadeRate: 1
+  mutationWarnColor: {r: 1, g: 0, b: 0, a: 255}
 --- !u!114 &3181648202535984093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3064f1f7089fb74182f19812b33b65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &3181648202535984081
+--- !u!212 &8074328881024480474
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,10 +286,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 292047
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1015324898, guid: ceb5d5a99a591674897e30cf3d2aa00e, type: 3}
+  m_Sprite: {fileID: -519710758, guid: ceb5d5a99a591674897e30cf3d2aa00e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -355,23 +373,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.25
---- !u!114 &2605756875332383952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181648202535984089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa1c5f47fdeb834da2d8f830b0555d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beastFormPrefab: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
-  mutationTime: 3
-  mutationBar: {fileID: 5586237765793703001}
-  mutationWarnColor: {r: 1, g: 0, b: 0, a: 255}
-  warnColorFade: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 255}
 --- !u!1 &7272092160390427037
 GameObject:
   m_ObjectHideFlags: 0
