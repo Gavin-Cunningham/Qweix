@@ -28,6 +28,8 @@ public class LocalManager : MonoBehaviour
     public TimerUIController timerUIController;
     public EmoteUIController emoteUIController;
 
+    private GameObject spawnedUnit = null;
+
     // Team variable for testing purposes
     public int currentTeam = 1;
 
@@ -192,7 +194,12 @@ public class LocalManager : MonoBehaviour
 
         if(prefabToSpawn != null)
         {
-            Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
+            spawnedUnit = Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
+            //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
+            if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+            {
+                targeting_Component.teamCheck = currentTeam;
+            }
         }
         else
         {

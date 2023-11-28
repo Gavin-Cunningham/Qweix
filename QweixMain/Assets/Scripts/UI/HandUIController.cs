@@ -15,6 +15,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR.LegacyInputHelpers;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -36,6 +37,10 @@ public class HandUIController : MonoBehaviour
 
     // Reference to local manager
     public LocalManager localManager;
+
+    // The Camera that the player is using
+    [SerializeField] private Camera localPlayerCamera;
+    private Vector2 playerCameraOffset;
 
     private void Awake()
     {
@@ -77,6 +82,9 @@ public class HandUIController : MonoBehaviour
         ghostIcon = uiRoot.Q<VisualElement>("GhostIcon");
         ghostIcon.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         ghostIcon.RegisterCallback<PointerUpEvent>(OnPointerUp);
+
+        //retrieve offset of the Camera
+        playerCameraOffset = new Vector2 (localPlayerCamera.transform.position.x, localPlayerCamera.transform.position.y);
     }
 
     private void Update()

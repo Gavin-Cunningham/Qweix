@@ -204,7 +204,7 @@ MonoBehaviour:
   cardName: Iron Brawler
   cardPicture: {fileID: 2800000, guid: d9fafe9c9e0370f4896ec70ed85c43e2, type: 3}
   qwiexCost: 3
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  prefabToSpawn: {fileID: 6115483571651033311, guid: 16aad435d04031d4cb358bb09dd3acf4, type: 3}
   cardTribe: 0
   cardRarity: 2
   cardType: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   cardName: Scrappers
   cardPicture: {fileID: 2800000, guid: 98e5453781144ff4ab597ad37b7c24f9, type: 3}
   qwiexCost: 2
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  prefabToSpawn: {fileID: 4824537095769851694, guid: 1e9de5354d1f61348b2604238d1bcdc9, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
   cardName: Dread Lord
   cardPicture: {fileID: 2800000, guid: 3bcb556ef1f25564eaffa1bd9a0140cd, type: 3}
   qwiexCost: 3
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  prefabToSpawn: {fileID: 2470750445074387459, guid: 20d8a1d12f0eba8469fe3ddff731f19c, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
