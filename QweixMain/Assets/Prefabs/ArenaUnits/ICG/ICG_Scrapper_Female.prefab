@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
   agroRange: 200
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  attackState: 0
   attackDamage: 1
   projectile: {fileID: 4803431861211981086, guid: 77f3a1b21bc4c7242b0a8ef204a7b79b, type: 3}
 --- !u!195 &4133164493400029875
@@ -190,7 +192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 292047
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1689868243, guid: c89e700791190b74aba795436f6f2a2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

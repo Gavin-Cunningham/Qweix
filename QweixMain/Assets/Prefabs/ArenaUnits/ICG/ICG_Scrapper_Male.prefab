@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  targetInRange: 0
   canTargetFlying: 0
   canTargetGround: 1
   agroRange: 200
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  attackState: 0
   attackDamage: 1
 --- !u!195 &7881981860842426754
 NavMeshAgent:
@@ -189,7 +191,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 292047
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1942772021, guid: 4c58a17c8db20c040b3be42c674caa49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

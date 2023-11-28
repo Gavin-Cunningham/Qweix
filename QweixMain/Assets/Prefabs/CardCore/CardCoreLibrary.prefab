@@ -48,7 +48,7 @@ MonoBehaviour:
   cardName: Lycan
   cardPicture: {fileID: 2800000, guid: 6b32b18d1973f0b4386ca883f0492712, type: 3}
   qwiexCost: 2
-  prefabToSpawn: {fileID: 3431885501068774723, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
+  prefabToSpawn: {fileID: 3181648202535984089, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   cardName: Demolitionist
   cardPicture: {fileID: 2800000, guid: f6f93a394ef34b64688a1f609092e083, type: 3}
   qwiexCost: 1
-  prefabToSpawn: {fileID: 5515275447777580988, guid: a1b3c0cac1e55934f87b0f6ebe7e3346, type: 3}
+  prefabToSpawn: {fileID: 5515275447777580988, guid: 453faec4c02078c41b5e38d8eba8740a, type: 3}
   cardTribe: 0
   cardRarity: 2
   cardType: 0
