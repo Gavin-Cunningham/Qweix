@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 461121786633324904}
   - component: {fileID: 5039679586905033819}
   m_Layer: 0
-  m_Name: NM_Dreadlord
+  m_Name: NM_Vamphire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 292047
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -82255353, guid: 05d4c25c213ecad47b748b4cc6c0f19b, type: 3}
+  m_Sprite: {fileID: 952806913, guid: ce842e8fe17153c428f87f16d26196a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 2470750445074387459}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f734a06a67207b64ea59b924463b7f86, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6b12e3f7cde97f94daad3f72c9d2e67c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
