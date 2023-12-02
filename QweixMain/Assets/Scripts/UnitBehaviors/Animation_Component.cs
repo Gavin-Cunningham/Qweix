@@ -22,10 +22,10 @@ using System;
 
 public class Animation_Component : MonoBehaviour
 {
-    NavMeshAgent agent;
-    Animator controller;
-    Transform targetTransform;
-    Transform parentTransform;
+    protected NavMeshAgent agent;
+    protected Animator controller;
+    private Transform targetTransform;
+    private Transform parentTransform;
 
     //Gets the components necessary to reference
     private void Start()
@@ -84,7 +84,7 @@ public class Animation_Component : MonoBehaviour
     }
 
     //Called by the Attack_Component its children
-    public void BeginAttackAnimation()
+    public virtual void BeginAttackAnimation()
     {
         controller.SetBool("isAttacking", true);
         controller.Play("Attack");
@@ -103,7 +103,7 @@ public class Animation_Component : MonoBehaviour
     }
 
     //Called by Targeting_Component with send.message
-    public void TargetLeftRange()
+    public virtual void TargetLeftRange()
     {
         controller.SetBool("isStopped", false);
     }

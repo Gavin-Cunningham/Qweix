@@ -23,7 +23,7 @@ public class Movement_Component : MonoBehaviour
 {
 
     GameObject currentTarget;
-    NavMeshAgent agent;
+    protected NavMeshAgent agent;
     Vector3 currentDestination;
 
 
@@ -71,7 +71,7 @@ public class Movement_Component : MonoBehaviour
         }
     }
 
-    void TargetLeftRange()
+    protected virtual void TargetLeftRange()
     {
         if (agent.navMeshOwner != null)
         {

@@ -862,8 +862,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XTarget
-  m_BlendParameterY: YTarget
+  m_BlendParameter: XMove
+  m_BlendParameterY: YMove
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1

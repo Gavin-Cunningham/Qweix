@@ -110,7 +110,7 @@ public class Attack_Component : MonoBehaviour
             case AttackState.CoolingDown:
 
                 attackCountdown -= Time.deltaTime;
-                if (attackCountdown <= 0)
+                if (attackCountdown <= 0.0f)
                 {
                     attackState = AttackState.PursuingTarget;
                     canAttack = true;
