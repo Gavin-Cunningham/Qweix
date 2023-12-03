@@ -15,7 +15,7 @@ public class Vamphire_Animation_Component : Animation_Component
         else
         {
             controller.SetBool("isAttacking", true);
-            controller.Play("Attack");
+            //controller.Play("Attack");
         }
     }
 

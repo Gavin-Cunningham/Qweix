@@ -60,7 +60,7 @@ public class Projectile_Component : MonoBehaviour
         timeElapsed = 0f;
 
         //First float is time till first call, second float is time between calls
-        InvokeRepeating("IsTargetActive", 0.5f, 0.1f);
+        InvokeRepeating("IsTargetActive", 0.1f, 0.1f);
     }
 
     // Update is called once per frame

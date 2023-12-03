@@ -15,7 +15,7 @@
 *                      Animation_Component
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 10/09/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/vd4jnEws/35-meleeattackcomponent
@@ -36,7 +36,7 @@ public class MeleeAttack_Component : Attack_Component
     
     public override void AnimationTrigger()
     {
-        ApplyDamage();
+            ApplyDamage();
     }
 
     public void ApplyDamage()

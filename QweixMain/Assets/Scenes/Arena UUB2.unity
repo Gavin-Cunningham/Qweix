@@ -1668,6 +1668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3431885501068774731, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7969122913187299015, guid: 4ba5ac154a17e5242a1096f12b79e08e, type: 3}
       propertyPath: attackDamage
       value: 1
@@ -1685,21 +1689,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: NM_Vamphire
       objectReference: {fileID: 0}
+    - target: {fileID: 3196666750813799675, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3548208288503695764, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.33
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3548208288503695764, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.33
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3548208288503695764, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.33
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3548208288503695764, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5039679586905033819, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
       propertyPath: m_Radius

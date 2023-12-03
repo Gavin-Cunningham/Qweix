@@ -6,8 +6,9 @@
 *  the movement from the navmesh system.
 *
 *  Programmer(s)     : Gavin Cunningham
-*  Last Modification : 08/18/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
+*                      -(12/02/2023) [Gavin] Made BeginAttackAnimation() and TargetLeftRange() virtual to allow inheritors to edit.
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -59,6 +60,7 @@ public class Animation_Component : MonoBehaviour
         float speed = agent.desiredVelocity.magnitude;
         float xMove = agent.desiredVelocity.x;
         float yMove = agent.desiredVelocity.y;
+
         controller.SetFloat("Speed", speed);
         if (speed >= 0.1f)
         {
@@ -93,7 +95,7 @@ public class Animation_Component : MonoBehaviour
     //Called by the animator to let the Attack_Component know the animation is done
     public void AnimationFinished()
     {
-        controller.SetBool("isAttacking", false);
+            controller.SetBool("isAttacking", false);
     }
 
     //Called by Targeting_Component with send.message.

@@ -8,6 +8,7 @@
 *  Last Modification : 10/04/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
 *                      -(10/04/2023) [Gavin] Managed to finally find the correct Exception check for TargetIn and LeftRange
+*                      -(12/03/2023) [Gavin] Made TargetLeftRange() virtual to allow inheritors to edit.
 *  External Documentation URL :
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
