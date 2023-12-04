@@ -22,7 +22,7 @@
 *                      -(12/03/2023) [Gavin] Removed redundant call to Animation_Component.AnimationFinished() (Animator already does this)
 *  External Documentation URL : https://trello.com/c/hIyVrf0V/6-attackcomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 

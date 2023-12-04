@@ -15,7 +15,7 @@
 *                      -(11/20/2023) [Gavin] Removed debug string parameter from SendTargetLeftRange()
 *  External Documentation URL :
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 

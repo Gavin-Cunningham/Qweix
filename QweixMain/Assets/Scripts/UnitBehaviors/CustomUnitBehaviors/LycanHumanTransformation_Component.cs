@@ -10,7 +10,7 @@
 *  Additional Notes  : 
 *  External Documentation URL :
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 
@@ -21,13 +21,18 @@ using UnityEngine.UI;
 
 public class LycanHumanTransformation_Component : UnitSwap_Component
 {
+    [Tooltip("How long after spawning should the Human turn into a werewolf?")]
     [SerializeField] private float mutationTime;
     private float mutationRemainingTime;
 
     private float mutationWarningCountdown;
+    [Tooltip("Put the bar that shows the remaining time till transformation here. Must be an image object.")]
     [SerializeField] private Image mutationBar;
+    [Tooltip("How long between blinks that warn of the impending transformation?")]
     [SerializeField] private float mutationWarningBlinkLength = 1.0f;
+    [Tooltip("How fast should the blinks fade back to normal?")]
     [SerializeField, Range(0.0f, 2.0f)] private float warnColorFadeRate = 1.0f;
+    [Tooltip("What color should the warning blinks be? default is red")]
     [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
 

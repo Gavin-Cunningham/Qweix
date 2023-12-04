@@ -19,7 +19,7 @@
 *                      -(12/03/2023) [Gavin] Made Start() virtual and healthBarBorder protected to allow inheritors to edit (MoveableBar_Health_Component)
 *  External Documentation URL : https://trello.com/c/LVPox6UR/8-healthcomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 using System.Collections;
