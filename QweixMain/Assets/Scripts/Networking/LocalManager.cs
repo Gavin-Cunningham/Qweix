@@ -15,11 +15,14 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class LocalManager : MonoBehaviour
+public class LocalManager : NetworkBehaviour
 {
+
     // Reference to CardCore library
     public CardCoreLibrary cardCoreLibrary;
 
@@ -30,7 +33,7 @@ public class LocalManager : MonoBehaviour
     public EmoteUIController emoteUIController;
 
     private GameObject spawnedUnit = null;
-
+    [SerializeField] float TowerZone;
     // Team variable for testing purposes
     public int currentTeam = 1;
 
@@ -50,6 +53,7 @@ public class LocalManager : MonoBehaviour
 
     // Which deck to use for testing
     public CardTribe testTribe;
+
 
     void Start()
     {
@@ -188,41 +192,156 @@ public class LocalManager : MonoBehaviour
 
         // Convert the screen drag-and-drop location to world coordinates
         Vector2 dropLocation = ray.GetPoint(distance);
-        Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.25f);
+        Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.0f);
 
         // Instantiate the prefab
-        GameObject prefabToSpawn = cardCoreLibrary.GetCardCore(cardID).prefabToSpawn;
+        //GameObject prefabToSpawn = cardCoreLibrary.GetCardCore(cardID).prefabToSpawn;
+        
+        // Sends information to the server to spawn the given Unit
+        SpawnUnitServerRpc(cardID, worldDropLocation);
 
-        if(prefabToSpawn != null)
-        {
-            spawnedUnit = Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
-            //THIS SHOULD END UP ON SERVERSIDE
-            spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
-            //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
-            if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
-            {
-                targeting_Component.teamCheck = currentTeam;
-            }
-        }
-        else
-        {
-            Debug.Log("No prefab found in CardCoreLibrary for " + cardCoreLibrary.GetCardCore(cardID).cardName);
-        }
+        //if (prefabToSpawn != null)
+        //{
+        //    //spawnedUnit = Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
+        //    ////THIS SHOULD END UP ON SERVERSIDE
+        //    //spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
+        //    ////spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
+        //    //if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+        //    //{
+        //    //    targeting_Component.teamCheck = currentTeam;
+        //    //}
+        //}
+        //else
+        //{
+        //    Debug.Log("No prefab found in CardCoreLibrary for " + cardCoreLibrary.GetCardCore(cardID).cardName);
+        //}
 
         // Spend the Qwiex
         testPlayer.Qwiex -= cardCoreLibrary.GetCardCore(cardID).qwiexCost;
 
-        // Remove the card from hand
-        testPlayer.playerHand.RemoveCard(cardID);
-        testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
-        handUIController.RemoveCardFromHand(cardID);
+        //// Remove the card from hand
+        //testPlayer.playerHand.RemoveCard(cardID);
+        //testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
+        //handUIController.RemoveCardFromHand(cardID);
 
-        // Draw a new card
-        CardCore drawnCard = testPlayer.playerDeck.DrawCard();
-        testPlayer.playerHand.AddCard(drawnCard);
-        handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
+        //// Draw a new card
+        //CardCore drawnCard = testPlayer.playerDeck.DrawCard();
+        //testPlayer.playerHand.AddCard(drawnCard);
+        //handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
 
-        // Set the next card image
-        handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
+        //// Set the next card image
+        //handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
+    }
+
+
+    private void OnConnectedToServer()
+    {
+        //set camera for player2
+    }
+
+    [ServerRpc]
+    private void SpawnUnitServerRpc(int CCNumber, Vector3 clientSpawnLocation)
+    {
+        int ownerId = (int)OwnerClientId + 1;
+
+        if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
+        {
+            SpawnUnitMethod(CCNumber, clientSpawnLocation);
+            SpawnResultClientRpc(true, CCNumber);
+            Debug.Log("do the thing" + " " + ownerId);
+        }
+        else
+        {
+            SpawnResultClientRpc(false, CCNumber);
+            Debug.Log("dont do the thing" + " " + ownerId);
+        }
+    }
+
+
+    [ClientRpc]
+    private void SpawnResultClientRpc(bool spawnSuccess, int cardID)
+    {
+
+        if (spawnSuccess)
+        {
+            // Remove the card from hand
+            testPlayer.playerHand.RemoveCard(cardID);
+            testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
+            handUIController.RemoveCardFromHand(cardID);
+
+            // Draw a new card
+            CardCore drawnCard = testPlayer.playerDeck.DrawCard();
+            testPlayer.playerHand.AddCard(drawnCard);
+            handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
+
+            // Set the next card image
+            handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
+        }
+    }
+
+    private void SpawnUnitMethod(int unitCCNumber, Vector3 spawnLocation)
+    {
+        GameObject unitPrefab = cardCoreLibrary.GetCardCore(unitCCNumber).prefabToSpawn;
+
+        spawnedUnit = Instantiate(unitPrefab, spawnLocation, Quaternion.identity);
+        //THIS SHOULD END UP ON SERVERSIDE
+        spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
+        //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
+        if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+        {
+            targeting_Component.teamCheck = currentTeam;
+        }
+    }
+
+    
+    bool SpawnPointChecker(Vector3 spawnPoint, int team)
+    {
+        GameObject[] Towers;
+        bool canSpawn = false;
+        //navmeshhit test to see if the location is on navmesh
+        //NavMeshHit hit;
+        if (NavMesh.SamplePosition(spawnPoint, out NavMeshHit hit, .1f, NavMesh.AllAreas))
+        {
+            //the mouse location was on navmesh
+            canSpawn = true;
+        }
+        else
+        {
+            //the mouse location was not on navmesh
+            canSpawn = false;
+            return canSpawn;
+        }
+
+        //gather an array of objects with the tags Towers and KingTower
+        Towers = FindGameObjectsWithTags(new string[] { "Tower", "KingTower" });
+
+        //loops to check to see if the spawn location is to close to enemy towers
+        foreach (GameObject tower in Towers)
+        {
+            if (team != tower.GetComponent<Targeting_Component>().teamCheck)
+            {
+                float distance = Vector3.Distance(tower.transform.position, spawnPoint);
+                if (distance < TowerZone)
+                {
+                    canSpawn = false;
+                    return canSpawn;
+                }
+            }
+        }
+
+        return canSpawn;
+    }
+
+
+    GameObject[] FindGameObjectsWithTags(params string[] tags)
+    {
+        var allTowers = new List<GameObject>();
+
+        foreach (string tag in tags)
+        {
+            allTowers.AddRange(GameObject.FindGameObjectsWithTag(tag).ToList());
+        }
+
+        return allTowers.ToArray();
     }
 }
