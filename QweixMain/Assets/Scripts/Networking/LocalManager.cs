@@ -131,7 +131,7 @@ public class LocalManager : NetworkBehaviour
                 else
                 {
                     testCardDeck.AddCard(cardCore);
-                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.qwiexCost);
+                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
                 }
             }
 
@@ -144,7 +144,7 @@ public class LocalManager : NetworkBehaviour
             {
                 CardCore cardCore = testPlayer.playerDeck.DrawCard();
 
-                handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.qwiexCost);
+                handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
 
                 testPlayer.playerHand.AddCard(cardCore);
             }
@@ -274,7 +274,7 @@ public class LocalManager : NetworkBehaviour
             // Draw a new card
             CardCore drawnCard = testPlayer.playerDeck.DrawCard();
             testPlayer.playerHand.AddCard(drawnCard);
-            handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.dragSprite, drawnCard.qwiexCost);
+            handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.dragSprite, drawnCard.dragSpriteScale, drawnCard.qwiexCost);
 
             // Set the next card image
             handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);

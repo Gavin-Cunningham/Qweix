@@ -6,7 +6,7 @@
 *
 *  Programmer(s)     : Gabe Burch
 *  Last Modification : 
-*  Additional Notes  : 
+*  Additional Notes  : -(12/06/23) [Gavin] Added dragSpriteScale
 *  External Documentation URL : 
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -30,6 +30,9 @@ public class CardCore : MonoBehaviour
 
     [SerializeField]
     public Sprite dragSprite;
+
+    [SerializeField, Range(0.1f, 10.0f)]
+    public float dragSpriteScale = 1.0f;
 
     [SerializeField]
     public int qwiexCost;

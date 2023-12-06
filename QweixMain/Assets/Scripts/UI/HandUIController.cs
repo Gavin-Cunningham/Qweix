@@ -6,7 +6,7 @@
 *
 *  Programmer(s)     : Gabe Burch
 *  Last Modification : 
-*  Additional Notes  : 
+*  Additional Notes  : -(12/06/23) [Gavin] Added dragSpriteScale
 *  External Documentation URL : 
 *****************************************************************************
        (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
@@ -37,10 +37,6 @@ public class HandUIController : MonoBehaviour
 
     // Reference to local manager
     public LocalManager localManager;
-
-    // The Camera that the player is using
-    [SerializeField] private Camera localPlayerCamera;
-    private Vector2 playerCameraOffset;
 
     private void Awake()
     {
@@ -82,9 +78,6 @@ public class HandUIController : MonoBehaviour
         ghostIcon = uiRoot.Q<VisualElement>("GhostIcon");
         ghostIcon.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         ghostIcon.RegisterCallback<PointerUpEvent>(OnPointerUp);
-
-        //retrieve offset of the Camera
-        playerCameraOffset = new Vector2 (localPlayerCamera.transform.position.x, localPlayerCamera.transform.position.y);
     }
 
     private void Update()
@@ -114,8 +107,10 @@ public class HandUIController : MonoBehaviour
         {
             // Set GhostIcon drag sprite
             ghostIcon.style.backgroundImage = new StyleBackground(Background.FromSprite(originalCardSlot.dragSprite));
-            ghostIcon.style.width = originalCardSlot.dragSprite.rect.width;
-            ghostIcon.style.height = originalCardSlot.dragSprite.rect.height;
+            ghostIcon.style.backgroundColor = new Color(1, 1, 1, 0);
+            ghostIcon.style.opacity = 0.5f;
+            ghostIcon.style.width = (((originalCardSlot.dragSprite.rect.width * (Screen.height / 1080.0f)) / 1.69f) * originalCardSlot.dragSpriteScale);
+            ghostIcon.style.height = (((originalCardSlot.dragSprite.rect.height * (Screen.height / 1080.0f)) / 1.69f) * originalCardSlot.dragSpriteScale);
         }
         else
         {
@@ -165,7 +160,7 @@ public class HandUIController : MonoBehaviour
     }
 
     // Called by the local manager to add cards to the UI
-    public bool AddCard(int cardID, Texture2D cardTexture, Sprite dragSprite, int qwiexCost)
+    public bool AddCard(int cardID, Texture2D cardTexture, Sprite dragSprite, float dragSpriteScale, int qwiexCost)
     {
         // Have we found a place for the card?
         bool cardPlaced = false;
@@ -179,7 +174,7 @@ public class HandUIController : MonoBehaviour
                 // Place the card
                 slot.cardID = cardID;
                 slot.SetCardImage(cardTexture);
-                slot.SetDragSprite(dragSprite);
+                slot.SetDragSprite(dragSprite, dragSpriteScale);
                 slot.SetQwiexCost(qwiexCost);
                 cardPlaced = true;
             }
