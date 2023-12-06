@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_MainMenu.uss?fileID=7433441132597879392&amp;guid=123dd9b6447237448bcd6e7a53fad8d2&amp;type=3#UI_MainMenu" />
+    <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1;">
+        <ui:VisualElement name="CreateGamePanel" style="flex-grow: 1; align-items: center; justify-content: center; display: flex; visibility: visible;">
+            <ui:VisualElement name="TextFieldPanel" style="justify-content: flex-start; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 50%; align-items: center;">
+                <ui:TextField picking-mode="Ignore" label=" Lobby Name: " name="LobbyNameTextField" class="menuText" />
+                <ui:VisualElement name="Spacer" style="visibility: visible; height: 50px;" />
+                <ui:DropdownField label=" Map Choice:" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="MapChoiceDropdownField" class="menuText" />
+                <ui:VisualElement name="Spacer" style="visibility: visible; height: 50px;" />
+                <ui:Button text="Create&#10;Lobby" display-tooltip-when-elided="true" name="CreateLobbyButton" class="menuButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="MenuBarPanel" style="height: 150px; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(161, 155, 14); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 0; border-top-left-radius: 25px; border-bottom-left-radius: 0; border-top-right-radius: 25px; border-bottom-right-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+        <ui:Button text="Create&#10;Game" display-tooltip-when-elided="true" name="CreateGameButton" class="menuButton" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" />
+        <ui:Button text="Join&#10;Game" display-tooltip-when-elided="true" name="JoinGameButton" class="menuButton" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" />
+        <ui:Button text="Deck&#10;Building" display-tooltip-when-elided="true" name="DeckBuildingButton" class="menuButton" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" />
+        <ui:Button text="Player&#10;Stats" display-tooltip-when-elided="true" name="PlayerStatsButton" class="menuButton" />
+    </ui:VisualElement>
+</ui:UXML>
