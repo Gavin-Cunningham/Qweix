@@ -14,8 +14,8 @@
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    background-color: rgba(53, 17, 52, 255);
-    color: rgba(255, 255, 255, 255);
+    background-color: rgb(53, 17, 52);
+    color: rgb(255, 255, 255);
 }
 
 .menuSpacer {
@@ -32,15 +32,48 @@
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    border-left-color: rgba(0, 0, 0, 255);
-    border-right-color: rgba(0, 0, 0, 255);
-    border-top-color: rgba(0, 0, 0, 255);
-    border-bottom-color: rgba(0, 0, 0, 255);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
     flex-grow: 1;
-    background-color: rgba(35, 96, 92, 255);
-    color: rgba(255, 255, 255, 255);
+    background-color: rgb(35, 96, 92);
+    color: rgb(255, 255, 255);
 }
 
 .menuTextField {
     letter-spacing: 0;
+}
+
+.qwiexLogo {
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.unity-scroller--vertical {
+    width: 40px;
+    flex-grow: 0;
+    background-color: rgba(84, 84, 84, 255);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.unity-scroller__low-button {
+    flex-grow: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(118, 118, 118);
+}
+
+.unity-scroller__high-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(118, 118, 118, 255);
+}
+
+.unity-base-slider {
+    width: auto;
 }
