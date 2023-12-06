@@ -29,6 +29,9 @@ public class CardCore : MonoBehaviour
     public Texture2D cardPicture;
 
     [SerializeField]
+    public Sprite dragSprite;
+
+    [SerializeField]
     public int qwiexCost;
 
     [SerializeField]

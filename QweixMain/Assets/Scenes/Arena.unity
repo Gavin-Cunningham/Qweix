@@ -984,6 +984,7 @@ MonoBehaviour:
   qwiexBarUIController: {fileID: 1743489149}
   timerUIController: {fileID: 1743489148}
   emoteUIController: {fileID: 1743489147}
+  TowerZone: 0
   currentTeam: 1
   testingCardCores:
   - {fileID: 245230820}
@@ -2282,6 +2283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 862360396625559787, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: -1800714382, guid: 4c58a17c8db20c040b3be42c674caa49, type: 3}
     - target: {fileID: 975437983474361788, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2326,10 +2331,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1591146067093703829, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 235169438, guid: c987ca57d99dfe243ac523de77aa94d9, type: 3}
+    - target: {fileID: 3135955501398030492, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 1156314602, guid: 323177c546b8a3e4dab52bf41c53f4f8, type: 3}
     - target: {fileID: 4356210612692090488, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: m_Name
       value: CardCoreLibrary
       objectReference: {fileID: 0}
+    - target: {fileID: 4629167533219906113, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: 662743343, guid: ed88bb7885c9abd489d1b836d238cc01, type: 3}
+    - target: {fileID: 6476056795307788387, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: -992371883, guid: de483fa92cdeb8846ae6995023390071, type: 3}
+    - target: {fileID: 8364649304740938176, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: dragSprite
+      value: 
+      objectReference: {fileID: -224725144, guid: 3c3e73e678e02884c8756a8211133102, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
 --- !u!4 &1671646464075618885

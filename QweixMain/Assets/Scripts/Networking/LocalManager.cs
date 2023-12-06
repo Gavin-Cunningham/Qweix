@@ -100,11 +100,11 @@ public class LocalManager : NetworkBehaviour
 
         testPlayer = new QwiexPlayer();
 
-        if(testTribe == CardTribe.IronCreekGang)
+        if (testTribe == CardTribe.IronCreekGang)
         {
             testPlayer.playerDeck = ironCreekGangTestDeck;
         }
-        else if(testTribe == CardTribe.NecroMasters)
+        else if (testTribe == CardTribe.NecroMasters)
         {
             testPlayer.playerDeck = necroMastersTestDeck;
         }
@@ -116,7 +116,7 @@ public class LocalManager : NetworkBehaviour
         testPlayer.playerDeck.ShuffleDeck();
         testPlayer.playerHand = new QwiexHand();
 
-        if(useTestingCardCores)
+        if (useTestingCardCores)
         {
             // Create a new deck of the test cards
             QwiexDeck testCardDeck = new QwiexDeck();
@@ -131,7 +131,7 @@ public class LocalManager : NetworkBehaviour
                 else
                 {
                     testCardDeck.AddCard(cardCore);
-                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.qwiexCost);
+                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.qwiexCost);
                 }
             }
 
@@ -144,7 +144,7 @@ public class LocalManager : NetworkBehaviour
             {
                 CardCore cardCore = testPlayer.playerDeck.DrawCard();
 
-                handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.qwiexCost);
+                handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.qwiexCost);
 
                 testPlayer.playerHand.AddCard(cardCore);
             }
@@ -168,7 +168,7 @@ public class LocalManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(testPlayer.Qwiex <= QwiexBarUIController.numberOfQuiexBars)
+        if (testPlayer.Qwiex <= QwiexBarUIController.numberOfQuiexBars)
         {
             testPlayer.Qwiex += Time.deltaTime * 0.5f;
         }
@@ -198,7 +198,7 @@ public class LocalManager : NetworkBehaviour
 
         // Instantiate the prefab
         //GameObject prefabToSpawn = cardCoreLibrary.GetCardCore(cardID).prefabToSpawn;
-        
+
         // Sends information to the server to spawn the given Unit
         SpawnUnitServerRpc(cardID, worldDropLocation);
 
@@ -274,7 +274,7 @@ public class LocalManager : NetworkBehaviour
             // Draw a new card
             CardCore drawnCard = testPlayer.playerDeck.DrawCard();
             testPlayer.playerHand.AddCard(drawnCard);
-            handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
+            handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.dragSprite, drawnCard.qwiexCost);
 
             // Set the next card image
             handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
@@ -300,7 +300,7 @@ public class LocalManager : NetworkBehaviour
         }
     }
 
-    
+
     bool SpawnPointChecker(Vector3 spawnPoint, int team)
     {
         GameObject[] Towers;

@@ -24,6 +24,7 @@ public class CardSlot : VisualElement
     public int cardQwiexCost;
     private VisualElement cardFace;
     private Label cardQwiexCostLabel;
+    public Sprite dragSprite;
     public bool enabled;
     
     public CardSlot()
@@ -73,6 +74,11 @@ public class CardSlot : VisualElement
     public void SetCardImage(Texture2D cardTexture)
     {
         cardFace.style.backgroundImage = new StyleBackground(Background.FromTexture2D(cardTexture));
+    }
+
+    public void SetDragSprite(Sprite sprite)
+    {
+        dragSprite = sprite;
     }
 
     public void SetQwiexCost(int qwiexCost)

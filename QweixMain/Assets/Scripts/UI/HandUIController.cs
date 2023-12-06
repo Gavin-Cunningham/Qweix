@@ -109,10 +109,24 @@ public class HandUIController : MonoBehaviour
 
         originalCardSlot = originalSlot;
 
+        Sprite dragSprite = originalCardSlot.dragSprite;
+        if (dragSprite != null)
+        {
+            // Set GhostIcon drag sprite
+            ghostIcon.style.backgroundImage = new StyleBackground(Background.FromSprite(originalCardSlot.dragSprite));
+            ghostIcon.style.width = originalCardSlot.dragSprite.rect.width;
+            ghostIcon.style.height = originalCardSlot.dragSprite.rect.height;
+        }
+        else
+        {
+            ghostIcon.style.backgroundImage = null;
+            ghostIcon.style.width = 20;
+            ghostIcon.style.height = 20;
+        }
+
         // Move GhostIcon to drag position and make it visible
         ghostIcon.style.top = position.y - ghostIcon.layout.height / 2;
         ghostIcon.style.left = position.x - ghostIcon.layout.width / 2;
-
         ghostIcon.style.visibility = Visibility.Visible;
     }
 
@@ -151,7 +165,7 @@ public class HandUIController : MonoBehaviour
     }
 
     // Called by the local manager to add cards to the UI
-    public bool AddCard(int cardID, Texture2D cardTexture, int qwiexCost)
+    public bool AddCard(int cardID, Texture2D cardTexture, Sprite dragSprite, int qwiexCost)
     {
         // Have we found a place for the card?
         bool cardPlaced = false;
@@ -165,6 +179,7 @@ public class HandUIController : MonoBehaviour
                 // Place the card
                 slot.cardID = cardID;
                 slot.SetCardImage(cardTexture);
+                slot.SetDragSprite(dragSprite);
                 slot.SetQwiexCost(qwiexCost);
                 cardPlaced = true;
             }
