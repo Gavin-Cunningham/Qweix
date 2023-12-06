@@ -182,6 +182,8 @@ public class LocalManager : NetworkBehaviour
     }
 
     // Called by the Hand UI controller after a drag-and-drop of a card
+
+    //Have playcard return a bool for whether the card is played or not
     public void PlayCard(int cardID, Vector2 mouseUpLocation)
     {
         // Raycast from the drag-and-drop location through a zero plane
@@ -277,6 +279,11 @@ public class LocalManager : NetworkBehaviour
             // Set the next card image
             handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
         }
+        else
+        {
+            //
+        }
+        //Call HandUIController.EnableOriginalCardSlot()
     }
 
     private void SpawnUnitMethod(int unitCCNumber, Vector3 spawnLocation)

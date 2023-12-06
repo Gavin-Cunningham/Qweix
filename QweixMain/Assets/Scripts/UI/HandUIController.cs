@@ -139,6 +139,8 @@ public class HandUIController : MonoBehaviour
             // Tell the local manager to play the card at the designated location
             localManager.PlayCard(originalCardSlot.cardID, new Vector2(evt.position.x, Screen.height - evt.position.y));
 
+            //Move this (stuff below) to EnableOriginalCardSlot() to be called by LocalManager
+
             // Enable the original card slot and remove the reference
             originalCardSlot.EnableSlot();
             originalCardSlot = null;
