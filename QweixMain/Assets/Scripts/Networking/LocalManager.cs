@@ -22,7 +22,7 @@ using UnityEngine.AI;
 
 public class LocalManager : NetworkBehaviour
 {
-
+    public static LocalManager instance { get; private set; }
     // Reference to CardCore library
     public CardCoreLibrary cardCoreLibrary;
 
@@ -33,9 +33,10 @@ public class LocalManager : NetworkBehaviour
     public EmoteUIController emoteUIController;
 
     private GameObject spawnedUnit = null;
-    [SerializeField] float TowerZone;
-    // Team variable for testing purposes
-    public int currentTeam = 1;
+    [SerializeField] float TowerZone = 5.0f;
+    
+    public GameObject player1Camera;
+    public GameObject player2Camera;
 
     // Timer variable for testing purposes
     private float testTimer;
@@ -45,18 +46,31 @@ public class LocalManager : NetworkBehaviour
     public bool useTestingCardCores;
 
     // Decks for testing purposes
-    private QwiexDeck ironCreekGangTestDeck;
-    private QwiexDeck necroMastersTestDeck;
-
-    // Player for testing purposes
-    private QwiexPlayer testPlayer;
+    public QwiexDeck ironCreekGangTestDeck { get; private set; }
+    public QwiexDeck necroMastersTestDeck { get; private set; }
 
     // Which deck to use for testing
     public CardTribe testTribe;
 
+    private List<QwiexPlayer> players = new List<QwiexPlayer>();
+
+
+    private void Awake()
+    {
+        if(instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
+        
+
         if (cardCoreLibrary == null)
         {
             Debug.Log("CardCoreLibrary reference not set");
@@ -98,90 +112,39 @@ public class LocalManager : NetworkBehaviour
             }
         }
 
-        testPlayer = new QwiexPlayer();
-
-        if (testTribe == CardTribe.IronCreekGang)
-        {
-            testPlayer.playerDeck = ironCreekGangTestDeck;
-        }
-        else if (testTribe == CardTribe.NecroMasters)
-        {
-            testPlayer.playerDeck = necroMastersTestDeck;
-        }
-        else
-        {
-            Debug.Log("No test deck found for " + testTribe.ToString());
-        }
-
-        testPlayer.playerDeck.ShuffleDeck();
-        testPlayer.playerHand = new QwiexHand();
-
-        if (useTestingCardCores)
-        {
-            // Create a new deck of the test cards
-            QwiexDeck testCardDeck = new QwiexDeck();
-
-            // Add test cards to hand UI
-            foreach (CardCore cardCore in testingCardCores)
-            {
-                if (cardCore == null)
-                {
-                    Debug.Log("Testing CardCore missing");
-                }
-                else
-                {
-                    testCardDeck.AddCard(cardCore);
-                    handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
-                }
-            }
-
-            testPlayer.playerDeck = testCardDeck;
-        }
-        else
-        {
-            // Draw cards from deck
-            for (int i = 0; i < QwiexHand.HandSize; i++)
-            {
-                CardCore cardCore = testPlayer.playerDeck.DrawCard();
-
-                handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
-
-                testPlayer.playerHand.AddCard(cardCore);
-            }
-        }
-
-        /*
-        // Add generic cards to the hand UI
-        for (int i=1; i<HandUIController.numberOfCardSlots+1; i++)
-        {
-            handUIController.AddCard(i, cardCoreLibrary.GetCardCore(i).cardPicture, cardCoreLibrary.GetCardCore(i).qwiexCost);
-        }
-        */
-
-        handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
-
-        testPlayer.Qwiex = 0f;
-
         testTimer = 120f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (testPlayer.Qwiex <= QwiexBarUIController.numberOfQuiexBars)
+        if (players.Count >= 1)
         {
-            testPlayer.Qwiex += Time.deltaTime * 0.5f;
+            PlayerQwiexManagement();
+            qwiexBarUIController.SetQwiexLevel(players[(int)OwnerClientId].Qwiex.Value);
+            handUIController.UpdateCardAvailability(players[(int)OwnerClientId].Qwiex.Value);
+
+            testTimer -= Time.deltaTime;
+
+            timerUIController.SetTimer(testTimer);
         }
-
-        qwiexBarUIController.SetQwiexLevel(testPlayer.Qwiex);
-        handUIController.UpdateCardAvailability(testPlayer.Qwiex);
-
-        testTimer -= Time.deltaTime;
-
-        timerUIController.SetTimer(testTimer);
     }
 
-    // Called by the Hand UI controller after a drag-and-drop of a card
+    public void PlayerRegister(QwiexPlayer newPlayer)
+    {
+        players.Add(newPlayer);
+    }
+
+    public void PlayerQwiexManagement()
+    {
+        foreach(QwiexPlayer player in players)
+        {
+            if (player.Qwiex.Value <= QwiexBarUIController.numberOfQuiexBars)
+            {
+                player.Qwiex.Value += Time.deltaTime * 0.5f;
+            }
+        }
+    }
 
     //Have playcard return a bool for whether the card is played or not
     public void PlayCard(int cardID, Vector2 mouseUpLocation)
@@ -196,97 +159,65 @@ public class LocalManager : NetworkBehaviour
         Vector2 dropLocation = ray.GetPoint(distance);
         Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.0f);
 
-        // Instantiate the prefab
-        //GameObject prefabToSpawn = cardCoreLibrary.GetCardCore(cardID).prefabToSpawn;
-
         // Sends information to the server to spawn the given Unit
         SpawnUnitServerRpc(cardID, worldDropLocation);
-
-        //if (prefabToSpawn != null)
-        //{
-        //    //spawnedUnit = Instantiate(prefabToSpawn, worldDropLocation, Quaternion.identity);
-        //    ////THIS SHOULD END UP ON SERVERSIDE
-        //    //spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
-        //    ////spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
-        //    //if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
-        //    //{
-        //    //    targeting_Component.teamCheck = currentTeam;
-        //    //}
-        //}
-        //else
-        //{
-        //    Debug.Log("No prefab found in CardCoreLibrary for " + cardCoreLibrary.GetCardCore(cardID).cardName);
-        //}
-
-        // Spend the Qwiex
-        testPlayer.Qwiex -= cardCoreLibrary.GetCardCore(cardID).qwiexCost;
-
-        //// Remove the card from hand
-        //testPlayer.playerHand.RemoveCard(cardID);
-        //testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
-        //handUIController.RemoveCardFromHand(cardID);
-
-        //// Draw a new card
-        //CardCore drawnCard = testPlayer.playerDeck.DrawCard();
-        //testPlayer.playerHand.AddCard(drawnCard);
-        //handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.qwiexCost);
-
-        //// Set the next card image
-        //handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
-    }
-
-
-    private void OnConnectedToServer()
-    {
-        //set camera for player2
+        
     }
 
     [ServerRpc]
     private void SpawnUnitServerRpc(int CCNumber, Vector3 clientSpawnLocation)
     {
+
+        ClientRpcParams currentClientParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new List<ulong> { OwnerClientId }
+            }
+        };
+
         int ownerId = (int)OwnerClientId + 1;
 
         if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
         {
-            SpawnUnitMethod(CCNumber, clientSpawnLocation);
-            SpawnResultClientRpc(true, CCNumber);
+            SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
+            SpawnResultClientRpc(true, CCNumber, currentClientParams);
+            players[(int)OwnerClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
             Debug.Log("do the thing" + " " + ownerId);
         }
         else
         {
-            SpawnResultClientRpc(false, CCNumber);
+            SpawnResultClientRpc(false, CCNumber, currentClientParams);
             Debug.Log("dont do the thing" + " " + ownerId);
         }
     }
 
 
     [ClientRpc]
-    private void SpawnResultClientRpc(bool spawnSuccess, int cardID)
+    private void SpawnResultClientRpc(bool spawnSuccess, int cardID, ClientRpcParams currentClientID)
     {
 
         if (spawnSuccess)
         {
             // Remove the card from hand
-            testPlayer.playerHand.RemoveCard(cardID);
-            testPlayer.playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
+            players[(int)OwnerClientId].playerHand.RemoveCard(cardID);
+            players[(int)OwnerClientId].playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
             handUIController.RemoveCardFromHand(cardID);
 
             // Draw a new card
-            CardCore drawnCard = testPlayer.playerDeck.DrawCard();
-            testPlayer.playerHand.AddCard(drawnCard);
+            CardCore drawnCard = players[(int)OwnerClientId].playerDeck.DrawCard();
+            players[(int)OwnerClientId].playerHand.AddCard(drawnCard);
             handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.dragSprite, drawnCard.dragSpriteScale, drawnCard.qwiexCost);
 
             // Set the next card image
-            handUIController.SetNextCard(testPlayer.playerDeck.NextCard().cardPicture);
+            handUIController.SetNextCard(players[(int)OwnerClientId].playerDeck.NextCard().cardPicture);
+
         }
-        else
-        {
-            //
-        }
-        //Call HandUIController.EnableOriginalCardSlot()
+        // Allows the card slot in the players hand to be used again
+        handUIController.EnableOriginalCardSlot();
     }
 
-    private void SpawnUnitMethod(int unitCCNumber, Vector3 spawnLocation)
+    private void SpawnUnitMethod(int unitCCNumber, Vector3 spawnLocation, int team)
     {
         GameObject unitPrefab = cardCoreLibrary.GetCardCore(unitCCNumber).prefabToSpawn;
 
@@ -296,7 +227,7 @@ public class LocalManager : NetworkBehaviour
         //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
         if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
         {
-            targeting_Component.teamCheck = currentTeam;
+            targeting_Component.teamCheck = team;
         }
     }
 
@@ -305,8 +236,7 @@ public class LocalManager : NetworkBehaviour
     {
         GameObject[] Towers;
         bool canSpawn = false;
-        //navmeshhit test to see if the location is on navmesh
-        //NavMeshHit hit;
+
         if (NavMesh.SamplePosition(spawnPoint, out NavMeshHit hit, .1f, NavMesh.AllAreas))
         {
             //the mouse location was on navmesh
