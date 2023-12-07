@@ -31,6 +31,8 @@ public class LocalManager : NetworkBehaviour
     public QwiexBarUIController qwiexBarUIController;
     public TimerUIController timerUIController;
     public EmoteUIController emoteUIController;
+    public float qwiexUpdateTimer;
+
 
     private GameObject spawnedUnit = null;
     [SerializeField] float TowerZone = 5.0f;
@@ -120,7 +122,11 @@ public class LocalManager : NetworkBehaviour
     {
         if (players.Count >= 1)
         {
-            PlayerQwiexManagement();
+            if (IsServer)
+            {
+                PlayerQwiexManagement();
+            }
+            
             qwiexBarUIController.SetQwiexLevel(players[(int)OwnerClientId].Qwiex.Value);
             handUIController.UpdateCardAvailability(players[(int)OwnerClientId].Qwiex.Value);
 
@@ -135,20 +141,28 @@ public class LocalManager : NetworkBehaviour
         players.Add(newPlayer);
     }
 
-    public void PlayerQwiexManagement()
+    private void PlayerQwiexManagement()
     {
-        foreach(QwiexPlayer player in players)
+        if (qwiexUpdateTimer > 2.0f)
         {
-            if (player.Qwiex.Value <= QwiexBarUIController.numberOfQuiexBars)
+            foreach (QwiexPlayer player in players)
             {
-                player.Qwiex.Value += Time.deltaTime * 0.5f;
+                if (player.Qwiex.Value <= QwiexBarUIController.numberOfQuiexBars)
+                {
+                        player.Qwiex.Value += 1.0f;
+                }
             }
+            qwiexUpdateTimer = 0.0f;
         }
+
+        qwiexUpdateTimer += Time.deltaTime;
     }
 
     //Have playcard return a bool for whether the card is played or not
     public void PlayCard(int cardID, Vector2 mouseUpLocation)
     {
+        if (IsClient)
+        {
         // Raycast from the drag-and-drop location through a zero plane
         Ray ray = Camera.main.ScreenPointToRay(mouseUpLocation);
         Plane zeroPlane = new Plane(Vector3.forward, Vector3.zero);
@@ -161,10 +175,10 @@ public class LocalManager : NetworkBehaviour
 
         // Sends information to the server to spawn the given Unit
         SpawnUnitServerRpc(cardID, worldDropLocation);
-        
+        }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void SpawnUnitServerRpc(int CCNumber, Vector3 clientSpawnLocation)
     {
 

@@ -34,13 +34,19 @@ public class QwiexPlayer : NetworkBehaviour
 
     private void Start()
     {
-        teamNum.Value = (int)OwnerClientId + 1;
+        if (IsServer)
+        {
+            teamNum.Value = (int)OwnerClientId + 1;
+        }
 
-        if(teamNum.Value != 1)
+
+        if(!IsServer)
         {
             LocalManager.instance.player1Camera.SetActive(false);
 
             LocalManager.instance.player2Camera.SetActive(true);
+
+            Debug.Log("player2 has connected");
         }
 
         LocalManager.instance.PlayerRegister(this);

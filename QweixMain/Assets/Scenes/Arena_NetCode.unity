@@ -1552,9 +1552,10 @@ MonoBehaviour:
   qwiexBarUIController: {fileID: 1743489149}
   timerUIController: {fileID: 1743489148}
   emoteUIController: {fileID: 1743489147}
+  qwiexUpdateTimer: 0
   TowerZone: 5
-  player1Camera: {fileID: 0}
-  player2Camera: {fileID: 0}
+  player1Camera: {fileID: 1671646464075619001}
+  player2Camera: {fileID: 1970058814}
   testingCardCores:
   - {fileID: 245230820}
   - {fileID: 656155584}
@@ -2183,7 +2184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ProtocolType: 0
   m_MaxPacketQueueSize: 128
-  m_MaxPayloadSize: 6144
+  m_MaxPayloadSize: 6480
   m_HeartbeatTimeoutMS: 500
   m_ConnectTimeoutMS: 1000
   m_MaxConnectAttempts: 60
@@ -3615,7 +3616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2d93e4f6ff40548a2039ace666d388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localManager: {fileID: 571977412}
 --- !u!114 &1743489147
 MonoBehaviour:
   m_ObjectHideFlags: 0

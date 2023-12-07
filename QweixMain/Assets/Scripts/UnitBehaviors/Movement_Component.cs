@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
 public class Movement_Component : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class Movement_Component : MonoBehaviour
 
     void Update()
     {
-        SetTargetPosition();
-        SetAgentPosition();
+
+            SetTargetPosition();
+            SetAgentPosition();
+
     }
 
     public void SetNewTarget(GameObject newTarget)
