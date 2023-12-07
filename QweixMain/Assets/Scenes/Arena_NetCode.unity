@@ -1553,7 +1553,6 @@ MonoBehaviour:
   timerUIController: {fileID: 1743489148}
   emoteUIController: {fileID: 1743489147}
   TowerZone: 5
-  currentTeam: 1
   player1Camera: {fileID: 0}
   player2Camera: {fileID: 0}
   testingCardCores:
@@ -4737,14 +4736,6 @@ PrefabInstance:
     - target: {fileID: 4356210612692090488, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: m_Name
       value: CardCoreLibrary
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364649304740938176, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: dragSprite
-      value: 
-      objectReference: {fileID: -1468675494, guid: 363bfe942f7662845a3878c2f2bf4614, type: 3}
-    - target: {fileID: 8364649304740938176, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
-      propertyPath: dragSpriteScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
