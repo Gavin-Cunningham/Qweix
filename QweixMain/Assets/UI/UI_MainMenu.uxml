@@ -15,12 +15,12 @@
                 <ui:Button text="Create&#10;Lobby" display-tooltip-when-elided="true" name="CreateLobbyButton" class="menuButton" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="JoinGamePanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px;">
+        <ui:VisualElement name="JoinGamePanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px; display: none;">
             <ui:VisualElement name="LobbiesLabelPanel" style="align-items: center;">
                 <ui:Label text="Lobbies" display-tooltip-when-elided="true" name="LobbiesLabel" enable-rich-text="false" style="font-size: 120px;" />
             </ui:VisualElement>
-            <ui:ScrollView name="LobbyScrollView" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" style="flex-grow: 0; min-width: auto; min-height: auto; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; height: 710px;">
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+            <ui:ScrollView name="LobbyScrollView" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" style="flex-grow: 0; min-width: auto; min-height: auto; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; height: 710px; display: flex;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -37,7 +37,7 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -54,7 +54,7 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -71,7 +71,7 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -88,7 +88,7 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -105,7 +105,7 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -122,7 +122,41 @@
                         <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyMapPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Map" display-tooltip-when-elided="true" name="LobbyMapLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerCountPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="1/2" display-tooltip-when-elided="true" name="LobbyPlayerCountLabel" style="width: 90px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyJoinPanel" style="font-size: 60px; justify-content: center; min-width: 0; padding-top: 10px; padding-bottom: 10px;">
+                        <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyMapPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Map" display-tooltip-when-elided="true" name="LobbyMapLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerCountPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="1/2" display-tooltip-when-elided="true" name="LobbyPlayerCountLabel" style="width: 90px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyJoinPanel" style="font-size: 60px; justify-content: center; min-width: 0; padding-top: 10px; padding-bottom: 10px;">
+                        <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="LobbyJoinButton" style="font-size: 40px; background-color: rgb(1, 152, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; flex-shrink: 0; width: 250px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="LobbyPanel" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 20px; margin-top: 0; margin-bottom: 20px; padding-left: 20px;">
                     <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
                         <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
                     </ui:VisualElement>
@@ -140,6 +174,44 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="InLobbyPanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px; display: flex;">
+            <ui:VisualElement name="LobbyNameLabelPanel" style="align-items: center;">
+                <ui:Label text="Lobby: &lt;Lobby Name&gt;" display-tooltip-when-elided="true" name="LobbyNameLabel" enable-rich-text="false" style="font-size: 120px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="LobbyPlayersPanel" style="flex-grow: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-left-color: rgba(0, 0, 0, 255); border-right-color: rgba(0, 0, 0, 255); border-top-color: rgba(0, 0, 0, 255); border-bottom-color: rgba(0, 0, 0, 255);">
+                <ui:VisualElement name="LobbyPlayer" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 0; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyPlayerNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Player Name" display-tooltip-when-elided="true" name="LobbyPlayerNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerFactionPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Faction" display-tooltip-when-elided="true" name="LobbyPlayerFactionLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerReadyPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Ready?" display-tooltip-when-elided="true" name="LobbyPlayerReadyLabel" style="width: 200px; color: rgb(0, 0, 0); background-color: rgb(212, 221, 0); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px; align-items: auto; -unity-text-align: upper-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="LobbyPlayer" style="flex-direction: row; height: 100px; background-color: rgb(0, 147, 125); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 0; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyPlayerNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Player Name" display-tooltip-when-elided="true" name="LobbyPlayerNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerFactionPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Faction" display-tooltip-when-elided="true" name="LobbyPlayerFactionLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 99, 84); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerReadyPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Ready!" display-tooltip-when-elided="true" name="LobbyPlayerReadyLabel" style="width: 200px; color: rgb(0, 0, 0); background-color: rgb(36, 221, 0); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px; align-items: auto; -unity-text-align: upper-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="InLobbyButtonsPanel" style="flex-direction: row; margin-top: 20px; padding-left: 500px; padding-right: 500px;">
+                <ui:Button text="Start&#10;Game" display-tooltip-when-elided="true" name="StartGameButton" class="menuButton" />
+                <ui:VisualElement name="InLobbyButtonsPanelSpacer" style="flex-grow: 1;" />
+                <ui:Button text="Leave&#10;Lobby" display-tooltip-when-elided="true" name="LeaveLobbyButton" class="menuButton" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="MenuBarPanel" style="height: 150px; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(161, 155, 14); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 0; border-top-left-radius: 25px; border-bottom-left-radius: 0; border-top-right-radius: 25px; border-bottom-right-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
