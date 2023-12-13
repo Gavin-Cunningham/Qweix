@@ -42,8 +42,8 @@ public class Movement_Component : MonoBehaviour
     void Update()
     {
 
-            SetTargetPosition();
-            SetAgentPosition();
+        SetTargetPosition();
+        SetAgentPosition();
 
     }
 

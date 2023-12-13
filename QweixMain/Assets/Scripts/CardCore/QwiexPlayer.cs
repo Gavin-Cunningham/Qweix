@@ -45,8 +45,11 @@ public class QwiexPlayer : NetworkBehaviour
             LocalManager.instance.player1Camera.SetActive(false);
 
             LocalManager.instance.player2Camera.SetActive(true);
-
-            Debug.Log("player2 has connected");
+            if(LocalManager.instance.player2Camera.activeSelf == true)
+            {
+                Debug.Log("player2 has connected");
+            }
+            
         }
 
         LocalManager.instance.PlayerRegister(this);

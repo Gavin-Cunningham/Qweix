@@ -127,8 +127,8 @@ public class LocalManager : NetworkBehaviour
                 PlayerQwiexManagement();
             }
             
-            qwiexBarUIController.SetQwiexLevel(players[(int)OwnerClientId].Qwiex.Value);
-            handUIController.UpdateCardAvailability(players[(int)OwnerClientId].Qwiex.Value);
+            qwiexBarUIController.SetQwiexLevel(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
+            handUIController.UpdateCardAvailability(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
 
             testTimer -= Time.deltaTime;
 
@@ -186,17 +186,17 @@ public class LocalManager : NetworkBehaviour
         {
             Send = new ClientRpcSendParams
             {
-                TargetClientIds = new List<ulong> { OwnerClientId }
+                TargetClientIds = new List<ulong> { NetworkManager.Singleton.LocalClientId }
             }
         };
 
-        int ownerId = (int)OwnerClientId + 1;
+        int ownerId = (int)NetworkManager.Singleton.LocalClientId + 1;
 
         if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
         {
             SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
             SpawnResultClientRpc(true, CCNumber, currentClientParams);
-            players[(int)OwnerClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
+            players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
             Debug.Log("do the thing" + " " + ownerId);
         }
         else
@@ -214,17 +214,17 @@ public class LocalManager : NetworkBehaviour
         if (spawnSuccess)
         {
             // Remove the card from hand
-            players[(int)OwnerClientId].playerHand.RemoveCard(cardID);
-            players[(int)OwnerClientId].playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
+            players[(int)NetworkManager.Singleton.LocalClientId].playerHand.RemoveCard(cardID);
+            players[(int)NetworkManager.Singleton.LocalClientId].playerDeck.AddCard(cardCoreLibrary.GetCardCore(cardID));
             handUIController.RemoveCardFromHand(cardID);
 
             // Draw a new card
-            CardCore drawnCard = players[(int)OwnerClientId].playerDeck.DrawCard();
-            players[(int)OwnerClientId].playerHand.AddCard(drawnCard);
+            CardCore drawnCard = players[(int)NetworkManager.Singleton.LocalClientId].playerDeck.DrawCard();
+            players[(int)NetworkManager.Singleton.LocalClientId].playerHand.AddCard(drawnCard);
             handUIController.AddCard(drawnCard.cardID, drawnCard.cardPicture, drawnCard.dragSprite, drawnCard.dragSpriteScale, drawnCard.qwiexCost);
 
             // Set the next card image
-            handUIController.SetNextCard(players[(int)OwnerClientId].playerDeck.NextCard().cardPicture);
+            handUIController.SetNextCard(players[(int)NetworkManager.Singleton.LocalClientId].playerDeck.NextCard().cardPicture);
 
         }
         // Allows the card slot in the players hand to be used again
@@ -237,7 +237,7 @@ public class LocalManager : NetworkBehaviour
 
         spawnedUnit = Instantiate(unitPrefab, spawnLocation, Quaternion.identity);
         //THIS SHOULD END UP ON SERVERSIDE
-        spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
+        spawnedUnit.GetComponent<NetworkObject>().Spawn(true);        
         //spawnedUnit.GetComponent<Targeting_Component>().teamCheck = currentTeam;
         if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
         {
