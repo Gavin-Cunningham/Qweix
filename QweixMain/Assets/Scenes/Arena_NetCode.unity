@@ -447,13 +447,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5070375451665544217, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1409065832
+      objectReference: {fileID: 0}
     - target: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_Name
       value: Necro_Kingtower_R
       objectReference: {fileID: 0}
     - target: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1102967394638338075, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_Enabled
@@ -1526,8 +1530,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 571977413}
-  - component: {fileID: 571977412}
   - component: {fileID: 571977414}
+  - component: {fileID: 571977412}
   m_Layer: 0
   m_Name: LocalManager
   m_TagString: Untagged
@@ -1556,6 +1560,10 @@ MonoBehaviour:
   TowerZone: 5
   player1Camera: {fileID: 1671646464075619001}
   player2Camera: {fileID: 1970058814}
+  teamOneKTSpawnPoint: {fileID: 812958926}
+  teamTwoKTSpawnPoint: {fileID: 1502887814}
+  kingTowerICG: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
+  kingTowerNecro: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
   testingCardCores:
   - {fileID: 245230820}
   - {fileID: 656155584}
@@ -1976,6 +1984,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &812958926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812958927}
+  m_Layer: 0
+  m_Name: Team1KTSpawnLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &812958927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812958926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866973471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,6 +3124,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1502887814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502887815}
+  m_Layer: 0
+  m_Name: Team2KTSpawnLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502887815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502887814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1549251667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5593,13 +5663,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5070375451665544217, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 115368667
+      objectReference: {fileID: 0}
     - target: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_Name
       value: Necro_Kingtower_L
       objectReference: {fileID: 0}
     - target: {fileID: 650302105190365423, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692830232234846254, guid: 5191c4b3d2662f849b2f419c9d6f8b6e, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag

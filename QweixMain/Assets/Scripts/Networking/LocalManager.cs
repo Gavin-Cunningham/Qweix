@@ -40,6 +40,12 @@ public class LocalManager : NetworkBehaviour
     public GameObject player1Camera;
     public GameObject player2Camera;
 
+    [SerializeField] private GameObject teamOneKTSpawnPoint;
+    [SerializeField] private GameObject teamTwoKTSpawnPoint;
+    [SerializeField] private GameObject kingTowerICG;
+    [SerializeField] private GameObject kingTowerNecro;
+
+
     // Timer variable for testing purposes
     private float testTimer;
 
@@ -138,7 +144,8 @@ public class LocalManager : NetworkBehaviour
 
     public void PlayerRegister(QwiexPlayer newPlayer)
     {
-        players.Add(newPlayer);
+        players.Add(newPlayer);        
+        SpawnKingTower(newPlayer);
     }
 
     private void PlayerQwiexManagement()
@@ -282,6 +289,41 @@ public class LocalManager : NetworkBehaviour
 
         return canSpawn;
     }
+
+    private void SpawnKingTower(QwiexPlayer player)
+    {
+        GameObject KTSpawnPoint;
+        GameObject KTPrefab;
+        
+        if(player.teamNum.Value == 1)
+        {
+            KTSpawnPoint = teamOneKTSpawnPoint;
+            KTPrefab = kingTowerICG;
+        }
+        else
+        {
+            KTSpawnPoint = teamTwoKTSpawnPoint;
+            KTPrefab = kingTowerNecro;
+        }
+
+        GameObject spawnedKT = Instantiate(KTPrefab, KTSpawnPoint.transform.position, Quaternion.identity);
+        spawnedKT.GetComponent<NetworkObject>().Spawn(true);
+        if (spawnedKT.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+        {
+            targeting_Component.teamCheck = player.teamNum.Value;
+        }
+
+        //if(player.playerDeck ==  inroncreakgamedeck)
+        //{
+        //    spawnedUnit correct town for deck type
+        //}
+        //if (player.playerDeck == vampiredeck)
+        //{
+        //    spawnedUnit correct town for deck type
+        //}
+
+    }
+
 
 
     GameObject[] FindGameObjectsWithTags(params string[] tags)
