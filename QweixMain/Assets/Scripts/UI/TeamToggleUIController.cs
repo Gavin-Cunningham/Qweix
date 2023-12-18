@@ -13,52 +13,52 @@
 ****************************************************************************/
 
 
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-//public class TeamToggleUIController : MonoBehaviour
-//{
+public class TeamToggleUIController : MonoBehaviour
+{
 
-//    // Reference to local manager
-//    public LocalManager localManager;
+    //    // Reference to local manager
+    //    public LocalManager localManager;
 
-//    // References to various UI elements
-//    private VisualElement uiRoot;
-//    private Button teamToggleButton;
+    //    // References to various UI elements
+    //    private VisualElement uiRoot;
+    //    private Button teamToggleButton;
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        if (localManager == null)
-//        {
-//            Debug.Log("LocalManager reference not set");
-//        }
+    //    // Start is called before the first frame update
+    //    void Start()
+    //    {
+    //        if (localManager == null)
+    //        {
+    //            Debug.Log("LocalManager reference not set");
+    //        }
 
-//        // Set reference to the root UI element
-//        uiRoot = GetComponent<UIDocument>().rootVisualElement;
+    //        // Set reference to the root UI element
+    //        uiRoot = GetComponent<UIDocument>().rootVisualElement;
 
-//        VisualElement teamTogglePanel = uiRoot.Q<VisualElement>("TeamTogglePanel");
-        
-//        teamToggleButton = new Button { name = "TeamToggleButton" };
-//        teamToggleButton.AddToClassList("teamToggleButton");
-//        teamToggleButton.text = "Team " + localManager.currentTeam.ToString();
-//        teamToggleButton.RegisterCallback<ClickEvent>(TeamToggleButtonClick);
-//        teamTogglePanel.Add(teamToggleButton);
-//    }
+    //        VisualElement teamTogglePanel = uiRoot.Q<VisualElement>("TeamTogglePanel");
 
-//    private void TeamToggleButtonClick(ClickEvent evt)
-//    {
-//        if(localManager.currentTeam == 1)
-//        {
-//            localManager.currentTeam = 2;
-//        }
-//        else
-//        {
-//            localManager.currentTeam = 1;
-//        }
+    //        teamToggleButton = new Button { name = "TeamToggleButton" };
+    //        teamToggleButton.AddToClassList("teamToggleButton");
+    //        teamToggleButton.text = "Team " + localManager.currentTeam.ToString();
+    //        teamToggleButton.RegisterCallback<ClickEvent>(TeamToggleButtonClick);
+    //        teamTogglePanel.Add(teamToggleButton);
+    //    }
 
-//        teamToggleButton.text = "Team " + localManager.currentTeam.ToString();
-//    }
-//}
+    //    private void TeamToggleButtonClick(ClickEvent evt)
+    //    {
+    //        if(localManager.currentTeam == 1)
+    //        {
+    //            localManager.currentTeam = 2;
+    //        }
+    //        else
+    //        {
+    //            localManager.currentTeam = 1;
+    //        }
+
+    //        teamToggleButton.text = "Team " + localManager.currentTeam.ToString();
+    //    }
+}
