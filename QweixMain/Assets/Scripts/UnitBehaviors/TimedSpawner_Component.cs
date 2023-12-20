@@ -24,8 +24,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Unity.Netcode;
 
-public class TimedSpawner_Component : MonoBehaviour
+public class TimedSpawner_Component : NetworkBehaviour
 {
     [Tooltip("What prefab should this object spawn?")]
     public GameObject objectToSpawn;
@@ -44,6 +45,8 @@ public class TimedSpawner_Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!IsHost) { return; }
+
         spawnCountdown = spawnRate;
 
         if (objectToSpawn == null)
@@ -57,6 +60,8 @@ public class TimedSpawner_Component : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsHost) { return; }
+
         if (spawnForever || (spawnCount <= maxSpawnCount))
         {
             if (spawnCountdown <= 0)

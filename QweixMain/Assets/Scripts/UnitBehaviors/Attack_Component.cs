@@ -28,8 +28,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Attack_Component : MonoBehaviour
+public class Attack_Component : NetworkBehaviour
 {
     //The length of the pause between attacks
     [Tooltip("How long should the unit pause between attack animations (in seconds)")]
@@ -50,6 +51,8 @@ public class Attack_Component : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if (!IsHost) { return; }
+
         targeting_Component = GetComponent<Targeting_Component>();
 
         if (targeting_Component == null)
@@ -70,6 +73,8 @@ public class Attack_Component : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsHost) { return; }
+
         switch (attackState)
         {
             case AttackState.WaitingForTarget:

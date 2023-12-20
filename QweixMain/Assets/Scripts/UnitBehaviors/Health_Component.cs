@@ -26,8 +26,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Unity.Netcode;
 
-public class Health_Component : MonoBehaviour    
+public class Health_Component : NetworkBehaviour    
 {
     // Maximum health available
     public float maxHealth;
@@ -44,6 +45,8 @@ public class Health_Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!IsServer) { return; }
+
         if (maxHealth <= 0)
         {
             Debug.Log("Max Health value not set");

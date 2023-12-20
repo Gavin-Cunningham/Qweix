@@ -42,6 +42,8 @@ public class RangedAttack_Component : Attack_Component
 
     public override void Start()
     {
+        if (!IsHost) { return; }
+
         originTransform = GetComponent<Transform>();
         base.Start();
     }

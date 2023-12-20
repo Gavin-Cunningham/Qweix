@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class GroupContainer_Component : MonoBehaviour
+public class GroupContainer_Component : NetworkBehaviour
 {
     [SerializeField] List<GameObject> SpawningPrefabs;
     [SerializeField] private float spawnRadius;
 
     void Start()
     {
+        if (!IsHost) { return; }
+
         Vector3 spawnLocationDiference = new Vector3(spawnRadius, 0, 0);
         Vector3 nextSpawnLocation = transform.position + spawnLocationDiference;
 

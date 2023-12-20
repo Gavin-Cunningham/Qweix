@@ -35,7 +35,7 @@ public class LocalManager : NetworkBehaviour
 
 
     private GameObject spawnedUnit = null;
-    [SerializeField] float TowerZone = 5.0f;
+    [SerializeField] float TowerZone = 10.0f;
     
     public GameObject player1Camera;
     public GameObject player2Camera;
@@ -144,6 +144,7 @@ public class LocalManager : NetworkBehaviour
 
     public void PlayerRegister(QwiexPlayer newPlayer)
     {
+        Debug.Log("player team number is " + newPlayer.teamNum.Value);
         players.Add(newPlayer);        
         SpawnKingTower(newPlayer);
     }
@@ -178,32 +179,33 @@ public class LocalManager : NetworkBehaviour
 
         // Convert the screen drag-and-drop location to world coordinates
         Vector2 dropLocation = ray.GetPoint(distance);
-        Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.0f);
-
+        Vector3 worldDropLocation = new Vector3(dropLocation.x, dropLocation.y, 0.0f);   
+        
         // Sends information to the server to spawn the given Unit
-        SpawnUnitServerRpc(cardID, worldDropLocation);
+        ServerRpcParams sendingClientID = new ServerRpcParams   {   };
+        SpawnUnitServerRpc(cardID, worldDropLocation, sendingClientID);
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SpawnUnitServerRpc(int CCNumber, Vector3 clientSpawnLocation)
+    private void SpawnUnitServerRpc(int CCNumber, Vector3 clientSpawnLocation, ServerRpcParams serverParams)
     {
 
         ClientRpcParams currentClientParams = new ClientRpcParams
         {
             Send = new ClientRpcSendParams
             {
-                TargetClientIds = new List<ulong> { NetworkManager.Singleton.LocalClientId }
+                TargetClientIds = new List<ulong> { serverParams.Receive.SenderClientId }
             }
         };
 
-        int ownerId = (int)NetworkManager.Singleton.LocalClientId + 1;
+        int ownerId = (int)serverParams.Receive.SenderClientId + 1;
 
         if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
         {
             SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
             SpawnResultClientRpc(true, CCNumber, currentClientParams);
-            players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
+            players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
             Debug.Log("do the thing" + " " + ownerId);
         }
         else
@@ -292,35 +294,38 @@ public class LocalManager : NetworkBehaviour
 
     private void SpawnKingTower(QwiexPlayer player)
     {
-        GameObject KTSpawnPoint;
-        GameObject KTPrefab;
-        
-        if(player.teamNum.Value == 1)
+        if (IsServer)
         {
-            KTSpawnPoint = teamOneKTSpawnPoint;
-            KTPrefab = kingTowerICG;
-        }
-        else
-        {
-            KTSpawnPoint = teamTwoKTSpawnPoint;
-            KTPrefab = kingTowerNecro;
+            GameObject KTSpawnPoint;
+            GameObject KTPrefab;
+
+            if (player.teamNum.Value == 1)
+            {
+                KTSpawnPoint = teamOneKTSpawnPoint;
+                KTPrefab = kingTowerICG;
+            }
+            else
+            {
+                KTSpawnPoint = teamTwoKTSpawnPoint;
+                KTPrefab = kingTowerNecro;
+            }
+
+            GameObject spawnedKT = Instantiate(KTPrefab, KTSpawnPoint.transform.position, Quaternion.identity);
+            spawnedKT.GetComponent<NetworkObject>().Spawn(true);
+            if (spawnedKT.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+            {
+                targeting_Component.teamCheck = player.teamNum.Value;
+            }
+            //if(player.playerDeck ==  inroncreakgamedeck)
+            //{
+            //    spawnedUnit correct town for deck type
+            //}
+            //if (player.playerDeck == vampiredeck)
+            //{
+            //    spawnedUnit correct town for deck type
+            //}
         }
 
-        GameObject spawnedKT = Instantiate(KTPrefab, KTSpawnPoint.transform.position, Quaternion.identity);
-        spawnedKT.GetComponent<NetworkObject>().Spawn(true);
-        if (spawnedKT.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
-        {
-            targeting_Component.teamCheck = player.teamNum.Value;
-        }
-
-        //if(player.playerDeck ==  inroncreakgamedeck)
-        //{
-        //    spawnedUnit correct town for deck type
-        //}
-        //if (player.playerDeck == vampiredeck)
-        //{
-        //    spawnedUnit correct town for deck type
-        //}
 
     }
 

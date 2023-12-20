@@ -19,8 +19,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Unity.Netcode;
 
-public class Animation_Component : MonoBehaviour
+public class Animation_Component : NetworkBehaviour
 {
     NavMeshAgent agent;
     Animator controller;
@@ -30,6 +31,7 @@ public class Animation_Component : MonoBehaviour
     //Gets the components necessary to reference
     private void Start()
     {
+        if (!IsHost) { return; }
         if (GetComponent<NavMeshAgent>() != null)
         {
             agent = GetComponent<NavMeshAgent>();
@@ -41,6 +43,7 @@ public class Animation_Component : MonoBehaviour
 
     private void Update()
     {
+        if (!IsHost) { return; }
         if (agent != null)
         {
             FindMoveDirection();

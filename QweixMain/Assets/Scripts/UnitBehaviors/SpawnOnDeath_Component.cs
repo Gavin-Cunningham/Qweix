@@ -23,8 +23,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Unity.Netcode;
 
-public class SpawnOnDeath_Component : MonoBehaviour
+public class SpawnOnDeath_Component : NetworkBehaviour
 {
 	[Tooltip("Prefabs which the unit will spawn at its position upon death. Does not pass the prefabs any information, such as team or damage.")]
     public List<GameObject> objectsToSpawn;
@@ -33,6 +34,8 @@ public class SpawnOnDeath_Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		if (!IsHost) { return; }
+
 		if (objectsToSpawn == null)
 		{
 			Debug.Log("Objects to Spawn list not set");
@@ -49,12 +52,6 @@ public class SpawnOnDeath_Component : MonoBehaviour
 		}
 
         originTransform = GetComponent<Transform>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 	public void Spawn()
