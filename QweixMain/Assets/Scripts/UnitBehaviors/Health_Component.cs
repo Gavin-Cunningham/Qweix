@@ -120,7 +120,7 @@ public class Health_Component : NetworkBehaviour
         OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
-
-        Destroy(gameObject);
+        GetComponent<NetworkObject>().Despawn(true);
+        //Destroy(gameObject);
     }
 }

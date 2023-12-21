@@ -37,6 +37,7 @@ public class QwiexPlayer : NetworkBehaviour
         if (IsServer)
         {
             teamNum.Value = (int)OwnerClientId + 1;
+            Debug.Log("clientID is " + (int)OwnerClientId + 1);
         }
 
 
@@ -67,19 +68,22 @@ public class QwiexPlayer : NetworkBehaviour
             Debug.Log("No test deck found for " + OwnerClientId.ToString());
         }
 
-        playerDeck.ShuffleDeck();
-        playerHand = new QwiexHand();
-
-        for (int i = 0; i < QwiexHand.HandSize; i++)
+        if (IsOwner)
         {
-            CardCore cardCore = playerDeck.DrawCard();
+            playerDeck.ShuffleDeck();
+            playerHand = new QwiexHand();
 
-            LocalManager.instance.handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
+            for (int i = 0; i < QwiexHand.HandSize; i++)
+            {
+                CardCore cardCore = playerDeck.DrawCard();
 
-            playerHand.AddCard(cardCore);
+                LocalManager.instance.handUIController.AddCard(cardCore.cardID, cardCore.cardPicture, cardCore.dragSprite, cardCore.dragSpriteScale, cardCore.qwiexCost);
+
+                playerHand.AddCard(cardCore);
+            }
+
+            LocalManager.instance.handUIController.SetNextCard(this.playerDeck.NextCard().cardPicture);
         }
-
-        LocalManager.instance.handUIController.SetNextCard(this.playerDeck.NextCard().cardPicture);
     }
 
 }

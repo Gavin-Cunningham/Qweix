@@ -29,6 +29,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
+
 
 public class RangedAttack_Component : Attack_Component
 {
@@ -55,10 +57,11 @@ public class RangedAttack_Component : Attack_Component
 
 	private void FireProjectile()
 	{
+        if (!IsHost) { return; }
         if (!canAttack) { return; }
 
 		GameObject proj = Instantiate(projectile, new Vector3 (originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion (0, 0, 0, 0));
-        //GameObject proj = Instantiate(projectile);
+        proj.GetComponent<NetworkObject>().Spawn(true);
 
         proj.SendMessage("SetTarget", attackTarget, SendMessageOptions.DontRequireReceiver);
         proj.SendMessage("SetDamage", attackDamage, SendMessageOptions.DontRequireReceiver);

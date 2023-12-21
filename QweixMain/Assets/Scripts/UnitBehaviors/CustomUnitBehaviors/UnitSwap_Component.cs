@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
-public class UnitSwap_Component : MonoBehaviour
+public class UnitSwap_Component : NetworkBehaviour
 {
     [SerializeField] private GameObject newUnitPrefab;
 
@@ -19,6 +20,8 @@ public class UnitSwap_Component : MonoBehaviour
 
     public virtual void UnitSwapEvent()
     {
+        if (!IsHost) { return; }
+
         if (!unitSwapEventCalled)
         {
             unitSwapEventCalled = true;
@@ -30,6 +33,7 @@ public class UnitSwap_Component : MonoBehaviour
     {
         //Spawn in new unit which will replace old one.
         GameObject NewUnit = Instantiate(newUnitPrefab, transform.position, new Quaternion(0, 0, 0, 0));
+        NewUnit.GetComponent<NetworkObject>().Spawn(true);
         //Copy team to new unit.
         NewUnit.GetComponent<Targeting_Component>().teamCheck = GetComponent<Targeting_Component>().teamCheck;
 
@@ -41,6 +45,8 @@ public class UnitSwap_Component : MonoBehaviour
 
 
         //Destroy old unit so that the new unit may reign!
-        Destroy(gameObject);
+
+        gameObject.GetComponent<NetworkObject>().Despawn(true);
+        //Destroy(gameObject);
     }
 }

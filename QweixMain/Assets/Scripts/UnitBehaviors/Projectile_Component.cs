@@ -127,7 +127,8 @@ public class Projectile_Component : NetworkBehaviour
     {
         if (target == null || !target.activeInHierarchy)
         {
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
     }
 
@@ -146,8 +147,8 @@ public class Projectile_Component : NetworkBehaviour
         if(target != null)
         {
             target.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver );
-
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
 
     }
@@ -178,7 +179,8 @@ public class Projectile_Component : NetworkBehaviour
     {
         if(target == deadUnit)
         {
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
     }
 }

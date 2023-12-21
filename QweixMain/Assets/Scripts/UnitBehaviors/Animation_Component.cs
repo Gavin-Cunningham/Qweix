@@ -96,6 +96,8 @@ public class Animation_Component : NetworkBehaviour
     //Called by the animator to let the Attack_Component know the animation is done
     public void AnimationFinished()
     {
+        if (!IsHost) { return; }
+
         controller.SetBool("isAttacking", false);
     }
 

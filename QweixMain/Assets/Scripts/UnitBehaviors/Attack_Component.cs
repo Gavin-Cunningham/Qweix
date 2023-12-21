@@ -151,6 +151,8 @@ public class Attack_Component : NetworkBehaviour
 
     public void AnimationFinished()
     {
+        if (!IsHost) { return; }
+
         attackCountdown = attackFrequency;
 
         animation_Component.AnimationFinished();

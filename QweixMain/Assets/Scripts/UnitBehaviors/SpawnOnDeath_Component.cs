@@ -58,7 +58,8 @@ public class SpawnOnDeath_Component : NetworkBehaviour
 	{
 		foreach (GameObject objectToSpawn in objectsToSpawn)
         {
-            Instantiate(objectToSpawn, new Vector3(originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
-        }
+            GameObject spawnedObject = Instantiate(objectToSpawn, new Vector3(originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+			spawnedObject.GetComponent<NetworkObject>().Spawn(true);
+		}
 	}
 }
