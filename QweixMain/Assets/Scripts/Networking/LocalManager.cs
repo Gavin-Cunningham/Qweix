@@ -45,10 +45,16 @@ public class LocalManager : NetworkBehaviour
     [SerializeField] private GameObject kingTowerICG;
     [SerializeField] private GameObject kingTowerNecro;
 
+    private GameObject player1KT;
+    private GameObject player2KT;
+
+    [SerializeField] private GameObject victoryPopUp;
+    [SerializeField] private GameObject defeatPopUp;
+
 
     // Timer variable for testing purposes
     private NetworkVariable<float> matchTimer = new NetworkVariable<float>(120f);
-
+    public NetworkVariable<bool> matchActive = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     // CardCores for testing purposes
     public CardCore[] testingCardCores = new CardCore[QwiexHand.HandSize];
     public bool useTestingCardCores;
@@ -128,20 +134,23 @@ public class LocalManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (players.Count >= 1)
+        if (matchActive.Value == true)
         {
-            if (IsServer)
+            if (players.Count >= 1)
             {
-                PlayerQwiexManagement();
+                if (IsServer)
+                {
+                    PlayerQwiexManagement();
+                }
+
+                qwiexBarUIController.SetQwiexLevel(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
+                handUIController.UpdateCardAvailability(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
+                if (IsServer)
+                {
+                    matchTimer.Value -= Time.deltaTime;
+                }
+                timerUIController.SetTimer(matchTimer.Value);
             }
-            
-            qwiexBarUIController.SetQwiexLevel(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
-            handUIController.UpdateCardAvailability(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
-            if(IsServer)
-            {
-                matchTimer.Value -= Time.deltaTime;
-            }
-            timerUIController.SetTimer(matchTimer.Value);
         }
     }
 
@@ -150,6 +159,10 @@ public class LocalManager : NetworkBehaviour
         Debug.Log("player team number is " + newPlayer.teamNum.Value);
         players.Add(newPlayer);        
         SpawnKingTower(newPlayer);
+        if(newPlayer.teamNum.Value == 2)
+        {
+            matchActive.Value = true;
+        }
     }
 
     private void PlayerQwiexManagement()
@@ -315,24 +328,24 @@ public class LocalManager : NetworkBehaviour
 
             GameObject spawnedKT = Instantiate(KTPrefab, KTSpawnPoint.transform.position, Quaternion.identity);
             spawnedKT.GetComponent<NetworkObject>().Spawn(true);
+            
             if (spawnedKT.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
             {
                 targeting_Component.teamCheck = player.teamNum.Value;
             }
-            //if(player.playerDeck ==  inroncreakgamedeck)
-            //{
-            //    spawnedUnit correct town for deck type
-            //}
-            //if (player.playerDeck == vampiredeck)
-            //{
-            //    spawnedUnit correct town for deck type
-            //}
+
+            if(player.teamNum.Value == 1)
+            {
+                player1KT = spawnedKT;
+            }
+            
+            if(player.teamNum.Value == 2)
+            {
+                player2KT = spawnedKT;
+            }
+
         }
-
-
     }
-
-
 
     GameObject[] FindGameObjectsWithTags(params string[] tags)
     {
@@ -344,5 +357,46 @@ public class LocalManager : NetworkBehaviour
         }
 
         return allTowers.ToArray();
+    }
+
+    private void OnEnable()
+    {
+        Health_Component.OnUnitDeath += UnitDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health_Component.OnUnitDeath -= UnitDeath;
+    }
+
+    //This helps the unit realize its target is dead
+    private void UnitDeath(GameObject deadUnit)
+    {
+        if (deadUnit = player1KT)
+        {
+            matchActive.Value = false;
+            MatchResultClientRpc(2);
+        }
+        
+        if (deadUnit = player2KT)
+        {
+            matchActive.Value = false;
+            MatchResultClientRpc(1);
+        }
+        
+    }
+
+
+    [ClientRpc]
+    private void MatchResultClientRpc(int gameWinner)
+    {
+        if (((int)NetworkManager.Singleton.LocalClientId + 1) == gameWinner)
+        {
+            victoryPopUp.SetActive(true);
+        }
+        else
+        {
+            defeatPopUp.SetActive(true);
+        }
     }
 }

@@ -82,15 +82,22 @@ public class HandUIController : MonoBehaviour
 
     private void Update()
     {
-        // IF the mouse button is down and we are dragging
-        if (Input.GetMouseButton(0))
+        if (localManager.matchActive.Value == true)
         {
-            if (isDragging)
+            // IF the mouse button is down and we are dragging
+            if (Input.GetMouseButton(0))
             {
-                // Move GhostIcon to cursor position
-                ghostIcon.style.top = (Screen.height - Input.mousePosition.y) - ghostIcon.layout.height / 2;
-                ghostIcon.style.left = Input.mousePosition.x - ghostIcon.layout.width / 2;
+                if (isDragging)
+                {
+                    // Move GhostIcon to cursor position
+                    ghostIcon.style.top = (Screen.height - Input.mousePosition.y) - ghostIcon.layout.height / 2;
+                    ghostIcon.style.left = Input.mousePosition.x - ghostIcon.layout.width / 2;
+                }
             }
+        }
+        else
+        {
+            isDragging = false;
         }
     }
 
