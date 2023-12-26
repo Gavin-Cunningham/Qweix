@@ -37,7 +37,7 @@ public class QwiexPlayer : NetworkBehaviour
         if (IsServer)
         {
             teamNum.Value = (int)OwnerClientId + 1;
-            Debug.Log("clientID is " + (int)OwnerClientId + 1);
+            Debug.Log("clientID is " + ((int)OwnerClientId + 1));
         }
 
 

@@ -222,12 +222,10 @@ public class LocalManager : NetworkBehaviour
             SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
             SpawnResultClientRpc(true, CCNumber, currentClientParams);
             players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
-            Debug.Log("do the thing" + " " + ownerId);
         }
         else
         {
             SpawnResultClientRpc(false, CCNumber, currentClientParams);
-            Debug.Log("dont do the thing" + " " + ownerId);
         }
     }
 
@@ -333,7 +331,6 @@ public class LocalManager : NetworkBehaviour
             {
                 targeting_Component.teamCheck = player.teamNum.Value;
             }
-
             if(player.teamNum.Value == 1)
             {
                 player1KT = spawnedKT;
@@ -372,13 +369,13 @@ public class LocalManager : NetworkBehaviour
     //This helps the unit realize its target is dead
     private void UnitDeath(GameObject deadUnit)
     {
-        if (deadUnit = player1KT)
+        if (deadUnit == player1KT)
         {
             matchActive.Value = false;
             MatchResultClientRpc(2);
         }
         
-        if (deadUnit = player2KT)
+        if (deadUnit == player2KT)
         {
             matchActive.Value = false;
             MatchResultClientRpc(1);
