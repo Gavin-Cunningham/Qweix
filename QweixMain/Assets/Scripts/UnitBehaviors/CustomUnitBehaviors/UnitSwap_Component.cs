@@ -40,7 +40,7 @@ public class UnitSwap_Component : NetworkBehaviour
         //Copy over Health percentage from old unit to new.
         Health_Component newUnitHealth = newUnitPrefab.GetComponent<Health_Component>();
         Health_Component oldUnitHealth = GetComponent<Health_Component>();
-        float damageAmount = newUnitHealth.maxHealth * (1 - (oldUnitHealth.currentHealth / oldUnitHealth.maxHealth));
+        float damageAmount = newUnitHealth.maxHealth * (1 - (oldUnitHealth.currentHealth.Value / oldUnitHealth.maxHealth));
         NewUnit.GetComponent<UnitSwapPostInitialize_Component>().damageAmount = damageAmount;
 
 

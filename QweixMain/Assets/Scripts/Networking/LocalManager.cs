@@ -47,7 +47,7 @@ public class LocalManager : NetworkBehaviour
 
 
     // Timer variable for testing purposes
-    private float testTimer;
+    private NetworkVariable<float> matchTimer = new NetworkVariable<float>(120f);
 
     // CardCores for testing purposes
     public CardCore[] testingCardCores = new CardCore[QwiexHand.HandSize];
@@ -119,8 +119,10 @@ public class LocalManager : NetworkBehaviour
                 }
             }
         }
-
-        testTimer = 120f;
+        if (IsServer)
+        {
+            matchTimer.Value = 120f;
+        }
     }
 
     // Update is called once per frame
@@ -135,10 +137,11 @@ public class LocalManager : NetworkBehaviour
             
             qwiexBarUIController.SetQwiexLevel(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
             handUIController.UpdateCardAvailability(players[(int)NetworkManager.Singleton.LocalClientId].Qwiex.Value);
-
-            testTimer -= Time.deltaTime;
-
-            timerUIController.SetTimer(testTimer);
+            if(IsServer)
+            {
+                matchTimer.Value -= Time.deltaTime;
+            }
+            timerUIController.SetTimer(matchTimer.Value);
         }
     }
 
