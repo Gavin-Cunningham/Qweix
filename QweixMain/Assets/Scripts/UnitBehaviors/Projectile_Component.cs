@@ -25,8 +25,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Projectile_Component : MonoBehaviour
+public class Projectile_Component : NetworkBehaviour
 {
     [Tooltip("What will the projectile fly towards. Should be set by parent upon spawning. Do not change here.")]
     [SerializeField]
@@ -48,6 +49,8 @@ public class Projectile_Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!IsHost) { return; }
+
         projectileCollider = GetComponent<Collider2D>();
 
         if (projectileCollider == null)
@@ -66,6 +69,8 @@ public class Projectile_Component : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsHost) { return; }
+
         timeElapsed += Time.deltaTime;
 
         switch (projectileType)
@@ -122,7 +127,8 @@ public class Projectile_Component : MonoBehaviour
     {
         if (target == null || !target.activeInHierarchy)
         {
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
     }
 
@@ -141,8 +147,8 @@ public class Projectile_Component : MonoBehaviour
         if(target != null)
         {
             target.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver );
-
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
 
     }
@@ -173,7 +179,8 @@ public class Projectile_Component : MonoBehaviour
     {
         if(target == deadUnit)
         {
-            Destroy(this.gameObject);
+            GetComponent<NetworkObject>().Despawn(true);
+            //Destroy(this.gameObject);
         }
     }
 }
