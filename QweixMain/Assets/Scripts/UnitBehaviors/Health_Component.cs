@@ -11,14 +11,15 @@
 *  Requirements      : A Health Bar on the game object with the UI Image referenced as the healthBar variable
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 11/20/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added the OnUnitDeath event
 *                      -(10/04/2023) [Gavin] Added hiding of the health bar if the unit is at full health.
 *                      -This now requires that the Healthbar Hierarchy remains HealthbarBorder>HealthBarBackground>HealthBar in the prefab
 *                      -(11/20/2023) [Gavin] Made currentHealth public get, private set.
+*                      -(12/03/2023) [Gavin] Made Start() virtual and healthBarBorder protected to allow inheritors to edit (MoveableBar_Health_Component)
 *  External Documentation URL : https://trello.com/c/LVPox6UR/8-healthcomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 using System.Collections;
@@ -40,7 +41,7 @@ public class Health_Component : NetworkBehaviour
     // Reference to health bar UI
     public Image healthBar;
     private Image healthBarBackground;
-    private Image healthBarBorder;
+    protected Image healthBarBorder;
 
     // Start is called before the first frame update
     public override void OnNetworkSpawn()

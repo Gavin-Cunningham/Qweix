@@ -15,13 +15,14 @@
 *                      Animation_Component
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 10/09/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Made Start virtual so RangedAttack_Component can override.
 *                      -(10/04/2023) [Gavin] Changed GetComponentInChildren to GetComponent. Made attackCountdown private.
 *                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
+*                      -(12/03/2023) [Gavin] Removed redundant call to Animation_Component.AnimationFinished() (Animator already does this)
 *  External Documentation URL : https://trello.com/c/hIyVrf0V/6-attackcomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 
@@ -57,14 +58,14 @@ public class Attack_Component : NetworkBehaviour
 
         if (targeting_Component == null)
         {
-            Debug.Log("Targeting_Component not found");
+            Debug.Log(gameObject.name + "does not have a Targeting_Component");
         }
 
         animation_Component = GetComponent<Animation_Component>();
 
         if (animation_Component == null)
         {
-            Debug.Log("Animation_Component not found");
+            Debug.Log(gameObject.name + " does not have an Animation_Component");
         }
 
         attackState = AttackState.WaitingForTarget;
@@ -115,7 +116,7 @@ public class Attack_Component : NetworkBehaviour
             case AttackState.CoolingDown:
 
                 attackCountdown -= Time.deltaTime;
-                if (attackCountdown <= 0)
+                if (attackCountdown <= 0.0f)
                 {
                     attackState = AttackState.PursuingTarget;
                     canAttack = true;
@@ -155,11 +156,8 @@ public class Attack_Component : NetworkBehaviour
 
         attackCountdown = attackFrequency;
 
-        animation_Component.AnimationFinished();
-
-        attackState = AttackState.CoolingDown;
+            attackState = AttackState.CoolingDown;
     }
-
 }
 enum AttackState
 {

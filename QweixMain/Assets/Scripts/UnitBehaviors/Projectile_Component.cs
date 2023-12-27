@@ -18,7 +18,7 @@
 *                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/8pkDW1QT/13-projectilecomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 
@@ -63,7 +63,7 @@ public class Projectile_Component : NetworkBehaviour
         timeElapsed = 0f;
 
         //First float is time till first call, second float is time between calls
-        InvokeRepeating("IsTargetActive", 0.5f, 0.1f);
+        InvokeRepeating("IsTargetActive", 0.1f, 0.1f);
     }
 
     // Update is called once per frame

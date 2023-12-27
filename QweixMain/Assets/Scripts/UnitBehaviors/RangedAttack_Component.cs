@@ -15,14 +15,14 @@
 *                      Animation_Component
 *
 *  Programmer(s)     : Gabe Burch, Gavin Cunningham
-*  Last Modification : 10/09/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(08/17/23) [Gavin] Added the parentTransform to allow the projectile to spawn on the unit. Added override Start to setup.
 *                      -(10/04/2023) [Gavin] Added "Don't require listener" to sendMessage calls. This is the workaround in leiu of using UnityEvents.
 *                      -Changed damage amount to be fed by RangedAttack_Component to Projectile_Component on projectile. Keeps unit settings on unit.
 *                      -(10/09/2023) [Gavin] Added Tooltips to all public and Serialized Fields
 *  External Documentation URL : https://trello.com/c/oSgNaDkq/10-rangedattackcomponent
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 
@@ -52,7 +52,7 @@ public class RangedAttack_Component : Attack_Component
 
     public override void AnimationTrigger()
 	{
-		FireProjectile();
+            FireProjectile();
     }
 
 	private void FireProjectile()

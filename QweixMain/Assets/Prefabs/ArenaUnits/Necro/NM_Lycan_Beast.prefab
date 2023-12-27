@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 5
   healthBar: {fileID: 1930273758070423476}
 --- !u!195 &3431885501068774725
 NavMeshAgent:
@@ -209,8 +209,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 292047
-  m_SortingLayer: 0
+  m_SortingLayerID: -540552733
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1759263694, guid: f3f30bb4ed247f84eb474d305a74a5af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

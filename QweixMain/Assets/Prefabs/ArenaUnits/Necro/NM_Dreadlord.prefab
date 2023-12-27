@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5139446290107214678}
+  - component: {fileID: 8846215164835520284}
   - component: {fileID: 298393386212320609}
   - component: {fileID: 2417688574359532451}
   - component: {fileID: 6417525054859899976}
@@ -48,6 +49,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8846215164835520284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470750445074387459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8687444d9d7b68489e20275031535d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &298393386212320609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 2470750445074387459}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b12e3f7cde97f94daad3f72c9d2e67c, type: 2}
+  m_Controller: {fileID: 9100000, guid: f734a06a67207b64ea59b924463b7f86, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

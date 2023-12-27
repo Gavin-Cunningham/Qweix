@@ -1,3 +1,20 @@
+/****************************************************************************
+*
+*  File              : DemolitionistBomb_Component.cs
+*  Date Created      : 11/22/2023 
+*  Description       : This goes on the bomb prefab that the demolitionist plants.
+*  It hands receiving the targeting & damage info and issuing damage. & blinking.
+*
+*  Programmer(s)     : Gavin Cunningham
+*  Last Modification : 
+*  Additional Notes  : 
+
+*  External Documentation URL :
+*****************************************************************************
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
+****************************************************************************/
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,15 +22,20 @@ using UnityEngine;
 
 public class DemolitionistBomb_Component : MonoBehaviour
 {
+    [Tooltip("Optional Prefab for an explosion effect to play after the bomb blows up.")]
     [SerializeField] private GameObject explosionPrefab = null;
+
     [NonSerialized] public GameObject currentTarget;
     [NonSerialized] public float countdownTime = 3.0f;
     private float countdownTimeTotal;
     [NonSerialized] public float bombDamage = 5.0f;
 
     private float warningCountdown;
+    [Tooltip("How often should the bomb blink. Speed up over time.")]
     [SerializeField] private float warningBlinkLength = 1.0f;
+    [Tooltip("How fast after blinking should the bomb return to its normal color.")]
     [SerializeField, Range(0.0f, 2.0f)] private float warnColorFadeRate = 1.0f;
+    [Tooltip("What color should the bomb blink. Default is red")]
     [SerializeField] private Color warnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
 
@@ -27,13 +49,18 @@ public class DemolitionistBomb_Component : MonoBehaviour
     {
         if (currentTarget == null)
         {
+            //If our target is already destroyed, go ahead and blow up to clear the field.
             BlowUp();
         }
+
+        //When timer is up, blow up and deal damage.
         countdownTime -= Time.deltaTime;
         if (countdownTime < 0)
         {
             BlowUp();
         }
+
+        //Flash to show that we are getting closer to blowing up.
         CountdownFlashing();
     }
 

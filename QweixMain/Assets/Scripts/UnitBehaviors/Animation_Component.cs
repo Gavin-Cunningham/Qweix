@@ -6,11 +6,12 @@
 *  the movement from the navmesh system.
 *
 *  Programmer(s)     : Gavin Cunningham
-*  Last Modification : 08/18/2023
+*  Last Modification : 12/03/2023
 *  Additional Notes  : -(08/18/2023) [Gavin] Added TargetInRange and TargetLeftRange
+*                      -(12/02/2023) [Gavin] Made BeginAttackAnimation() and TargetLeftRange() virtual to allow inheritors to edit.
 *  External Documentation URL :
 *****************************************************************************
-       (c) Copyright 2022-2023 by MPoweredGames - All Rights Reserved      
+       (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
 ****************************************************************************/
 
 
@@ -23,10 +24,10 @@ using Unity.Netcode;
 
 public class Animation_Component : NetworkBehaviour
 {
-    NavMeshAgent agent;
-    Animator controller;
-    Transform targetTransform;
-    Transform parentTransform;
+    protected NavMeshAgent agent;
+    protected Animator controller;
+    private Transform targetTransform;
+    private Transform parentTransform;
 
     //Gets the components necessary to reference
     private void Start()
@@ -62,6 +63,7 @@ public class Animation_Component : NetworkBehaviour
         float speed = agent.desiredVelocity.magnitude;
         float xMove = agent.desiredVelocity.x;
         float yMove = agent.desiredVelocity.y;
+
         controller.SetFloat("Speed", speed);
         if (speed >= 0.1f)
         {
@@ -87,7 +89,7 @@ public class Animation_Component : NetworkBehaviour
     }
 
     //Called by the Attack_Component its children
-    public void BeginAttackAnimation()
+    public virtual void BeginAttackAnimation()
     {
         controller.SetBool("isAttacking", true);
         controller.Play("Attack");
@@ -108,7 +110,7 @@ public class Animation_Component : NetworkBehaviour
     }
 
     //Called by Targeting_Component with send.message
-    public void TargetLeftRange()
+    public virtual void TargetLeftRange()
     {
         controller.SetBool("isStopped", false);
     }
