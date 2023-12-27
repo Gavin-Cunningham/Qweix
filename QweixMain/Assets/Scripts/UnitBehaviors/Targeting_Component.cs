@@ -24,9 +24,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
 
-public class Targeting_Component : MonoBehaviour
+public class Targeting_Component : NetworkBehaviour
 {
     //Int value 1 for player 1 and 2 for player 2
     [Tooltip("What team is the unit on. Currently 1 is left side, 2 is right side. In multiplayer it will be 1 is host and 2 is client. 0 is enemy to all.")]
@@ -60,6 +61,8 @@ public class Targeting_Component : MonoBehaviour
     //Alter the second float in invoke repeatings to change how many seconds between each run of "findTarget"
     void Start()
     {
+        if (!IsHost) { return; }
+
         targetInRange = false;
         GetKingTower();
         currentTarget = KingTower;
@@ -68,11 +71,6 @@ public class Targeting_Component : MonoBehaviour
         InvokeRepeating("findTarget", 2.0f, 0.75f);
         InvokeRepeating("CheckCurrentRangeCT", 2.5f, 0.8f);
         GetMyTrigger();
-    }
-
-    void Awake()
-    {
-        
     }
 
     //This will need to be fixed when there are more than two players.
@@ -87,11 +85,10 @@ public class Targeting_Component : MonoBehaviour
             }
         }
 
-    }
-
-    void Update()
-    {
-        //findTarget();
+        if(KingTower == null)
+        {
+            KingTower = DefaultTarget.instance.gameObject;
+        }
     }
 
     void findTarget()

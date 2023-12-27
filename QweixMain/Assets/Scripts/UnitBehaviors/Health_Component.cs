@@ -27,12 +27,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Unity.Netcode;
 
-public class Health_Component : MonoBehaviour    
+public class Health_Component : NetworkBehaviour    
 {
     // Maximum health available
     public float maxHealth;
-    public float currentHealth { get; private set; }
+    public NetworkVariable<float> currentHealth = new NetworkVariable<float>();
 
     public static event Action<GameObject> OnUnitDeath;
     private GameObject thisUnit;
@@ -43,15 +44,17 @@ public class Health_Component : MonoBehaviour
     protected Image healthBarBorder;
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    public override void OnNetworkSpawn()
     {
+        //if (!IsServer) { return; }
+
         if (maxHealth <= 0)
         {
             Debug.Log("Max Health value not set");
         }
         else
         {
-            currentHealth = maxHealth;
+            currentHealth.Value = maxHealth;
         }
 
         if (healthBar == null)
@@ -71,15 +74,29 @@ public class Health_Component : MonoBehaviour
         healthBar.enabled = false;
         healthBarBackground.enabled = false;
         healthBarBorder.enabled = false;
+
+        currentHealth.OnValueChanged += OnHealthValueChange;
+
+    }
+
+    //public override void OnNetworkSpawn()
+    //{
+    //    currentHealth.OnValueChanged += OnHealthValueChange;
+    //}
+
+    public void OnHealthValueChange(float previous, float current)
+    {
+        UpdateHealthBar();
     }
 
     public void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
+        if(!IsServer){ return; }
+        currentHealth.Value -= damageAmount;
 
         UpdateHealthBar();
 
-        if (currentHealth <= 0)
+        if (currentHealth.Value <= 0)
         {
             Die();
         }
@@ -89,7 +106,7 @@ public class Health_Component : MonoBehaviour
     {
 
         //Unhide Healthbar is unit has taken damage
-        if (currentHealth < maxHealth)
+        if (currentHealth.Value < maxHealth)
         {
             healthBar.enabled = true;
             healthBarBackground.enabled = true;
@@ -103,7 +120,7 @@ public class Health_Component : MonoBehaviour
         }
 
         //Updates Healthbar fill amount
-        healthBar.fillAmount = currentHealth / maxHealth;
+        healthBar.fillAmount = currentHealth.Value / maxHealth;
     }
 
     private void Die()
@@ -118,7 +135,7 @@ public class Health_Component : MonoBehaviour
         OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
-
-        Destroy(gameObject);
+        GetComponent<NetworkObject>().Despawn(true);
+        //Destroy(gameObject);
     }
 }

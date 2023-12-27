@@ -6,7 +6,7 @@
 *
 *  Programmer(s)     : Gabe Burch
 *  Last Modification : 
-*  Additional Notes  : 
+*  Additional Notes  : -(12/06/23) [Gavin] Added dragSpriteScale
 *  External Documentation URL : 
 *****************************************************************************
        (c) Copyright 2022-2023 by Qweix - All Rights Reserved      
@@ -24,6 +24,8 @@ public class CardSlot : VisualElement
     public int cardQwiexCost;
     private VisualElement cardFace;
     private Label cardQwiexCostLabel;
+    public Sprite dragSprite;
+    public float dragSpriteScale;
     public bool enabled;
     
     public CardSlot()
@@ -73,6 +75,12 @@ public class CardSlot : VisualElement
     public void SetCardImage(Texture2D cardTexture)
     {
         cardFace.style.backgroundImage = new StyleBackground(Background.FromTexture2D(cardTexture));
+    }
+
+    public void SetDragSprite(Sprite sprite, float spriteScale)
+    {
+        dragSprite = sprite;
+        dragSpriteScale = spriteScale;
     }
 
     public void SetQwiexCost(int qwiexCost)

@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
 public class DemolitionistPlantBomb_Component : UnitSwap_Component
 {
@@ -66,6 +67,7 @@ public class DemolitionistPlantBomb_Component : UnitSwap_Component
 
         //Place the bomb on the map and set up its target, time remaining and damage from our local variables.
         GameObject bomb = Instantiate(bombPrefab, bombTarget, new Quaternion(0, 0, 0, 0));
+        bomb.GetComponent<NetworkObject>().Spawn(true);
         DemolitionistBomb_Component bombComponent = bomb.GetComponent<DemolitionistBomb_Component>();
         bombComponent.currentTarget = targetingComponent.currentTarget;
         bombComponent.countdownTime = bombCountdownTime;

@@ -41,6 +41,8 @@ public class MeleeAttack_Component : Attack_Component
 
     public void ApplyDamage()
     {
+        if (!IsHost) { return; }
+
         if (!canAttack) { return; }
 
         if (targeting_Component.currentTarget != null && canAttack == true)

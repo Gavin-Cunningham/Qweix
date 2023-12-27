@@ -19,8 +19,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
-public class Movement_Component : MonoBehaviour
+public class Movement_Component : NetworkBehaviour
 {
 
     GameObject currentTarget;
@@ -30,6 +31,8 @@ public class Movement_Component : MonoBehaviour
 
     void Awake()
     {
+        //if (!IsHost) { return; }
+
         if (gameObject.GetComponent<NavMeshAgent>() != null)
         {
             agent = gameObject.GetComponent<NavMeshAgent>();
@@ -41,8 +44,11 @@ public class Movement_Component : MonoBehaviour
 
     void Update()
     {
+        if (!IsHost) { return; }
+
         SetTargetPosition();
         SetAgentPosition();
+
     }
 
     public void SetNewTarget(GameObject newTarget)

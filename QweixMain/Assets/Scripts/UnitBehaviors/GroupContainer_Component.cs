@@ -18,25 +18,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class GroupContainer_Component : MonoBehaviour
+public class GroupContainer_Component : NetworkBehaviour
 {
+    [SerializeField] List<GameObject> SpawningPrefabs;
+    [SerializeField] private float spawnRadius;
 
     void Start()
     {
-        AssignChildrenTeams();
-        transform.DetachChildren();
-        Destroy(gameObject);
-    }
+        if (!IsHost) { return; }
 
-    private void AssignChildrenTeams()
-    {
+        Vector3 spawnLocationDiference = new Vector3(spawnRadius, 0, 0);
+        Vector3 nextSpawnLocation = transform.position + spawnLocationDiference;
+
         int groupTeam = GetComponent<Targeting_Component>().teamCheck;
-        Targeting_Component[] childrenTCs = GetComponentsInChildren<Targeting_Component>();
-
-        foreach (Targeting_Component tC in childrenTCs)
+        int numberOfSpawnables = SpawningPrefabs.Count;
+        int spawnRotation = 360 / numberOfSpawnables;
+       
+        foreach (GameObject spawnables in SpawningPrefabs)
         {
-            tC.teamCheck = groupTeam;
+            GameObject spawnedUnit = Instantiate(spawnables, nextSpawnLocation, Quaternion.identity);
+
+            if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+            {
+                targeting_Component.teamCheck = groupTeam;
+            }
+
+            spawnedUnit.GetComponent<NetworkObject>().Spawn(true);
+
+            spawnLocationDiference = Quaternion.Euler(0, 0, spawnRotation) * spawnLocationDiference;
+            nextSpawnLocation = (spawnLocationDiference) + transform.position;
+
         }
     }
 }
