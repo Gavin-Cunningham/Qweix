@@ -80,6 +80,10 @@ public class Attack_Component : NetworkBehaviour
         {
             case AttackState.WaitingForTarget:
 
+                if (targeting_Component.currentTarget != null)
+                {
+                    SetNewTarget(targeting_Component.currentTarget);
+                }
                 break;
 
 

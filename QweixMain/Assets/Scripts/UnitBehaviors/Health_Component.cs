@@ -43,6 +43,9 @@ public class Health_Component : NetworkBehaviour
     private Image healthBarBackground;
     protected Image healthBarBorder;
 
+    public float snapTime = 0.5f;
+    private Color snapColor = new Color(1.0f, 0f, 0.8f, 1.0f);
+
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
@@ -98,7 +101,7 @@ public class Health_Component : NetworkBehaviour
 
         if (currentHealth.Value <= 0)
         {
-            Die();
+            DeathSnap();
         }
     }
 
@@ -121,6 +124,11 @@ public class Health_Component : NetworkBehaviour
 
         //Updates Healthbar fill amount
         healthBar.fillAmount = currentHealth.Value / maxHealth;
+    }
+
+    private void DeathSnap()
+    {
+        GetComponent<Animator>().Play("Death");
     }
 
     private void Die()
