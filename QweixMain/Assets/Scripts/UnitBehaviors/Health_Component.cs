@@ -43,8 +43,7 @@ public class Health_Component : NetworkBehaviour
     private Image healthBarBackground;
     protected Image healthBarBorder;
 
-    public float snapTime = 0.5f;
-    private Color snapColor = new Color(1.0f, 0f, 0.8f, 1.0f);
+    [SerializeField] private bool leaveDebris = false;
 
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
@@ -101,7 +100,7 @@ public class Health_Component : NetworkBehaviour
 
         if (currentHealth.Value <= 0)
         {
-            DeathSnap();
+            DeathAnimation();
         }
     }
 
@@ -126,11 +125,12 @@ public class Health_Component : NetworkBehaviour
         healthBar.fillAmount = currentHealth.Value / maxHealth;
     }
 
-    private void DeathSnap()
+    private void DeathAnimation()
     {
         GetComponent<Animator>().Play("Death");
     }
 
+    //Now called by "death" animation event
     private void Die()
     {
         SpawnOnDeath_Component spawnOnDeath = GetComponentInChildren<SpawnOnDeath_Component>();
@@ -143,7 +143,10 @@ public class Health_Component : NetworkBehaviour
         OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
-        GetComponent<NetworkObject>().Despawn(true);
+        if (!leaveDebris)
+        {
+            GetComponent<NetworkObject>().Despawn(true);
+        }
         //Destroy(gameObject);
     }
 }

@@ -92,7 +92,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  currentHealth:
+    m_InternalValue: 0
   healthBar: {fileID: 8867737530312742834}
+  snapTime: 0.5
 --- !u!114 &1899376007474190337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d0d8536e29d600d44ace12ccbb958b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,8 +150,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -540552733
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2032170190, guid: 6ee3f63719906e44db2ee32b9eae1d39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

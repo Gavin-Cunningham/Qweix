@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3181648202535984080}
+  - component: {fileID: 3103571496820497048}
   - component: {fileID: 3651784785052158610}
   - component: {fileID: 3181648202535984093}
   - component: {fileID: 3181648202535984092}
@@ -101,7 +102,6 @@ GameObject:
   - component: {fileID: 4539426728506377415}
   - component: {fileID: -3832437835239432186}
   - component: {fileID: 3511566191834685570}
-  - component: {fileID: 3103571496820497048}
   m_Layer: 0
   m_Name: NM_Lycan_Human
   m_TagString: Untagged
@@ -126,6 +126,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3103571496820497048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181648202535984089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &3651784785052158610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  currentHealth:
+    m_InternalValue: 0
   healthBar: {fileID: 1823474344423450926}
+  snapTime: 0.5
 --- !u!195 &3181648202535984095
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -212,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 4592109077468454849, guid: 25aacbd9458c31a44881af3ab7b0306a, type: 3}
+  - {fileID: 5525194607051604226, guid: 4f5495b845f52834785de4d41ceb16c0, type: 3}
 --- !u!114 &8717032582351517144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +291,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d0d8536e29d600d44ace12ccbb958b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,8 +309,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -540552733
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -519710758, guid: ceb5d5a99a591674897e30cf3d2aa00e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -429,22 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3103571496820497048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181648202535984089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &7272092160390427037
 GameObject:
   m_ObjectHideFlags: 0
