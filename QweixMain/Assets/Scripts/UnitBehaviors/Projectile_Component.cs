@@ -38,10 +38,13 @@ public class Projectile_Component : NetworkBehaviour
     private float projectileDamage;
 
     [Tooltip("How long with the projectile be in the air")]
-    public float flightTime;
+    public float flightSpeed = 1.0f;
+    private float flightTime;
     private float timeElapsed;
 
     private Vector3 initialPosition;
+    private Vector3 projectilePreviousPosition;
+    private Vector3 projectileCurrentPosition;
 
     [Tooltip("Will the projectile move straight at the target or fly in a low or high arch?")]
     public ProjectileType projectileType;
@@ -64,6 +67,9 @@ public class Projectile_Component : NetworkBehaviour
 
         //First float is time till first call, second float is time between calls
         InvokeRepeating("IsTargetActive", 0.1f, 0.1f);
+
+        flightTime = (target.transform.position - initialPosition).magnitude / flightSpeed;
+        projectilePreviousPosition = (target.transform.position - initialPosition);
     }
 
     // Update is called once per frame
@@ -120,6 +126,12 @@ public class Projectile_Component : NetworkBehaviour
         }
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
+
+        projectileCurrentPosition = transform.position;
+        //transform.rotation = Quaternion.LookRotation((projectilePreviousPosition - projectileCurrentPosition).normalized);
+        //transform.eulerAngles = transform.
+        transform.RotateAround(transform.position, Vector3.forward, Vector3.Angle(projectileCurrentPosition, projectilePreviousPosition));
+        projectilePreviousPosition = projectileCurrentPosition;
     }
 
     //Destroys projectile when target is killed before projectile arrives. Called by Invoke Repeating.

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  flightTime: 0.5
+  flightSpeed: 5
   projectileType: 0
 --- !u!61 &6111191681040001439
 BoxCollider2D:

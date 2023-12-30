@@ -35,7 +35,6 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
     [Tooltip("What color should the warning blinks be? default is red")]
     [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
-    private bool mutationCalled = false;
 
     private void Awake()
     {
