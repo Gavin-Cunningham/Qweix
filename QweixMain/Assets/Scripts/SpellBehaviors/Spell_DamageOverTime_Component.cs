@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Spell_DamageOverTime_Component : Spell_BaseTriggered_Component
 {
-    private float totalDamage = 1.0f;
-    private float ticksPerSecond = 1.0f;
-    private float spellEffectTime = 5.0f;
+    [SerializeField] private float totalDamage = 1.0f;
+    [SerializeField] private float ticksPerSecond = 1.0f;
+    [SerializeField] private float spellEffectTime = 5.0f;
     private float spellTimeRemaining;
 
     protected override void SpellEffect()

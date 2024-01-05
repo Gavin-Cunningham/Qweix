@@ -320,7 +320,7 @@ MonoBehaviour:
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
   qwiexCost: 1
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  prefabToSpawn: {fileID: 4736452344946561977, guid: f5aaeb868b2308e42af74f767a9adb53, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 2
