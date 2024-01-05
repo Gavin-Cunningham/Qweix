@@ -108,7 +108,7 @@ public class LocalManager : NetworkBehaviour
         ironCreekGangTestDeck = new QwiexDeck();
         necroMastersTestDeck = new QwiexDeck();
 
-        for (int i = 1; i < 15; i++)
+        for (int i = 1; i <= cardCoreLibrary.transform.childCount; i++)
         {
             CardCore cardCore = cardCoreLibrary.GetCardCore(i);
 
