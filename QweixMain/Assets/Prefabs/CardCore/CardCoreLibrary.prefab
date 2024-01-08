@@ -317,8 +317,8 @@ MonoBehaviour:
   cardID: 16
   cardName: Necro Spell
   cardPicture: {fileID: 2800000, guid: 35a1765a8f22f28468dfdb051ecfeb56, type: 3}
-  dragSprite: {fileID: 0}
-  dragSpriteScale: 1
+  dragSprite: {fileID: 21300000, guid: f0002f568e2206149939747fd7deaee3, type: 3}
+  dragSpriteScale: 0.4
   qwiexCost: 1
   prefabToSpawn: {fileID: 4736452344946561977, guid: f5aaeb868b2308e42af74f767a9adb53, type: 3}
   cardTribe: 1
@@ -485,8 +485,8 @@ MonoBehaviour:
   cardID: 15
   cardName: ICG Spell
   cardPicture: {fileID: 2800000, guid: 345cd4cc2f36abe48b25eb80b69837be, type: 3}
-  dragSprite: {fileID: 0}
-  dragSpriteScale: 1
+  dragSprite: {fileID: 21300000, guid: 8e6c791ec3508704490924b0c35a887c, type: 3}
+  dragSpriteScale: 0.4
   qwiexCost: 1
   prefabToSpawn: {fileID: 2067141950529530791, guid: 0c60fb558f458ea4fb27a91bedfe78f7, type: 3}
   cardTribe: 0

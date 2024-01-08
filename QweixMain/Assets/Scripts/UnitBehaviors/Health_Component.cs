@@ -28,6 +28,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Unity.Netcode;
+using Unity.Mathematics;
 
 public class Health_Component : NetworkBehaviour    
 {
@@ -43,7 +44,9 @@ public class Health_Component : NetworkBehaviour
     private Image healthBarBackground;
     protected Image healthBarBorder;
 
-    [SerializeField] private bool leaveDebris = false;
+    [SerializeField] GameObject[] damageSplatter;
+    [SerializeField] float splatterThreshold = 1.0f;
+    [SerializeField] private bool deathAnimation = false;
 
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
@@ -98,6 +101,17 @@ public class Health_Component : NetworkBehaviour
 
         UpdateHealthBar();
 
+        if (damageAmount >= splatterThreshold)
+        {
+            if (damageSplatter != null)
+            {
+                foreach (GameObject splatterPrefab in damageSplatter)
+                {
+                    Instantiate(splatterPrefab, new Vector3(transform.position.x, transform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+                }
+            }
+        }
+
         if (currentHealth.Value <= 0)
         {
             DeathAnimation();
@@ -143,9 +157,13 @@ public class Health_Component : NetworkBehaviour
         OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
-        if (!leaveDebris)
+        if (!deathAnimation)
         {
             GetComponent<NetworkObject>().Despawn(true);
+        }
+        else
+        {
+            GetComponent<Animator>().Play("Death");
         }
         //Destroy(gameObject);
     }

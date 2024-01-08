@@ -95,7 +95,10 @@ MonoBehaviour:
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 8867737530312742834}
-  snapTime: 0.5
+  damageSplatter:
+  - {fileID: 8884124575831698885, guid: 7bd9ab12d50cdfb44af75cacecbdc3f5, type: 3}
+  splatterThreshold: 1
+  deathAnimation: 1
 --- !u!114 &1899376007474190337
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -113,7 +113,7 @@ public class LocalManager : NetworkBehaviour
             CardCore cardCore = cardCoreLibrary.GetCardCore(i);
 
             // Only grab cards that have an icon
-            if (cardCore.cardPicture != null)
+            if (cardCore.cardPicture != null && cardCore.enableInDeck != false)
             {
                 if (cardCore.cardTribe == CardTribe.IronCreekGang)
                 {
@@ -265,6 +265,10 @@ public class LocalManager : NetworkBehaviour
         if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
         {
             targeting_Component.teamCheck = team;
+        }
+        if (spawnedUnit.TryGetComponent<Spell_BaseTriggered_Component>(out Spell_BaseTriggered_Component spell_Component))
+        {
+            spell_Component.teamCheck = team;
         }
     }
 
