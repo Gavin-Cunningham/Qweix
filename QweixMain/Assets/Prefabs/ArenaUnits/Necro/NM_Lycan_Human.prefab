@@ -159,7 +159,7 @@ MonoBehaviour:
   mutationBar: {fileID: 5586237765793703001}
   mutationWarningBlinkLength: 1
   warnColorFadeRate: 1
-  mutationWarnColor: {r: 1, g: 0, b: 0, a: 255}
+  mutationWarnColor: {r: 1, g: 0.7341389, b: 0, a: 255}
 --- !u!114 &3181648202535984093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,9 @@ MonoBehaviour:
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 1823474344423450926}
-  snapTime: 0.5
+  damageSplatter: []
+  splatterThreshold: 1
+  deathAnimation: 0
 --- !u!195 &3181648202535984095
 NavMeshAgent:
   m_ObjectHideFlags: 0

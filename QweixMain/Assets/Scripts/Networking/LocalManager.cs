@@ -219,9 +219,9 @@ public class LocalManager : NetworkBehaviour
 
         if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
         {
+            players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
             SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
             SpawnResultClientRpc(true, CCNumber, currentClientParams);
-            players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
         }
         else
         {

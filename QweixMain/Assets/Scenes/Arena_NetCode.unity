@@ -5110,6 +5110,10 @@ PrefabInstance:
       propertyPath: qwiexCost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5784386349849093595, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
+      propertyPath: enableInDeck
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6476056795307788387, guid: d8721e9e7a8bcb648809e6611d3bccc1, type: 3}
       propertyPath: qwiexCost
       value: 1

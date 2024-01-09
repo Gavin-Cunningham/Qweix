@@ -35,6 +35,7 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
     [Tooltip("What color should the warning blinks be? default is red")]
     [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private bool useMutationWarnColor = false;
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationWarningBlinkLength -= Time.deltaTime / mutationTime;
 
         //Make the character the warning color if the interval has passed.
-        if (mutationWarningCountdown <= 0.0f)
+        if (mutationWarningCountdown <= 0.0f && useMutationWarnColor)
         {
             mutationWarningCountdown = mutationWarningBlinkLength;
             spriteRenderer.color = mutationWarnColor;
@@ -61,8 +62,11 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationWarningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / mutationWarningBlinkLength));
-        //spriteRenderer.color = spriteRenderer.color + warnColorFade;
+        if (useMutationWarnColor)
+        {
+            spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / mutationWarningBlinkLength));
+        }
+
 
         //Make the mutation bar drop as the time gets less.
         mutationBar.fillAmount = mutationRemainingTime / mutationTime;
