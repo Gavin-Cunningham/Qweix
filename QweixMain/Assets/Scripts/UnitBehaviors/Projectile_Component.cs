@@ -75,7 +75,7 @@ public class Projectile_Component : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsHost) { return; }
+        if (!IsServer) { return; }
 
         timeElapsed += Time.deltaTime;
 
@@ -127,10 +127,19 @@ public class Projectile_Component : NetworkBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
 
-        projectileCurrentPosition = transform.position;
+
         //transform.rotation = Quaternion.LookRotation((projectilePreviousPosition - projectileCurrentPosition).normalized);
         //transform.eulerAngles = transform.
-        transform.RotateAround(transform.position, Vector3.forward, Vector3.Angle(projectileCurrentPosition, projectilePreviousPosition));
+        //transform.RotateAround(transform.position, Vector3.forward, Vector3.Angle(projectilePreviousPosition, projectileCurrentPosition));
+        //Debug.Log(" " + Vector3.Angle(projectilePreviousPosition, projectileCurrentPosition));
+
+        projectileCurrentPosition = transform.position;
+        //Vector3 projectileLookTarget = projectileCurrentPosition + (projectileCurrentPosition - projectilePreviousPosition);
+
+        //transform.LookAt(projectileLookTarget);
+
+        Quaternion lookRotation = Quaternion.LookRotation(projectileCurrentPosition - projectilePreviousPosition);
+        transform.rotation = lookRotation;
         projectilePreviousPosition = projectileCurrentPosition;
     }
 

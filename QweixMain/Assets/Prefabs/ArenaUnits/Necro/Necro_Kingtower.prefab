@@ -96,8 +96,8 @@ MonoBehaviour:
     m_InternalValue: 0
   healthBar: {fileID: 8867737530312742834}
   damageSplatter:
-  - {fileID: 8884124575831698885, guid: 7bd9ab12d50cdfb44af75cacecbdc3f5, type: 3}
-  splatterThreshold: 1
+  - {fileID: 1206404530693259054, guid: 6e5156b9bbe3fdb4c9ccb31f6cb68d8e, type: 3}
+  splatterThreshold: 0
   deathAnimation: 1
 --- !u!114 &1899376007474190337
 MonoBehaviour:
@@ -115,6 +115,8 @@ MonoBehaviour:
   attackState: 0
   attackDamage: 1
   projectile: {fileID: 5836375932857795507, guid: 1d94226ca3b88bb47be70404cea93338, type: 3}
+  projectileSpawnDistance: 0
+  effects: []
 --- !u!212 &8604730891790213648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2032170190, guid: 6ee3f63719906e44db2ee32b9eae1d39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

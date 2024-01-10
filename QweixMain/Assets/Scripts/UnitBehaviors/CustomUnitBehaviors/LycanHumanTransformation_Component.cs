@@ -36,6 +36,7 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
     [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
     [SerializeField] private bool useMutationWarnColor = false;
+    private bool playTransformCalled = false;
 
     private void Awake()
     {
@@ -72,10 +73,11 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationBar.fillAmount = mutationRemainingTime / mutationTime;
 
         //Its mutation time!
-        if (mutationRemainingTime <= 0.0f)
+        if (mutationRemainingTime <= 0.0f && !playTransformCalled)
         {
             mutationRemainingTime = 1.0f;
             PlaySwapAnimation("Transform");
+            playTransformCalled = true;
         }
     }
 }

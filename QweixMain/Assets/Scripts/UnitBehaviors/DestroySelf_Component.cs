@@ -9,8 +9,8 @@ public class DestroySelf_Component : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsHost) { return; }
-        if (timeToDestroy != 0.0f)
+        if (!IsServer) { return; }
+        if (timeToDestroy > 0.0f)
         {
             timeToDestroy -= Time.deltaTime;
         }

@@ -160,6 +160,7 @@ MonoBehaviour:
   mutationWarningBlinkLength: 1
   warnColorFadeRate: 1
   mutationWarnColor: {r: 1, g: 0.7341389, b: 0, a: 255}
+  useMutationWarnColor: 0
 --- !u!114 &3181648202535984093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +313,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -519710758, guid: ceb5d5a99a591674897e30cf3d2aa00e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -507,7 +508,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -29964507
+  m_SortingLayerID: -1255524343
   m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!114 &1126206481148129474

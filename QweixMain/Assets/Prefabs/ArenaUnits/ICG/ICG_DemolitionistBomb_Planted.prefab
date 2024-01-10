@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 129
   m_Sprite: {fileID: 21300000, guid: 73dd5ab5f6e682b4197dd89a8cdf02bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7718b6d6eba5dd84ab380aba57143c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 0}
+  effectsList:
+  - {fileID: 5391756167207118790, guid: 2bc5bc7f846cbd84f9e5d5cf1eea6f70, type: 3}
+  - {fileID: 1361475170492566309, guid: 7c242d834807f7749b728b5a84e4804a, type: 3}
   warningBlinkLength: 1
   warnColorFadeRate: 1
-  warnColor: {r: 1, g: 0, b: 0, a: 1}
+  warnColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &-5400537929149715203
 MonoBehaviour:
   m_ObjectHideFlags: 0

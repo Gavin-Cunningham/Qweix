@@ -23,7 +23,7 @@ using UnityEngine;
 public class DemolitionistBomb_Component : MonoBehaviour
 {
     [Tooltip("Optional Prefab for an explosion effect to play after the bomb blows up.")]
-    [SerializeField] private GameObject explosionPrefab = null;
+    [SerializeField] private GameObject[] effectsList;
 
     [NonSerialized] public GameObject currentTarget;
     [NonSerialized] public float countdownTime = 3.0f;
@@ -70,9 +70,12 @@ public class DemolitionistBomb_Component : MonoBehaviour
         {
             currentTarget.SendMessage("TakeDamage", bombDamage, SendMessageOptions.DontRequireReceiver);
         }
-        if (explosionPrefab != null)
+        if (effectsList != null)
         {
-            Instantiate(explosionPrefab, transform.position, new Quaternion(0, 0, 0, 0));
+            foreach(GameObject effect in effectsList)
+            {
+                Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+            }
         }
         Destroy(gameObject);
     }
@@ -86,13 +89,13 @@ public class DemolitionistBomb_Component : MonoBehaviour
         if (warningCountdown <= 0.0f)
         {
             warningCountdown = warningBlinkLength;
-            spriteRenderer.color = warnColor;
+            spriteRenderer.material.color = warnColor;
         }
 
         //Countdown the interval for warning color.
         warningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
+        spriteRenderer.material.color = spriteRenderer.material.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
     }
 }
