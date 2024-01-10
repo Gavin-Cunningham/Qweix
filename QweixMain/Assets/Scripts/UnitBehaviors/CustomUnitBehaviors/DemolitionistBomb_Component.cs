@@ -96,6 +96,6 @@ public class DemolitionistBomb_Component : MonoBehaviour
         warningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.material.color = spriteRenderer.material.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
+        spriteRenderer.material.color = spriteRenderer.material.color - (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
     }
 }

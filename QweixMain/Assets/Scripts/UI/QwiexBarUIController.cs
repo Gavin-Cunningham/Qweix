@@ -108,12 +108,12 @@ public class QwiexBarUIController : MonoBehaviour
         foreach(VisualElement qwiexFullBar in qwiexFullBarList)
         {
             // If the index is less than Qwiex level, set the width to full
-            if(qwiexFullBarList.IndexOf(qwiexFullBar) < qwiexLevel - 1)
+            if(qwiexFullBarList.IndexOf(qwiexFullBar) <= qwiexLevel - 1)
             {
                 qwiexFullBar.style.width = Length.Percent(100);
             }
             // If the index is over the Qwiex level by less than one, set the width to the percentage
-            else if(qwiexFullBarList.IndexOf(qwiexFullBar) < qwiexLevel)
+            else if(qwiexFullBarList.IndexOf(qwiexFullBar) <= qwiexLevel)
             {
                 qwiexFullBar.style.width = Length.Percent((qwiexLevel % 1f) * 100);
             }
