@@ -126,7 +126,8 @@ public class Health_Component : NetworkBehaviour
             {
                 foreach (GameObject splatterPrefab in damageSplatter)
                 {
-                    Instantiate(splatterPrefab, new Vector3(transform.position.x, transform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+                    GameObject splatterGO = Instantiate(splatterPrefab, new Vector3(transform.position.x, transform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+                    splatterGO.GetComponent<NetworkObject>().Spawn(true);
                 }
             }
         }

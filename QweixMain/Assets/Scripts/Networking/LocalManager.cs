@@ -171,7 +171,7 @@ public class LocalManager : NetworkBehaviour
         {
             foreach (QwiexPlayer player in players)
             {
-                if (player.Qwiex.Value <= QwiexBarUIController.numberOfQuiexBars)
+                if (player.Qwiex.Value < QwiexBarUIController.numberOfQuiexBars)
                 {
                         player.Qwiex.Value += 1.0f;
                 }

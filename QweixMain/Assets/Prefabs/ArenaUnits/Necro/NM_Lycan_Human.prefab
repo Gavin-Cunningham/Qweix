@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.89411765}
+  m_Color: {r: 0.5990566, g: 0.8789027, b: 1, a: 0.89411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -159,8 +159,12 @@ MonoBehaviour:
   mutationBar: {fileID: 5586237765793703001}
   mutationWarningBlinkLength: 1
   warnColorFadeRate: 1
-  mutationWarnColor: {r: 1, g: 0.7341389, b: 0, a: 255}
+  mutationWarnColor: {r: 0, g: 0.8048501, b: 1, a: 255}
   useMutationWarnColor: 0
+  preSwapEffects:
+  - {fileID: 4495021456456088141, guid: ac874433100b586479a58bdfe53a3b81, type: 3}
+  swapEffects:
+  - {fileID: 6035616758425978495, guid: e25b89137a3105049893f2515827b598, type: 3}
 --- !u!114 &3181648202535984093
 MonoBehaviour:
   m_ObjectHideFlags: 0

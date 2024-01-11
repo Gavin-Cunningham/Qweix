@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,9 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
     private SpriteRenderer spriteRenderer;
     [SerializeField] private bool useMutationWarnColor = false;
     private bool playTransformCalled = false;
+
+    [SerializeField] private GameObject[] preSwapEffects;
+    [SerializeField] private GameObject[] swapEffects;
 
     private void Awake()
     {
@@ -77,7 +81,35 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         {
             mutationRemainingTime = 1.0f;
             PlaySwapAnimation("Transform");
+            GetComponent<Animator>().Play("TransformColor");
+            if (preSwapEffects != null)
+            {
+                foreach (GameObject effect in preSwapEffects)
+                {
+                    GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                    effectGO.GetComponent<NetworkObject>().Spawn(true);
+                }
+            }
             playTransformCalled = true;
+        }
+    }
+
+    public override void UnitSwapEvent()
+    {
+        if (!IsHost) { return; }
+
+        if (!unitSwapEventCalled)
+        {
+            unitSwapEventCalled = true;
+            if (swapEffects != null)
+            {
+                foreach (GameObject effect in swapEffects)
+                {
+                    GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                    effectGO.GetComponent<NetworkObject>().Spawn(true);
+                }
+            }
+            SwapUnits();
         }
     }
 }

@@ -23,7 +23,7 @@ public class UI_Manager : MonoBehaviour
 
     private void Start()
     {
-        //overlayImage.color = new Color(1, 1, 1, 1);
+        overlayImage.color = new Color(1, 1, 1, 1);
         LocalManager.instance.matchActive.OnValueChanged += OnMatchStateChange;
     }
 
@@ -31,26 +31,20 @@ public class UI_Manager : MonoBehaviour
     {
         if (true == current)
         {
-            //FadeTransition(overlayImage, false);
+            StartCoroutine(FadeImageToTransparent(overlayImage));
         }
     }
 
-    private void FadeTransition(RawImage image, bool visible)
+    IEnumerator FadeImageToTransparent(RawImage image)
     {
-        float alphaStart = image.color.a;
-        float alphaEnd;
-        if (visible) { alphaEnd = 1.0f; }
-        else { alphaEnd = 0.0f; }
+        Color alphaColor = image.color;
 
-
-        float fadeAmount = 0.0f;
-        Color setColor = new Color(1, 1, 1, 0);
-        while (image.color.a != alphaEnd)
+        for (float fadeAmount = 1f; fadeAmount >= 0; fadeAmount -= 0.01f)
         {
-            setColor.a = Mathf.Lerp(alphaStart, alphaEnd, fadeAmount);
-            Debug.Log("Lerp = " + fadeAmount);
-            image.color = setColor;
-            fadeAmount += Time.deltaTime * 0.01f;
+            alphaColor.a = fadeAmount;
+            image.color = alphaColor;
+            yield return null;
         }
+
     }
 }

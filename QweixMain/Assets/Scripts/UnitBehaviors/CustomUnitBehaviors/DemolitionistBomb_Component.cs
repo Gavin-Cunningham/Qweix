@@ -19,8 +19,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class DemolitionistBomb_Component : MonoBehaviour
+public class DemolitionistBomb_Component : NetworkBehaviour
 {
     [Tooltip("Optional Prefab for an explosion effect to play after the bomb blows up.")]
     [SerializeField] private GameObject[] effectsList;
@@ -47,7 +48,7 @@ public class DemolitionistBomb_Component : MonoBehaviour
 
     void Update()
     {
-        if (currentTarget == null)
+        if (currentTarget == null && IsServer)
         {
             //If our target is already destroyed, go ahead and blow up to clear the field.
             BlowUp();
@@ -66,6 +67,7 @@ public class DemolitionistBomb_Component : MonoBehaviour
 
     private void BlowUp()
     {
+        if (!IsServer) { return; }
         if (currentTarget != null)
         {
             currentTarget.SendMessage("TakeDamage", bombDamage, SendMessageOptions.DontRequireReceiver);
@@ -74,7 +76,8 @@ public class DemolitionistBomb_Component : MonoBehaviour
         {
             foreach(GameObject effect in effectsList)
             {
-                Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                effectGO.GetComponent<NetworkObject>().Spawn(true);
             }
         }
         Destroy(gameObject);

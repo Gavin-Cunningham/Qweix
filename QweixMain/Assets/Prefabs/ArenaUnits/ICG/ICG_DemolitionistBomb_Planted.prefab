@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 1361475170492566309, guid: 7c242d834807f7749b728b5a84e4804a, type: 3}
   warningBlinkLength: 1
   warnColorFadeRate: 1
-  warnColor: {r: 1, g: 1, b: 1, a: 1}
+  warnColor: {r: 1, g: 0.8334515, b: 0, a: 1}
 --- !u!114 &-5400537929149715203
 MonoBehaviour:
   m_ObjectHideFlags: 0
