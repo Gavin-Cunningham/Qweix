@@ -95,7 +95,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
+  currentHealth:
+    m_InternalValue: 0
   healthBar: {fileID: 8782869899215660363}
+  damageSplatter: []
+  splatterThreshold: 0
+  deathAnimation: 0
 --- !u!114 &5515275447777580989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +117,9 @@ MonoBehaviour:
   attackState: 0
   attackDamage: 1
   projectile: {fileID: 4803431861211981086, guid: 77f3a1b21bc4c7242b0a8ef204a7b79b, type: 3}
+  projectileSpawnDistance: 0.8
+  effects:
+  - {fileID: 8500004267210634987, guid: 080c35de124d98f48aade6bc3376b18c, type: 3}
 --- !u!195 &5515275447777580986
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -192,7 +200,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d0d8536e29d600d44ace12ccbb958b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -210,8 +218,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 292047
-  m_SortingLayer: 0
+  m_SortingLayerID: -540552733
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -481403568, guid: 1e4c3df56bb3f0a4ca1a5e7c79cf850b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

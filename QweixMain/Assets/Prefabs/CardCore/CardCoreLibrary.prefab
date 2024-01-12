@@ -270,6 +270,60 @@ MonoBehaviour:
   cardTribe: 0
   cardRarity: 1
   cardType: 0
+--- !u!1 &1974638162049244670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8479988677033943490}
+  - component: {fileID: 8655998527910950363}
+  m_Layer: 0
+  m_Name: Necro_Spell_CardCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8479988677033943490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974638162049244670}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 975437983474361788}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8655998527910950363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974638162049244670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da6ffa99536d494e806c4d0c5659e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: 16
+  cardName: Necro Spell
+  cardPicture: {fileID: 2800000, guid: 35a1765a8f22f28468dfdb051ecfeb56, type: 3}
+  dragSprite: {fileID: 21300000, guid: f0002f568e2206149939747fd7deaee3, type: 3}
+  dragSpriteScale: 0.4
+  qwiexCost: 1
+  prefabToSpawn: {fileID: 4736452344946561977, guid: f5aaeb868b2308e42af74f767a9adb53, type: 3}
+  cardTribe: 1
+  cardRarity: 1
+  cardType: 2
 --- !u!1 &3078130555575350784
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +421,8 @@ Transform:
   - {fileID: 2245282398705487976}
   - {fileID: 5796058834302687326}
   - {fileID: 5958612159851979298}
+  - {fileID: 1236990333683814101}
+  - {fileID: 8479988677033943490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,6 +438,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613d7bc6d7f11924fa1803c63d8b3b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5912998911223462699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236990333683814101}
+  - component: {fileID: 4538813689041639511}
+  m_Layer: 0
+  m_Name: ICGSpell_CardCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1236990333683814101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912998911223462699}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 975437983474361788}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4538813689041639511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912998911223462699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da6ffa99536d494e806c4d0c5659e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: 15
+  cardName: ICG Spell
+  cardPicture: {fileID: 2800000, guid: 345cd4cc2f36abe48b25eb80b69837be, type: 3}
+  dragSprite: {fileID: 21300000, guid: 8e6c791ec3508704490924b0c35a887c, type: 3}
+  dragSpriteScale: 0.4
+  qwiexCost: 1
+  prefabToSpawn: {fileID: 2067141950529530791, guid: 0c60fb558f458ea4fb27a91bedfe78f7, type: 3}
+  cardTribe: 0
+  cardRarity: 1
+  cardType: 2
 --- !u!1 &7052003583465469663
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,9 +810,9 @@ MonoBehaviour:
   cardName: Vamphire
   cardPicture: {fileID: 2800000, guid: c28cef0bc70b4334aa1d745f385fbeb6, type: 3}
   dragSprite: {fileID: 21300000, guid: 10eca06866619e04b9bef901b119ece9, type: 3}
-  dragSpriteScale: 1
+  dragSpriteScale: 2
   qwiexCost: 5
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  prefabToSpawn: {fileID: 2470750445074387459, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0

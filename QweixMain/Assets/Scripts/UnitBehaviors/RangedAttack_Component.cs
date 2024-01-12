@@ -35,11 +35,12 @@ using Unity.Netcode;
 public class RangedAttack_Component : Attack_Component
 {
     [Tooltip("How much damage will the projectile do to the target upon impact?")]
-    [SerializeField] 
-    private float attackDamage = 1.0f;
+    [SerializeField] private float attackDamage = 1.0f;
     [Tooltip("What prefab projectile will this unit shoot?")]
-    [SerializeField] 
-    public GameObject projectile;
+    [SerializeField] public GameObject projectile;
+    [SerializeField] private float projectileSpawnDistance = 1.0f;
+    [SerializeField] private GameObject[] effects;
+
     private Transform originTransform;
 
     public override void Start()
@@ -60,11 +61,22 @@ public class RangedAttack_Component : Attack_Component
         if (!IsHost) { return; }
         if (!canAttack) { return; }
 
-		GameObject proj = Instantiate(projectile, new Vector3 (originTransform.position.x, originTransform.position.y, 0.0f), new Quaternion (0, 0, 0, 0));
+        Vector3 projectileSpawnPosition = (new Vector3(originTransform.position.x, originTransform.position.y, 0.0f) + (attackTarget.transform.position - originTransform.position).normalized * projectileSpawnDistance);
+
+
+        GameObject proj = Instantiate(projectile, projectileSpawnPosition, new Quaternion ());
         proj.GetComponent<NetworkObject>().Spawn(true);
 
         proj.SendMessage("SetTarget", attackTarget, SendMessageOptions.DontRequireReceiver);
         proj.SendMessage("SetDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
+
+        if (effects != null)
+        {
+            foreach (GameObject effect in effects)
+            {
+                Instantiate(effect, projectileSpawnPosition, new Quaternion());
+            }
+        }
 
         attackState = AttackState.WaitingToFinishAnimation;
         canAttack = false;

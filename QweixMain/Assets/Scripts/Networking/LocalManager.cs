@@ -108,12 +108,12 @@ public class LocalManager : NetworkBehaviour
         ironCreekGangTestDeck = new QwiexDeck();
         necroMastersTestDeck = new QwiexDeck();
 
-        for (int i = 1; i < 15; i++)
+        for (int i = 1; i <= cardCoreLibrary.transform.childCount; i++)
         {
             CardCore cardCore = cardCoreLibrary.GetCardCore(i);
 
             // Only grab cards that have an icon
-            if (cardCore.cardPicture != null)
+            if (cardCore.cardPicture != null && cardCore.enableInDeck != false)
             {
                 if (cardCore.cardTribe == CardTribe.IronCreekGang)
                 {
@@ -171,7 +171,7 @@ public class LocalManager : NetworkBehaviour
         {
             foreach (QwiexPlayer player in players)
             {
-                if (player.Qwiex.Value <= QwiexBarUIController.numberOfQuiexBars)
+                if (player.Qwiex.Value < QwiexBarUIController.numberOfQuiexBars)
                 {
                         player.Qwiex.Value += 1.0f;
                 }
@@ -219,9 +219,9 @@ public class LocalManager : NetworkBehaviour
 
         if (SpawnPointChecker(clientSpawnLocation, ownerId) == true)
         {
+            players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
             SpawnUnitMethod(CCNumber, clientSpawnLocation, ownerId);
             SpawnResultClientRpc(true, CCNumber, currentClientParams);
-            players[(int)serverParams.Receive.SenderClientId].Qwiex.Value -= cardCoreLibrary.GetCardCore(CCNumber).qwiexCost;
         }
         else
         {
@@ -265,6 +265,10 @@ public class LocalManager : NetworkBehaviour
         if (spawnedUnit.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
         {
             targeting_Component.teamCheck = team;
+        }
+        if (spawnedUnit.TryGetComponent<Spell_BaseTriggered_Component>(out Spell_BaseTriggered_Component spell_Component))
+        {
+            spell_Component.teamCheck = team;
         }
     }
 

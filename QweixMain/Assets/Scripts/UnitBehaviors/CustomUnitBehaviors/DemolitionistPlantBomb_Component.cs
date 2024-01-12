@@ -32,6 +32,7 @@ public class DemolitionistPlantBomb_Component : UnitSwap_Component
     [SerializeField] private float bombCountdownTime = 5.0f;
     [Tooltip("How much damage should the bomb do to its target?")]
     [SerializeField] private float bombDamage = 5.0f;
+    private bool playPlantCalled = false;
 
     private void Start()
     {
@@ -41,8 +42,9 @@ public class DemolitionistPlantBomb_Component : UnitSwap_Component
 
     private void Update()
     {
-        if (targetingComponent != null && targetingComponent.targetInRange)
+        if (targetingComponent != null && targetingComponent.targetInRange && !playPlantCalled)
         {
+            playPlantCalled = true;
             PlaySwapAnimation("Plant");
         }
     }

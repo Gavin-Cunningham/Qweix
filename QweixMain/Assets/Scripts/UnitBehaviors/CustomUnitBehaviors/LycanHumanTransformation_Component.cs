@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,11 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
     [Tooltip("What color should the warning blinks be? default is red")]
     [SerializeField] private Color mutationWarnColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private bool useMutationWarnColor = false;
+    private bool playTransformCalled = false;
+
+    [SerializeField] private GameObject[] preSwapEffects;
+    [SerializeField] private GameObject[] swapEffects;
 
     private void Awake()
     {
@@ -51,7 +57,7 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationWarningBlinkLength -= Time.deltaTime / mutationTime;
 
         //Make the character the warning color if the interval has passed.
-        if (mutationWarningCountdown <= 0.0f)
+        if (mutationWarningCountdown <= 0.0f && useMutationWarnColor)
         {
             mutationWarningCountdown = mutationWarningBlinkLength;
             spriteRenderer.color = mutationWarnColor;
@@ -61,16 +67,49 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         mutationWarningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / mutationWarningBlinkLength));
-        //spriteRenderer.color = spriteRenderer.color + warnColorFade;
+        if (useMutationWarnColor)
+        {
+            spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / mutationWarningBlinkLength));
+        }
+
 
         //Make the mutation bar drop as the time gets less.
         mutationBar.fillAmount = mutationRemainingTime / mutationTime;
 
         //Its mutation time!
-        if (mutationRemainingTime <= 0.0f)
+        if (mutationRemainingTime <= 0.0f && !playTransformCalled)
         {
+            mutationRemainingTime = 1.0f;
             PlaySwapAnimation("Transform");
+            GetComponent<Animator>().Play("TransformColor");
+            if (preSwapEffects != null)
+            {
+                foreach (GameObject effect in preSwapEffects)
+                {
+                    GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                    effectGO.GetComponent<NetworkObject>().Spawn(true);
+                }
+            }
+            playTransformCalled = true;
+        }
+    }
+
+    public override void UnitSwapEvent()
+    {
+        if (!IsHost) { return; }
+
+        if (!unitSwapEventCalled)
+        {
+            unitSwapEventCalled = true;
+            if (swapEffects != null)
+            {
+                foreach (GameObject effect in swapEffects)
+                {
+                    GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                    effectGO.GetComponent<NetworkObject>().Spawn(true);
+                }
+            }
+            SwapUnits();
         }
     }
 }

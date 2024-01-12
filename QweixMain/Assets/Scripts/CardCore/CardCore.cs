@@ -26,6 +26,9 @@ public class CardCore : MonoBehaviour
     public string cardName;
 
     [SerializeField]
+    public bool enableInDeck = true;
+
+    [SerializeField]
     public Texture2D cardPicture;
 
     [SerializeField]

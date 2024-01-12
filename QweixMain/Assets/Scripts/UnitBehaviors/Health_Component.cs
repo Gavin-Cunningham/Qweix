@@ -28,6 +28,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Unity.Netcode;
+using Unity.Mathematics;
 
 public class Health_Component : NetworkBehaviour    
 {
@@ -43,7 +44,16 @@ public class Health_Component : NetworkBehaviour
     private Image healthBarBackground;
     protected Image healthBarBorder;
 
-    // Start is called before the first frame update
+    [SerializeField] GameObject[] damageSplatter;
+    [SerializeField] float splatterThreshold = 0.0f;
+    [SerializeField] private bool deathAnimation = false;
+
+    //These are for making the characters flash red when getting hit.
+    private SpriteRenderer spriteRenderer;
+    private float impactFlashTime = 0.5f;
+    private float impactFlashTimer;
+    private Color impactFlashColor = Color.red;
+
     public override void OnNetworkSpawn()
     {
         //if (!IsServer) { return; }
@@ -76,7 +86,7 @@ public class Health_Component : NetworkBehaviour
         healthBarBorder.enabled = false;
 
         currentHealth.OnValueChanged += OnHealthValueChange;
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     //public override void OnNetworkSpawn()
@@ -84,9 +94,23 @@ public class Health_Component : NetworkBehaviour
     //    currentHealth.OnValueChanged += OnHealthValueChange;
     //}
 
+    public void Update()
+    {
+        impactFlashTimer -= Time.deltaTime;
+        if (impactFlashTimer <= 0)
+        {
+            spriteRenderer.color = Color.white;
+        }
+    }
+
     public void OnHealthValueChange(float previous, float current)
     {
         UpdateHealthBar();
+        if (current < previous)
+        {
+            spriteRenderer.color = impactFlashColor;
+            impactFlashTimer = impactFlashTime;
+        }
     }
 
     public void TakeDamage(float damageAmount)
@@ -96,9 +120,24 @@ public class Health_Component : NetworkBehaviour
 
         UpdateHealthBar();
 
+        if (damageAmount >= splatterThreshold)
+        {
+            if (damageSplatter != null)
+            {
+                foreach (GameObject splatterPrefab in damageSplatter)
+                {
+                    GameObject splatterGO = Instantiate(splatterPrefab, new Vector3(transform.position.x, transform.position.y, 0.0f), new Quaternion(0, 0, 0, 0));
+                    splatterGO.GetComponent<NetworkObject>().Spawn(true);
+                }
+            }
+        }
+
+        spriteRenderer.color = impactFlashColor;
+        impactFlashTimer = impactFlashTime;
+
         if (currentHealth.Value <= 0)
         {
-            Die();
+            DeathAnimation();
         }
     }
 
@@ -123,6 +162,12 @@ public class Health_Component : NetworkBehaviour
         healthBar.fillAmount = currentHealth.Value / maxHealth;
     }
 
+    private void DeathAnimation()
+    {
+        GetComponent<Animator>().Play("Death");
+    }
+
+    //Now called by "death" animation event
     private void Die()
     {
         SpawnOnDeath_Component spawnOnDeath = GetComponentInChildren<SpawnOnDeath_Component>();
@@ -135,7 +180,14 @@ public class Health_Component : NetworkBehaviour
         OnUnitDeath?.Invoke(thisUnit);
 
         // Room for other *OnDeath script references here
-        GetComponent<NetworkObject>().Despawn(true);
+        if (!deathAnimation)
+        {
+            GetComponent<NetworkObject>().Despawn(true);
+        }
+        else
+        {
+            GetComponent<Animator>().Play("Death");
+        }
         //Destroy(gameObject);
     }
 }

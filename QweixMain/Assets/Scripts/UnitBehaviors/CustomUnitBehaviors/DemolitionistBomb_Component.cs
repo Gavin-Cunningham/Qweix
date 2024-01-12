@@ -19,11 +19,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class DemolitionistBomb_Component : MonoBehaviour
+public class DemolitionistBomb_Component : NetworkBehaviour
 {
     [Tooltip("Optional Prefab for an explosion effect to play after the bomb blows up.")]
-    [SerializeField] private GameObject explosionPrefab = null;
+    [SerializeField] private GameObject[] effectsList;
 
     [NonSerialized] public GameObject currentTarget;
     [NonSerialized] public float countdownTime = 3.0f;
@@ -47,7 +48,7 @@ public class DemolitionistBomb_Component : MonoBehaviour
 
     void Update()
     {
-        if (currentTarget == null)
+        if (currentTarget == null && IsServer)
         {
             //If our target is already destroyed, go ahead and blow up to clear the field.
             BlowUp();
@@ -66,13 +67,18 @@ public class DemolitionistBomb_Component : MonoBehaviour
 
     private void BlowUp()
     {
+        if (!IsServer) { return; }
         if (currentTarget != null)
         {
             currentTarget.SendMessage("TakeDamage", bombDamage, SendMessageOptions.DontRequireReceiver);
         }
-        if (explosionPrefab != null)
+        if (effectsList != null)
         {
-            Instantiate(explosionPrefab, transform.position, new Quaternion(0, 0, 0, 0));
+            foreach(GameObject effect in effectsList)
+            {
+                GameObject effectGO = Instantiate(effect, transform.position, new Quaternion(0, 0, 0, 0));
+                effectGO.GetComponent<NetworkObject>().Spawn(true);
+            }
         }
         Destroy(gameObject);
     }
@@ -86,13 +92,13 @@ public class DemolitionistBomb_Component : MonoBehaviour
         if (warningCountdown <= 0.0f)
         {
             warningCountdown = warningBlinkLength;
-            spriteRenderer.color = warnColor;
+            spriteRenderer.material.color = warnColor;
         }
 
         //Countdown the interval for warning color.
         warningCountdown -= Time.deltaTime;
 
         //Fade the warning color back to white.
-        spriteRenderer.color = spriteRenderer.color + (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
+        spriteRenderer.material.color = spriteRenderer.material.color - (new Color(0.01f, 0.01f, 0.01f, 1.0f) * (warnColorFadeRate / warningBlinkLength));
     }
 }

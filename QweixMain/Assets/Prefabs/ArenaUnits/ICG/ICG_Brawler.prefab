@@ -80,7 +80,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 14
+  currentHealth:
+    m_InternalValue: 0
   healthBar: {fileID: 7041302733360466472}
+  snapTime: 0.5
 --- !u!114 &6115483571651033296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 4592109077468454849, guid: 25aacbd9458c31a44881af3ab7b0306a, type: 3}
+  - {fileID: 5525194607051604226, guid: 4f5495b845f52834785de4d41ceb16c0, type: 3}
 --- !u!114 &6115483571651033308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d0d8536e29d600d44ace12ccbb958b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,8 +197,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 292047
-  m_SortingLayer: 0
+  m_SortingLayerID: -540552733
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 75437789, guid: 350aee68587e5df4b879b3d3fe304ae2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
