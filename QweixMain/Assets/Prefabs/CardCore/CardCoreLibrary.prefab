@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 3
   cardName: Lycan
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 6b32b18d1973f0b4386ca883f0492712, type: 3}
   dragSprite: {fileID: 21300000, guid: 2054513e8b37fe74f9e4b81aac5a4529, type: 3}
   dragSpriteScale: 1
@@ -100,10 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 7
   cardName: Deadites
+  enableInDeck: 0
   cardPicture: {fileID: 2800000, guid: d3c1ea3bac3a3ac438aa021145d05683, type: 3}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 4
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -154,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 1
   cardName: Demolitionist
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: f6f93a394ef34b64688a1f609092e083, type: 3}
   dragSprite: {fileID: 21300000, guid: b841d312db12cef47a12673594a64f5a, type: 3}
   dragSpriteScale: 1
@@ -208,10 +211,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 5
   cardName: Iron Brawler
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: d9fafe9c9e0370f4896ec70ed85c43e2, type: 3}
   dragSprite: {fileID: 21300000, guid: 5b160f766c1b9c74696c9ca339d73a6a, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 3
+  qwiexCost: 1
   prefabToSpawn: {fileID: 6115483571651033311, guid: 16aad435d04031d4cb358bb09dd3acf4, type: 3}
   cardTribe: 0
   cardRarity: 2
@@ -262,10 +266,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 14
   cardName: ICG Robot
+  enableInDeck: 0
   cardPicture: {fileID: 2800000, guid: 50cdb75057c44a346861792e342cd19c, type: 3}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 5
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
@@ -316,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 16
   cardName: Necro Spell
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 35a1765a8f22f28468dfdb051ecfeb56, type: 3}
   dragSprite: {fileID: 21300000, guid: f0002f568e2206149939747fd7deaee3, type: 3}
   dragSpriteScale: 0.4
@@ -370,10 +376,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 13
   cardName: Necromancer
+  enableInDeck: 0
   cardPicture: {fileID: 0}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 0
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -484,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 15
   cardName: ICG Spell
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 345cd4cc2f36abe48b25eb80b69837be, type: 3}
   dragSprite: {fileID: 21300000, guid: 8e6c791ec3508704490924b0c35a887c, type: 3}
   dragSpriteScale: 0.4
@@ -538,10 +546,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 11
   cardName: Elder Demon
+  enableInDeck: 0
   cardPicture: {fileID: 0}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 0
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
@@ -592,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 4
   cardName: Scrappers
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 98e5453781144ff4ab597ad37b7c24f9, type: 3}
   dragSprite: {fileID: 21300000, guid: 4a8e7cf1bcb03724c9d5eccf7dbdde69, type: 3}
   dragSpriteScale: 0.5
@@ -646,10 +656,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 12
   cardName: Elder Demon
+  enableInDeck: 0
   cardPicture: {fileID: 0}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 0
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1
@@ -700,6 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 2
   cardName: Dark Princess
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 66be82235cdd0da4dab657bc24d0012a, type: 3}
   dragSprite: {fileID: 21300000, guid: 493c9f9ae22f0fb468f4023ccd7079e6, type: 3}
   dragSpriteScale: 1
@@ -754,10 +766,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 6
   cardName: Dread Lord
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: 3bcb556ef1f25564eaffa1bd9a0140cd, type: 3}
   dragSprite: {fileID: 21300000, guid: 8ebcc0a7ffa26f8499d5462acf486b0b, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 3
+  qwiexCost: 1
   prefabToSpawn: {fileID: 2470750445074387459, guid: 20d8a1d12f0eba8469fe3ddff731f19c, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -808,10 +821,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 8
   cardName: Vamphire
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: c28cef0bc70b4334aa1d745f385fbeb6, type: 3}
   dragSprite: {fileID: 21300000, guid: 10eca06866619e04b9bef901b119ece9, type: 3}
   dragSpriteScale: 2
-  qwiexCost: 5
+  qwiexCost: 1
   prefabToSpawn: {fileID: 2470750445074387459, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -862,10 +876,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 9
   cardName: Elder Demon
+  enableInDeck: 0
   cardPicture: {fileID: 2800000, guid: c97883b7cff844c4895a9ea87c332ac6, type: 3}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 6
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -916,10 +931,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 10
   cardName: Elder Demon
+  enableInDeck: 0
   cardPicture: {fileID: 2800000, guid: d507a6817b693db4d9e09e09fc995c3f, type: 3}
   dragSprite: {fileID: 0}
   dragSpriteScale: 1
-  qwiexCost: 4
+  qwiexCost: 1
   prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
   cardTribe: 0
   cardRarity: 1

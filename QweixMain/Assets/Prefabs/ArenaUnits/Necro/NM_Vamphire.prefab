@@ -99,6 +99,9 @@ MonoBehaviour:
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 1088308984606956648}
+  damageSplatter: []
+  splatterThreshold: 0
+  deathAnimation: 1
   leaveDebris: 0
 --- !u!114 &1176289021123146110
 MonoBehaviour:
@@ -214,7 +217,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 952806913, guid: ce842e8fe17153c428f87f16d26196a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
