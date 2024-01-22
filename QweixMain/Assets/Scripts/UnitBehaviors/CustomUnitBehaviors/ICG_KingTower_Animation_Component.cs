@@ -25,12 +25,12 @@ public class ICG_KingTower_Animation_Component : Animation_Component
         return;
     }
 
-    public void TargetEnterRange()
+    public override void TargetEnterRange()
     {
         return;
     }
 
-    public void TargetLeftRange()
+    public override void TargetLeftRange()
     {
         return;
     }

@@ -116,7 +116,7 @@ MonoBehaviour:
   attackState: 0
   attackDamage: 1
   projectile: {fileID: 5836375932857795507, guid: 1d94226ca3b88bb47be70404cea93338, type: 3}
-  projectileSpawnDistance: 0
+  projectileSpawnDistance: 0.8
   effects: []
 --- !u!114 &4561092784344542745
 MonoBehaviour:
