@@ -115,9 +115,10 @@ MonoBehaviour:
   attackFrequency: 1
   attackState: 0
   attackDamage: 1
-  projectile: {fileID: 5836375932857795507, guid: 1d94226ca3b88bb47be70404cea93338, type: 3}
-  projectileSpawnDistance: 0.8
-  effects: []
+  projectile: {fileID: 5836375932857795507, guid: 5fefbd9b1d206eb44bd547b95e85f522, type: 3}
+  projectileSpawnDistance: 2
+  effects:
+  - {fileID: 6123876206298288211, guid: da38cd9e12f1ea24dbd04a6dc3dad8c0, type: 3}
 --- !u!114 &4561092784344542745
 MonoBehaviour:
   m_ObjectHideFlags: 0

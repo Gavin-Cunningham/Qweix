@@ -40,10 +40,17 @@ public class LocalManager : NetworkBehaviour
     public GameObject player1Camera;
     public GameObject player2Camera;
 
-    [SerializeField] private GameObject teamOneKTSpawnPoint;
-    [SerializeField] private GameObject teamTwoKTSpawnPoint;
     [SerializeField] private GameObject kingTowerICG;
     [SerializeField] private GameObject kingTowerNecro;
+    [SerializeField] private GameObject defTowerICG;
+    [SerializeField] private GameObject defTowerNecro;
+
+    [SerializeField] private GameObject teamOneKTSpawnPoint;
+    [SerializeField] private GameObject teamTwoKTSpawnPoint;
+    [SerializeField] private GameObject teamOneDefSpawnPoint1;
+    [SerializeField] private GameObject teamOneDefSpawnPoint2;
+    [SerializeField] private GameObject teamTwoDefSpawnPoint1;
+    [SerializeField] private GameObject teamTwoDefSpawnPoint2;
 
     private GameObject player1KT;
     private GameObject player2KT;
@@ -157,8 +164,8 @@ public class LocalManager : NetworkBehaviour
     public void PlayerRegister(QwiexPlayer newPlayer)
     {
         Debug.Log("player team number is " + newPlayer.teamNum.Value);
-        players.Add(newPlayer);        
-        SpawnKingTower(newPlayer);
+        players.Add(newPlayer);
+        SetupPlayerTowers(newPlayer);
         if(newPlayer.teamNum.Value == 2)
         {
             matchActive.Value = true;
@@ -310,42 +317,59 @@ public class LocalManager : NetworkBehaviour
         return canSpawn;
     }
 
-    private void SpawnKingTower(QwiexPlayer player)
+    private void SetupPlayerTowers(QwiexPlayer player)
     {
         if (IsServer)
         {
             GameObject KTSpawnPoint;
             GameObject KTPrefab;
+            GameObject DFSpawnPoint1;
+            GameObject DFSpawnPoint2;
+            GameObject DFPrefab;
 
             if (player.teamNum.Value == 1)
             {
                 KTSpawnPoint = teamOneKTSpawnPoint;
                 KTPrefab = kingTowerICG;
+                DFSpawnPoint1 = teamOneDefSpawnPoint1;
+                DFSpawnPoint2 = teamOneDefSpawnPoint2;
+                DFPrefab = defTowerICG;
             }
             else
             {
                 KTSpawnPoint = teamTwoKTSpawnPoint;
                 KTPrefab = kingTowerNecro;
+                DFSpawnPoint1 = teamTwoDefSpawnPoint1;
+                DFSpawnPoint2 = teamTwoDefSpawnPoint2;
+                DFPrefab = defTowerNecro;
             }
 
-            GameObject spawnedKT = Instantiate(KTPrefab, KTSpawnPoint.transform.position, Quaternion.identity);
-            spawnedKT.GetComponent<NetworkObject>().Spawn(true);
-            
-            if (spawnedKT.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
-            {
-                targeting_Component.teamCheck = player.teamNum.Value;
-            }
-            if(player.teamNum.Value == 1)
+            GameObject spawnedKT = SpawnTower(KTPrefab, KTSpawnPoint, player);
+            if (player.teamNum.Value == 1)
             {
                 player1KT = spawnedKT;
             }
-            
-            if(player.teamNum.Value == 2)
+
+            if (player.teamNum.Value == 2)
             {
                 player2KT = spawnedKT;
             }
+            SpawnTower(DFPrefab, DFSpawnPoint1, player);
+            SpawnTower(DFPrefab, DFSpawnPoint2, player);
 
         }
+    }
+
+    private GameObject SpawnTower(GameObject prefab, GameObject spawnpoint, QwiexPlayer player)
+    {
+        GameObject spawnedTower = Instantiate(prefab, spawnpoint.transform.position, Quaternion.identity);
+        spawnedTower.GetComponent<NetworkObject>().Spawn(true);
+
+        if (spawnedTower.TryGetComponent<Targeting_Component>(out Targeting_Component targeting_Component))
+        {
+            targeting_Component.teamCheck = player.teamNum.Value;
+        }
+        return spawnedTower;
     }
 
     GameObject[] FindGameObjectsWithTags(params string[] tags)
