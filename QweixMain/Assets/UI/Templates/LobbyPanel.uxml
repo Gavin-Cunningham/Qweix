@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="LobbyPanel" class="lobbyPanel">
+        <ui:VisualElement name="LobbyNamePanel" style="font-size: 60px; justify-content: center;">
+            <ui:Label text="Lobby Name" display-tooltip-when-elided="true" name="LobbyNameLabel" class="lobbyText" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+        <ui:VisualElement name="LobbyMapPanel" style="font-size: 60px; justify-content: center;">
+            <ui:Label text="Map" display-tooltip-when-elided="true" name="LobbyMapLabel" class="lobbyText" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+        <ui:VisualElement name="LobbyPlayerCountPanel" style="font-size: 60px; justify-content: center;">
+            <ui:Label text="1/2" display-tooltip-when-elided="true" name="LobbyPlayerCountLabel" class="lobbyText" style="width: 90px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LobbyPanelSpacer" style="flex-grow: 1;" />
+        <ui:VisualElement name="JoinLobbyPanel" style="font-size: 60px; justify-content: center; min-width: 0; padding-top: 10px; padding-bottom: 10px;">
+            <ui:Button text="Join Lobby" display-tooltip-when-elided="true" name="JoinLobbyButton" class="joinLobbyButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
