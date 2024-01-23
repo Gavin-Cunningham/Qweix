@@ -40,12 +40,14 @@ public class Attack_Component : NetworkBehaviour
     //The countdown variable for attackFrequency
     private protected float attackCountdown;
 
+    [SerializeField] private bool hasAttackAnimation = true;
+
     private protected GameObject attackTarget;
 
     private protected Targeting_Component targeting_Component;
     private protected Animation_Component animation_Component;
 
-    [Tooltip("Set by code. Used to see what the current state is while running")]
+    [Tooltip("Set by code. Only visible for Debugging")]
     [SerializeField] private protected AttackState attackState;
     private protected bool canAttack = true;
 
@@ -91,7 +93,7 @@ public class Attack_Component : NetworkBehaviour
 
                 if (targeting_Component.targetInRange)
                 {
-                    if (animation_Component != null)
+                    if (animation_Component != null && hasAttackAnimation)
                     {
                         BeginAttackAnimation();
                         attackState = AttackState.WaitingForAnimationTrigger;
@@ -160,7 +162,7 @@ public class Attack_Component : NetworkBehaviour
 
         attackCountdown = attackFrequency;
 
-            attackState = AttackState.CoolingDown;
+        attackState = AttackState.CoolingDown;
     }
 }
 enum AttackState

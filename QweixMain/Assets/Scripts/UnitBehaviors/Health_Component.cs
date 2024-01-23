@@ -46,7 +46,7 @@ public class Health_Component : NetworkBehaviour
 
     [SerializeField] GameObject[] damageSplatter;
     [SerializeField] float splatterThreshold = 0.0f;
-    [SerializeField] private bool deathAnimation = false;
+    [SerializeField] private bool leaveDebris = false;
 
     //These are for making the characters flash red when getting hit.
     private SpriteRenderer spriteRenderer;
@@ -164,6 +164,14 @@ public class Health_Component : NetworkBehaviour
 
     private void DeathAnimation()
     {
+        GetComponent<Targeting_Component>().isActiveTarget = false;
+        GetComponent<Attack_Component>().enabled = false;
+
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D collider in colliders) { collider.enabled = false; }
+        gameObject.tag = "Untagged";
+
+        OnUnitDeath?.Invoke(thisUnit);
         GetComponent<Animator>().Play("Death");
     }
 
@@ -177,17 +185,10 @@ public class Health_Component : NetworkBehaviour
             spawnOnDeath.Spawn();
         }
 
-        OnUnitDeath?.Invoke(thisUnit);
-
         // Room for other *OnDeath script references here
-        if (!deathAnimation)
+        if (!leaveDebris)
         {
             GetComponent<NetworkObject>().Despawn(true);
         }
-        else
-        {
-            GetComponent<Animator>().Play("Death");
-        }
-        //Destroy(gameObject);
     }
 }

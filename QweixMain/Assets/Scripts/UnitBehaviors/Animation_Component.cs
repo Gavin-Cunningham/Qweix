@@ -58,7 +58,7 @@ public class Animation_Component : NetworkBehaviour
     //Tell the animator how fast the agent is moving and what direction.
     //It doesn't update direction if speed under 0.1 so idle stances
     //don't get confused with a direction of 0, 0.
-    private void FindMoveDirection()
+    protected virtual void FindMoveDirection()
     {
         float speed = agent.desiredVelocity.magnitude;
         float xMove = agent.desiredVelocity.x;
@@ -104,7 +104,7 @@ public class Animation_Component : NetworkBehaviour
     }
 
     //Called by Targeting_Component with send.message.
-    public void TargetEnterRange()
+    public virtual void TargetEnterRange()
     {
         controller.SetBool("isStopped", true);
     }

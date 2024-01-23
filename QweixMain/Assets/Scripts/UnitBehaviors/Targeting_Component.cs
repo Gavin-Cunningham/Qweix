@@ -32,6 +32,7 @@ public class Targeting_Component : NetworkBehaviour
     //Int value 1 for player 1 and 2 for player 2
     [Tooltip("What team is the unit on. Currently 1 is left side, 2 is right side. In multiplayer it will be 1 is host and 2 is client. 0 is enemy to all.")]
     public int teamCheck = 1;
+    /*[NonSerialized]*/ public bool isActiveTarget = true;
     /*[NonSerialized]*/ public bool targetInRange;
 
     [Tooltip("Whether unit should make a flying enemy its target. Usually only ranged or flying units can do this.")]
@@ -55,7 +56,7 @@ public class Targeting_Component : NetworkBehaviour
 		isBuilding,
 	}
 
-    [Tooltip("Does this unit fly, walk or is it stationary? isFlying will ignore terrain in future.")]
+    [Tooltip("Does this unit fly, walk or is it stationary? isFlying will ignore terrain in the future.")]
     [SerializeField] public UnitType myType;
 
     //Alter the second float in invoke repeatings to change how many seconds between each run of "findTarget"
@@ -94,6 +95,16 @@ public class Targeting_Component : NetworkBehaviour
     void findTarget()
     {
         float shortestDist;
+
+        if (currentTarget != null)
+        {
+            if (!testTarget(currentTarget))
+            {
+                currentTarget = KingTower;
+                SendTargetLeftRange();
+                setTarget(currentTarget);
+            }
+        }
 
         if (currentTarget != null)
         {
@@ -234,7 +245,9 @@ public class Targeting_Component : NetworkBehaviour
     {
         if (deadUnit = currentTarget)
         {
+            currentTarget = KingTower;
             SendTargetLeftRange();
+            setTarget(currentTarget);
         }
     }
 
@@ -253,9 +266,11 @@ public class Targeting_Component : NetworkBehaviour
 
     private bool testTarget(GameObject enemy)
     {
-        Targeting_Component enemyTC = enemy.GetComponent<Targeting_Component>();
+        Targeting_Component enemyTC;
+        if (!enemy.TryGetComponent(out enemyTC)) {  return false; }
+        enemyTC = enemy.GetComponent<Targeting_Component>();
 
-        if (enemyTC.teamCheck != teamCheck)
+        if (enemyTC.teamCheck != teamCheck && enemyTC.isActiveTarget)
         {
             UnitType enemyType = enemyTC.myType;
 

@@ -4851,7 +4851,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1255524343
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   triggerTime: 1
-  radiusAOE: 1.5
+  radiusAOE: 1
   spellDamage: 8
 --- !u!114 &3346664671455063958
 MonoBehaviour:
@@ -9804,7 +9804,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1255524343
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

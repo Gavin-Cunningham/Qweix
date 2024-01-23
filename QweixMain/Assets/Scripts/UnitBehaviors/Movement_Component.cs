@@ -60,7 +60,6 @@ public class Movement_Component : NetworkBehaviour
     {
         if (currentTarget != null)
             currentDestination = currentTarget.transform.position;
-
     }
 
     void SetAgentPosition()
