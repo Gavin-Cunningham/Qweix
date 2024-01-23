@@ -1,0 +1,218 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_MainMenu.uss?fileID=7433441132597879392&amp;guid=123dd9b6447237448bcd6e7a53fad8d2&amp;type=3#UI_MainMenu" />
+    <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1;">
+        <ui:VisualElement name="QwiexLogoPanel" style="visibility: visible; display: none; flex-grow: 1;">
+            <ui:VisualElement name="QwiexLogo" class="qwiexLogo">
+                <ui:Label text="Qwiex" display-tooltip-when-elided="true" name="QwiexLogoText" style="font-size: 500px; -unity-text-outline-width: 10px; -unity-text-outline-color: rgb(89, 42, 66); color: rgb(255, 0, 131); text-shadow: 20px 20px 10px rgb(0, 0, 0); flex-grow: 0; flex-shrink: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 30px; border-right-width: 30px; border-top-width: 30px; border-bottom-width: 30px; border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="CreateGamePanel" style="flex-grow: 1; align-items: center; justify-content: center; display: none; visibility: visible;">
+            <ui:VisualElement name="TextFieldPanel" style="justify-content: flex-start; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 50%; align-items: center;">
+                <ui:TextField picking-mode="Ignore" label=" Lobby Name: " name="LobbyNameTextField" class="menuText" style="background-color: rgb(38, 54, 146);" />
+                <ui:VisualElement name="Spacer" style="visibility: visible; height: 50px;" />
+                <ui:DropdownField label=" Faction:" index="-1" choices="Necro Masters, Iron Creek Gang" name="FactionChoiceDropdownField" class="menuText" style="background-color: rgb(38, 54, 146); display: none;" />
+                <ui:VisualElement name="Spacer" style="visibility: visible; height: 50px; display: none;" />
+                <ui:DropdownField label=" Map:" index="-1" choices="Old Quarry,Necro Hellscape,Rusty Dustbowl,Black Temple" name="MapChoiceDropdownField" class="menuText" style="background-color: rgb(38, 54, 146); display: none;" />
+                <ui:VisualElement name="Spacer" style="visibility: visible; height: 50px; display: none;" />
+                <ui:Button text="Create&#10;Lobby" display-tooltip-when-elided="true" name="CreateLobbyButton" class="menuButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="JoinGamePanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px; display: none;">
+            <ui:VisualElement name="LobbiesLabelPanel" style="align-items: center; color: rgb(255, 255, 255);">
+                <ui:Label text="Lobbies" display-tooltip-when-elided="true" name="LobbiesLabel" enable-rich-text="false" style="font-size: 120px;" />
+            </ui:VisualElement>
+            <ui:ScrollView name="LobbyScrollView" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" style="flex-grow: 0; min-width: auto; min-height: auto; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; height: 710px; display: flex;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="InLobbyPanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px; display: none; opacity: 1;">
+            <ui:VisualElement name="LobbyTitleLabelPanel" style="align-items: center;">
+                <ui:Label text="Lobby: &lt;Lobby Name&gt;" display-tooltip-when-elided="true" name="LobbyTitleLabel" enable-rich-text="false" style="font-size: 120px; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="LobbyPlayersPanel" style="flex-grow: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:VisualElement name="LobbyPlayer1Panel" style="flex-direction: row; height: 100px; background-color: rgb(37, 54, 146); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 0; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyPlayerNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Player Name" display-tooltip-when-elided="true" name="LobbyPlayerNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerFactionPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Faction" display-tooltip-when-elided="true" name="LobbyPlayerFactionLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerReadyPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Ready!" display-tooltip-when-elided="true" name="LobbyPlayerReadyLabel" style="width: 200px; color: rgb(0, 0, 0); background-color: rgb(36, 221, 0); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px; align-items: auto; -unity-text-align: upper-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; display: flex; visibility: hidden;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="LobbyPlayer2Panel" style="flex-direction: row; height: 100px; background-color: rgb(37, 54, 146); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-right: 20px; margin-right: 0; margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                    <ui:VisualElement name="LobbyPlayerNamePanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Player Name" display-tooltip-when-elided="true" name="LobbyPlayerNameLabel" style="width: 700px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerFactionPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Faction" display-tooltip-when-elided="true" name="LobbyPlayerFactionLabel" style="width: 500px; color: rgb(255, 255, 255); background-color: rgb(0, 131, 169); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="LobbyPlayerPanelSpacer" style="flex-grow: 1;" />
+                    <ui:VisualElement name="LobbyPlayerReadyPanel" style="font-size: 60px; justify-content: center;">
+                        <ui:Label text="Ready!" display-tooltip-when-elided="true" name="LobbyPlayerReadyLabel" style="width: 200px; color: rgb(0, 0, 0); background-color: rgb(36, 221, 0); padding-left: 10px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 50px; align-items: auto; -unity-text-align: upper-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; visibility: hidden;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="InLobbyButtonsPanel" style="flex-direction: row; margin-top: 20px; padding-left: 500px; padding-right: 500px;">
+                <ui:Button text="Start&#10;Game" display-tooltip-when-elided="true" name="StartGameButton" class="menuButton" />
+                <ui:VisualElement name="InLobbyButtonsPanelSpacer" style="flex-grow: 1;" />
+                <ui:Button text="Leave&#10;Lobby" display-tooltip-when-elided="true" name="LeaveLobbyButton" class="menuButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="DeckBuildingPanel" style="flex-grow: 1; margin-left: 50px; margin-right: 50px; margin-top: 20px; margin-bottom: 50px; flex-direction: row; display: none;">
+            <ui:VisualElement name="DeckBuildingLeftPanel" style="width: auto;">
+                <ui:VisualElement name="DeckPanel" style="width: 800px; height: 800px;">
+                    <ui:VisualElement name="DeckRow" style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center; translate: 82px 82px;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center; translate: -82px 82px;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DeckRow" style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="TribeSelect" style="flex-grow: 0; width: 200px; height: 200px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; scale: 1.5 1.5;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DeckRow" style="flex-grow: 1; flex-direction: row; min-width: auto; min-height: auto;">
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center; translate: 82px -82px;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DeckCol" style="flex-grow: 1; align-items: center; justify-content: center; translate: -82px -82px;">
+                            <ui:VisualElement name="DeckSlot" class="deckSlot" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="DeckChoicePanel" style="flex-grow: 1; flex-direction: row; max-height: 60px;">
+                    <ui:Button text="1" display-tooltip-when-elided="true" name="DeckChoiceButton1" class="deckChoiceButton" />
+                    <ui:VisualElement name="DeckChoiceSpacer" style="flex-grow: 1;" />
+                    <ui:Button text="2" display-tooltip-when-elided="true" name="DeckChoiceButton2" class="deckChoiceButton" />
+                    <ui:VisualElement name="DeckChoiceSpacer" style="flex-grow: 1;" />
+                    <ui:Button text="3" display-tooltip-when-elided="true" name="DeckChoiceButton3" class="deckChoiceButton" />
+                    <ui:VisualElement name="DeckChoiceSpacer" style="flex-grow: 1;" />
+                    <ui:Button text="4" display-tooltip-when-elided="true" name="DeckChoiceButton4" class="deckChoiceButton" />
+                    <ui:VisualElement name="DeckChoiceSpacer" style="flex-grow: 1;" />
+                    <ui:Button text="5" display-tooltip-when-elided="true" name="DeckChoiceButton5" class="deckChoiceButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="DeckBuildingSpacer" style="width: 50px;" />
+            <ui:VisualElement name="DeckBuildingRightPanel" style="flex-grow: 1; justify-content: flex-start;">
+                <ui:VisualElement name="AvailableCardsPanel" style="flex-grow: 1; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; max-height: 680px;">
+                    <ui:ScrollView name="AvailableCardsScrollView" horizontal-scroller-visibility="Hidden" style="flex-grow: 1; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+                        <ui:VisualElement name="AvailableCardRow" class="availableCardRow">
+                            <ui:VisualElement name="AvailableCard" class="availableCard">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="4" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard" style="background-color: rgb(130, 19, 21);">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-demoman.png?fileID=2800000&amp;guid=f6f93a394ef34b64688a1f609092e083&amp;type=3#card-demoman&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="3" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-vamphire.png?fileID=2800000&amp;guid=c28cef0bc70b4334aa1d745f385fbeb6&amp;type=3#card-vamphire&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="4" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard" style="background-color: rgb(130, 19, 22);">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-gunslinger.png?fileID=2800000&amp;guid=d507a6817b693db4d9e09e09fc995c3f&amp;type=3#card-gunslinger&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="4" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AvailableCardRow" class="availableCardRow">
+                            <ui:VisualElement name="AvailableCard" class="availableCard" style="background-color: rgb(130, 19, 21);">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-ICG-robot.png?fileID=2800000&amp;guid=50cdb75057c44a346861792e342cd19c&amp;type=3#card-ICG-robot&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="2" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-deadites.png?fileID=2800000&amp;guid=d3c1ea3bac3a3ac438aa021145d05683&amp;type=3#card-deadites&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="2" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-elder-demon.png?fileID=2800000&amp;guid=c97883b7cff844c4895a9ea87c332ac6&amp;type=3#card-elder-demon&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="3" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard" style="background-color: rgb(130, 19, 22);">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-iron-brawler.png?fileID=2800000&amp;guid=d9fafe9c9e0370f4896ec70ed85c43e2&amp;type=3#card-iron-brawler&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="3" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AvailableCardRow" class="availableCardRow">
+                            <ui:VisualElement name="AvailableCard" class="availableCard">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-lycan.png?fileID=2800000&amp;guid=6b32b18d1973f0b4386ca883f0492712&amp;type=3#card-lycan&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="3" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AvailableCard" class="availableCard" style="background-color: rgb(130, 19, 21);">
+                                <ui:VisualElement name="AvailableCardIcon" class="availableCardIcon" style="background-image: url(&apos;project://database/Assets/UI/Cards/card-scrappers.png?fileID=2800000&amp;guid=98e5453781144ff4ab597ad37b7c24f9&amp;type=3#card-scrappers&apos;);">
+                                    <ui:VisualElement name="AvailableCardQwiexCostBubble" class="availableCardQwiexCostBubble">
+                                        <ui:Label text="2" display-tooltip-when-elided="true" name="AvailableCardQwiexCostLabel" focusable="false" class="availableCardQwiexCostLabel" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:ScrollView>
+                </ui:VisualElement>
+                <ui:VisualElement name="Spacer" style="height: 30px; min-height: 30px;" />
+                <ui:VisualElement name="InfoPanel" style="flex-direction: row;">
+                    <ui:VisualElement name="CardInfoPanel" style="flex-grow: 1; height: 150px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; background-color: rgb(255, 255, 255); min-height: 150px;" />
+                    <ui:VisualElement name="Spacer" style="height: auto; min-height: 30px; width: 30px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="MenuBarPanel" style="height: 150px; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(37, 54, 146); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 0; border-top-left-radius: 25px; border-bottom-left-radius: 0; border-top-right-radius: 25px; border-bottom-right-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+        <ui:Button text="Create&#10;Game" display-tooltip-when-elided="true" name="CreateGameButton" class="menuButton" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" />
+        <ui:Button text="Join&#10;Game" display-tooltip-when-elided="true" name="JoinGameButton" class="menuButton" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" style="visibility: visible; display: flex;" />
+        <ui:Button text="Deck&#10;Building" display-tooltip-when-elided="true" name="DeckBuildingButton" class="menuButton" style="display: none;" />
+        <ui:VisualElement name="MenuSpacer" class="menuSpacer" style="display: none;" />
+        <ui:Button text="Player&#10;Stats" display-tooltip-when-elided="true" name="PlayerStatsButton" class="menuButton" style="display: none; visibility: hidden;" />
+        <ui:VisualElement name="PlayerName" style="flex-grow: 1; min-width: auto; justify-content: center; width: 300px;">
+            <ui:TextField picking-mode="Ignore" label=" Name:" name="PlayerNameTextField" class="menuText" style="background-color: rgb(38, 54, 146); min-width: auto; max-height: 80px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RefreshButtonPanel" style="justify-content: center; margin-left: 20px;">
+            <ui:Button text="Refresh" display-tooltip-when-elided="true" name="RefreshButton" class="menuButton" style="display: flex; visibility: visible; width: 180px; background-color: rgba(33, 134, 49, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,229 @@
+.menuButton {
+    width: 250px;
+    font-size: 35px;
+    -unity-text-outline-width: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: rgb(134, 33, 117);
+    color: rgb(255, 255, 255);
+}
+
+.menuSpacer {
+    flex-grow: 1;
+}
+
+.menuText {
+    font-size: 50px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    flex-grow: 1;
+    background-color: rgb(0, 131, 169);
+    color: rgb(255, 255, 255);
+}
+
+.menuTextField {
+    letter-spacing: 0;
+}
+
+.qwiexLogo {
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#LobbyScrollView .unity-scroller--vertical .unity-base-slider__dragger {
+    width: 40px;
+    background-color: rgb(84, 84, 84);
+}
+
+#AvailableCardsScrollView .unity-scroller--vertical .unity-base-slider__dragger {
+    width: 40px;
+    background-color: rgb(84, 84, 84);
+}
+
+.deckSlot {
+    width: 190px;
+    height: 190px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    background-color: rgb(255, 255, 255);
+}
+
+.deckChoiceButton {
+    font-size: 50px;
+    width: 130px;
+    height: auto;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    color: rgb(0, 0, 0);
+}
+
+.availableCardRow {
+    height: 250px;
+    flex-direction: row;
+    padding-right: 0;
+    padding-bottom: 0;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.availableCard {
+    width: 190px;
+    margin-right: 30px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: rgb(31, 123, 42);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    height: 230px;
+    align-items: center;
+}
+
+.availableCardIcon {
+    flex-grow: 0;
+    background-image: url('project://database/Assets/UI/Cards/card-dark-princess.png?fileID=2800000&guid=66be82235cdd0da4dab657bc24d0012a&type=3#card-dark-princess');
+    width: 150px;
+    height: 150px;
+    scale: 1.8 1.8;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.availableCardQwiexCostBubble {
+    width: 40px;
+    height: 40px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: rgb(255, 0, 209);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: visible;
+}
+
+.availableCardQwiexCostLabel {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    -unity-text-align: upper-left;
+}
+
+.lobbyPanel {
+    flex-direction: row;
+    height: 100px;
+    background-color: rgb(37, 54, 146);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.lobbyText {
+    width: 700px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 131, 169);
+    padding-left: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 50px;
+}
+
+.joinLobbyButton {
+    font-size: 40px;
+    background-color: rgb(134, 33, 117);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    flex-shrink: 0;
+    width: 250px;
+    color: rgb(255, 255, 255);
+}
+
+.lobbySpacer {
+    flex-grow: 1;
+}
+
+#unity-text-input {
+    color: rgb(0, 0, 0);
+}
