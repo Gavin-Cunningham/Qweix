@@ -29,7 +29,7 @@ public class Vamphire_Animation_Component : Animation_Component
         {
             controller.SetBool("isDropped", true);
             controller.SetBool("isAttacking", true);
-            controller.Play("Drop");
+            //controller.Play("Drop");
         }
         else
         {
@@ -44,7 +44,7 @@ public class Vamphire_Animation_Component : Animation_Component
         if (controller.GetBool("isDropped"))
         {
             controller.SetBool("isDropped", false);
-            controller.Play("Rise");
+            //controller.Play("Rise");
         }
 
     }

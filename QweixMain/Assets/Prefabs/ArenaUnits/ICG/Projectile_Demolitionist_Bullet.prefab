@@ -4780,7 +4780,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1255524343
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9678,7 +9678,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1255524343
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9722,6 +9722,7 @@ GameObject:
   - component: {fileID: -9166899607677520937}
   - component: {fileID: 414083109086553688}
   - component: {fileID: 6111191681040001439}
+  - component: {fileID: -6805807950152535644}
   - component: {fileID: -71364460507763399}
   m_Layer: 0
   m_Name: Projectile_Demolitionist_Bullet
@@ -9786,7 +9787,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4803431861211981086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -9805,6 +9806,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.23, y: 0.12}
   m_EdgeRadius: 0
+--- !u!58 &-6805807950152535644
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803431861211981086}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.04
 --- !u!114 &-71364460507763399
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
