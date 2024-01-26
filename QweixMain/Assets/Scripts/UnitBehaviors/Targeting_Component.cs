@@ -69,8 +69,8 @@ public class Targeting_Component : NetworkBehaviour
         currentTarget = KingTower;
         setTarget(currentTarget);
 
-        InvokeRepeating("findTarget", 2.0f, 0.75f);
-        InvokeRepeating("CheckCurrentRangeCT", 2.5f, 0.8f);
+        InvokeRepeating("findTarget", 0.2f, 0.25f);
+        InvokeRepeating("CheckCurrentRangeCT", 0.5f, 0.3f);
         GetMyTrigger();
     }
 

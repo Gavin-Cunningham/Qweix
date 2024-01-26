@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
@@ -79,13 +80,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
+  maxHealth: 4
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 878984070935251010}
   damageSplatter: []
   splatterThreshold: 0
-  deathAnimation: 0
+  hasDeathAnimation: 1
+  leaveDebris: 0
 --- !u!114 &6337793799690768178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  hasAttackAnimation: 1
   attackState: 0
-  attackDamage: 1
+  attackDamage: 1.4
   projectile: {fileID: 4803431861211981086, guid: 77f3a1b21bc4c7242b0a8ef204a7b79b, type: 3}
   projectileSpawnDistance: 0.6
   effects:
@@ -204,7 +207,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 4
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1689868243, guid: c89e700791190b74aba795436f6f2a2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

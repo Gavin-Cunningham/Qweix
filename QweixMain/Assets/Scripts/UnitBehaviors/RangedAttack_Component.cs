@@ -74,7 +74,8 @@ public class RangedAttack_Component : Attack_Component
         {
             foreach (GameObject effect in effects)
             {
-                Instantiate(effect, projectileSpawnPosition, new Quaternion());
+                GameObject effectGO = Instantiate(effect, projectileSpawnPosition, new Quaternion());
+                effectGO.GetComponent<NetworkObject>().Spawn(true);
             }
         }
 

@@ -64,7 +64,7 @@ MonoBehaviour:
   bombTargetDistance: 2
   bombPrefab: {fileID: 1794551663722227435, guid: dbf0d186f9053664ab4a11a4c0ff3410, type: 3}
   bombCountdownTime: 3
-  bombDamage: 5
+  bombDamage: 15
 --- !u!114 &5515275447777580984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 0
   canTargetGround: 0
@@ -96,11 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
+  maxHealth: 20
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 8782869899215660363}
-  snapTime: 0.5
+  damageSplatter: []
+  splatterThreshold: 0
+  hasDeathAnimation: 1
+  leaveDebris: 0
 --- !u!195 &5515275447777580986
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -200,7 +204,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -540552733
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1468675494, guid: 363bfe942f7662845a3878c2f2bf4614, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

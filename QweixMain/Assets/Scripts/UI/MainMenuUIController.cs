@@ -188,7 +188,7 @@ public class MainMenuUIController : MonoBehaviour
     private void AddLobbyPanel(Lobby lobby)
     {
         // Load the lobby panel asset file and instantiate one
-        VisualTreeAsset lobbyPanelAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UI/Templates/LobbyPanel.uxml");
+        VisualTreeAsset lobbyPanelAsset = Resources.Load<VisualTreeAsset>("Assets/UI/Templates/LobbyPanel.uxml");
         VisualElement lobbyPanel = lobbyPanelAsset.Instantiate();
         lobbyPanel.name = "LobbyPanel";
 

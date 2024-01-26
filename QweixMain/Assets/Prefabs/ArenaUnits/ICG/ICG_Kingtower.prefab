@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
@@ -92,13 +93,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 50
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 6277352537979974269}
   damageSplatter:
   - {fileID: 1206404530693259054, guid: 6e5156b9bbe3fdb4c9ccb31f6cb68d8e, type: 3}
   splatterThreshold: 0
+  hasDeathAnimation: 1
   leaveDebris: 1
 --- !u!114 &3174240124078765189
 MonoBehaviour:
@@ -112,11 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d833cca8d9a37e44bc9bc0f9f13cb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackFrequency: 1
+  attackFrequency: 0.417
+  hasAttackAnimation: 1
   attackState: 0
-  attackDamage: 1
+  attackDamage: 2
   projectile: {fileID: 5836375932857795507, guid: 5fefbd9b1d206eb44bd547b95e85f522, type: 3}
-  projectileSpawnDistance: 2
+  projectileSpawnDistance: 1
   effects:
   - {fileID: 6123876206298288211, guid: da38cd9e12f1ea24dbd04a6dc3dad8c0, type: 3}
 --- !u!114 &4561092784344542745

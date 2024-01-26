@@ -92,8 +92,8 @@ MonoBehaviour:
   teamCheck: 1
   isActiveTarget: 1
   targetInRange: 0
-  canTargetFlying: 1
-  canTargetGround: 1
+  canTargetFlying: 0
+  canTargetGround: 0
   agroRange: 200
   currentTarget: {fileID: 0}
   myType: 1
@@ -109,12 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 22
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 5650010851286806529}
   damageSplatter: []
   splatterThreshold: 0
+  hasDeathAnimation: 1
   leaveDebris: 0
 --- !u!114 &6417525054859899976
 MonoBehaviour:
@@ -128,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d833cca8d9a37e44bc9bc0f9f13cb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackFrequency: 1
+  attackFrequency: 0.222
   hasAttackAnimation: 1
   attackState: 0
-  attackDamage: 1
+  attackDamage: 5
   projectile: {fileID: 5836375932857795507, guid: 1d94226ca3b88bb47be70404cea93338, type: 3}
   projectileSpawnDistance: 0.8
   effects:
