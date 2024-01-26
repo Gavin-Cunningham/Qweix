@@ -61,7 +61,7 @@ public class UnitSwapPostInitialize_Component : MonoBehaviour
     //Called by an animation event if there is an initial animation.
     public void FinishInitialAnimation()
     {
-        Debug.Log("FinishInitialAnimation() called");
+        if (!hasInitialAnimation) { return; }
         InitializeUnit();
     }
 

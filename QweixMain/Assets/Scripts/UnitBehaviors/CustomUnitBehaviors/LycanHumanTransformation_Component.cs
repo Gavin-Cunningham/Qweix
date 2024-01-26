@@ -79,6 +79,14 @@ public class LycanHumanTransformation_Component : UnitSwap_Component
         //Its mutation time!
         if (mutationRemainingTime <= 0.0f && !playTransformCalled)
         {
+            if (TryGetComponent<Animation_Component>(out Animation_Component myAnimation_Component))
+            {
+                myAnimation_Component.enabled = false;
+            }
+            if (TryGetComponent<Attack_Component>(out Attack_Component myAttackComponent))
+            {
+                myAttackComponent.enabled = false;
+            }
             mutationRemainingTime = 1.0f;
             PlaySwapAnimation("Transform");
             GetComponent<Animator>().Play("TransformColor");

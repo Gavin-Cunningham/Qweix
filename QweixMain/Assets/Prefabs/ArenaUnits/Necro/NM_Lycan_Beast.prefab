@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d9603b88b06ae448c69ea9ae414af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasInitialAnimation: 1
-  initializeTimer: 0.1
+  hasInitialAnimation: 0
+  initializeTimer: 1.16
   damageAmount: 0
 --- !u!114 &3431885501068774727
 MonoBehaviour:
