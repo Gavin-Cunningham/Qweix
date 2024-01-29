@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 2
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4629167533219906113
 MonoBehaviour:
@@ -50,7 +50,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: 6b32b18d1973f0b4386ca883f0492712, type: 3}
   dragSprite: {fileID: 21300000, guid: 2054513e8b37fe74f9e4b81aac5a4529, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 2
+  qwiexCost: 4
   prefabToSpawn: {fileID: 3181648202535984089, guid: 9bc192a04b515544caf6cd6831d8348c, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -85,7 +85,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 6
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102982865072220264
 MonoBehaviour:
@@ -160,7 +160,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: f6f93a394ef34b64688a1f609092e083, type: 3}
   dragSprite: {fileID: 21300000, guid: b841d312db12cef47a12673594a64f5a, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 1
+  qwiexCost: 5
   prefabToSpawn: {fileID: 5515275447777580988, guid: 453faec4c02078c41b5e38d8eba8740a, type: 3}
   cardTribe: 0
   cardRarity: 2
@@ -195,7 +195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6476056795307788387
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: d9fafe9c9e0370f4896ec70ed85c43e2, type: 3}
   dragSprite: {fileID: 21300000, guid: 5b160f766c1b9c74696c9ca339d73a6a, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 1
+  qwiexCost: 4
   prefabToSpawn: {fileID: 6115483571651033311, guid: 16aad435d04031d4cb358bb09dd3acf4, type: 3}
   cardTribe: 0
   cardRarity: 2
@@ -250,7 +250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7462186125470486234
 MonoBehaviour:
@@ -305,7 +305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8655998527910950363
 MonoBehaviour:
@@ -322,10 +322,10 @@ MonoBehaviour:
   cardID: 16
   cardName: Necro Spell
   enableInDeck: 1
-  cardPicture: {fileID: 2800000, guid: 35a1765a8f22f28468dfdb051ecfeb56, type: 3}
+  cardPicture: {fileID: 2800000, guid: 0261f9cfb09fee8418ee9100110adced, type: 3}
   dragSprite: {fileID: 21300000, guid: f0002f568e2206149939747fd7deaee3, type: 3}
   dragSpriteScale: 0.4
-  qwiexCost: 1
+  qwiexCost: 6
   prefabToSpawn: {fileID: 4736452344946561977, guid: f5aaeb868b2308e42af74f767a9adb53, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -360,7 +360,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088423979463429922
 MonoBehaviour:
@@ -415,21 +415,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 773932467848236300}
-  - {fileID: 8399478261875633385}
-  - {fileID: 1316236125990897393}
   - {fileID: 8393439489840001658}
   - {fileID: 9110121806915607738}
-  - {fileID: 3355151965938544909}
-  - {fileID: 374260167987707265}
-  - {fileID: 7155220814947607345}
-  - {fileID: 7256989368576723512}
+  - {fileID: 1236990333683814101}
   - {fileID: 5312651524350793702}
   - {fileID: 89084218894348577}
   - {fileID: 2245282398705487976}
-  - {fileID: 5796058834302687326}
   - {fileID: 5958612159851979298}
-  - {fileID: 1236990333683814101}
+  - {fileID: 8399478261875633385}
+  - {fileID: 1316236125990897393}
+  - {fileID: 7155220814947607345}
+  - {fileID: 3355151965938544909}
   - {fileID: 8479988677033943490}
+  - {fileID: 374260167987707265}
+  - {fileID: 7256989368576723512}
+  - {fileID: 5796058834302687326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -475,7 +475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 14
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4538813689041639511
 MonoBehaviour:
@@ -492,10 +492,10 @@ MonoBehaviour:
   cardID: 15
   cardName: ICG Spell
   enableInDeck: 1
-  cardPicture: {fileID: 2800000, guid: 345cd4cc2f36abe48b25eb80b69837be, type: 3}
+  cardPicture: {fileID: 2800000, guid: 3c207f1576f6e8d428ee2bfefdb6a31f, type: 3}
   dragSprite: {fileID: 21300000, guid: 8e6c791ec3508704490924b0c35a887c, type: 3}
   dragSpriteScale: 0.4
-  qwiexCost: 1
+  qwiexCost: 6
   prefabToSpawn: {fileID: 2067141950529530791, guid: 0c60fb558f458ea4fb27a91bedfe78f7, type: 3}
   cardTribe: 0
   cardRarity: 1
@@ -530,7 +530,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &784968400855175255
 MonoBehaviour:
@@ -585,7 +585,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &862360396625559787
 MonoBehaviour:
@@ -605,7 +605,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: 98e5453781144ff4ab597ad37b7c24f9, type: 3}
   dragSprite: {fileID: 21300000, guid: 4a8e7cf1bcb03724c9d5eccf7dbdde69, type: 3}
   dragSpriteScale: 0.5
-  qwiexCost: 2
+  qwiexCost: 3
   prefabToSpawn: {fileID: 4824537095769851694, guid: 1e9de5354d1f61348b2604238d1bcdc9, type: 3}
   cardTribe: 0
   cardRarity: 1
@@ -640,7 +640,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 11
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6919266371759311412
 MonoBehaviour:
@@ -695,7 +695,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1591146067093703829
 MonoBehaviour:
@@ -715,7 +715,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: 66be82235cdd0da4dab657bc24d0012a, type: 3}
   dragSprite: {fileID: 21300000, guid: 493c9f9ae22f0fb468f4023ccd7079e6, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 1
+  qwiexCost: 3
   prefabToSpawn: {fileID: 7369118179760287026, guid: acf5e5c132dbc7c4db08266d19c5b741, type: 3}
   cardTribe: 1
   cardRarity: 3
@@ -750,7 +750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3135955501398030492
 MonoBehaviour:
@@ -770,7 +770,7 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: 3bcb556ef1f25564eaffa1bd9a0140cd, type: 3}
   dragSprite: {fileID: 21300000, guid: 8ebcc0a7ffa26f8499d5462acf486b0b, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 1
+  qwiexCost: 5
   prefabToSpawn: {fileID: 2470750445074387459, guid: 20d8a1d12f0eba8469fe3ddff731f19c, type: 3}
   cardTribe: 1
   cardRarity: 1
@@ -805,7 +805,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3477293054171692203
 MonoBehaviour:
@@ -825,8 +825,8 @@ MonoBehaviour:
   cardPicture: {fileID: 2800000, guid: c28cef0bc70b4334aa1d745f385fbeb6, type: 3}
   dragSprite: {fileID: 21300000, guid: 10eca06866619e04b9bef901b119ece9, type: 3}
   dragSpriteScale: 2
-  qwiexCost: 1
-  prefabToSpawn: {fileID: 2470750445074387459, guid: 07c2515c3e89078438091fcf083233bd, type: 3}
+  qwiexCost: 3
+  prefabToSpawn: {fileID: 4824537095769851694, guid: d9b15200d95ef554a943190bfc9b4c2d, type: 3}
   cardTribe: 1
   cardRarity: 1
   cardType: 0
@@ -860,7 +860,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 8
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6612963377675323504
 MonoBehaviour:
@@ -915,7 +915,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975437983474361788}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5784386349849093595
 MonoBehaviour:
@@ -930,13 +930,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardID: 10
-  cardName: Elder Demon
-  enableInDeck: 0
+  cardName: Gunslinger
+  enableInDeck: 1
   cardPicture: {fileID: 2800000, guid: d507a6817b693db4d9e09e09fc995c3f, type: 3}
-  dragSprite: {fileID: 0}
+  dragSprite: {fileID: 21300000, guid: 493c9f9ae22f0fb468f4023ccd7079e6, type: 3}
   dragSpriteScale: 1
-  qwiexCost: 1
-  prefabToSpawn: {fileID: 3362796755436917935, guid: 37f5128ec035110428a71a93fa0c269a, type: 3}
+  qwiexCost: 3
+  prefabToSpawn: {fileID: 7369118179760287026, guid: eb06b4b743b1aa24193f2304beb0bf09, type: 3}
   cardTribe: 0
   cardRarity: 1
   cardType: 0

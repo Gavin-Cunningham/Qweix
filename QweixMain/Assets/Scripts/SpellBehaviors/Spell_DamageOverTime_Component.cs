@@ -27,7 +27,7 @@ public class Spell_DamageOverTime_Component : Spell_BaseTriggered_Component
         if (targetArray == null) { return; }
         foreach (Collider2D collider in targetArray)
         {
-            if (collider.isTrigger) { return; }
+            if (collider.isTrigger) { continue; }
             if (collider.transform.GetComponent<Targeting_Component>().teamCheck != teamCheck)
             {
                 collider.transform.SendMessage("TakeDamage", damagePerTick, SendMessageOptions.DontRequireReceiver);

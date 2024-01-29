@@ -32,7 +32,7 @@ public class UnitSwapPostInitialize_Component : MonoBehaviour
     [SerializeField] float initializeTimer = 0.10f;
 
     //How much damage (percentage wise) did the previous unit take?
-    [NonSerialized] public float damageAmount;
+    /*[NonSerialized]*/ public float damageAmount;
 
     private float initializeTimerCountdown;
     private bool initializeUnitCalled = false;
@@ -61,7 +61,8 @@ public class UnitSwapPostInitialize_Component : MonoBehaviour
     //Called by an animation event if there is an initial animation.
     public void FinishInitialAnimation()
     {
-            InitializeUnit();
+        if (!hasInitialAnimation) { return; }
+        InitializeUnit();
     }
 
 
@@ -71,16 +72,16 @@ public class UnitSwapPostInitialize_Component : MonoBehaviour
         if(initializeUnitCalled) { return; }
         initializeUnitCalled = true;
 
-        //Allow the unit to move now
-        navMeshAgent.isStopped = false;
-
-        //Make sure the targeting_component has a target (in case the first target was killed while we were finishing our animation
-        SendMessage("setTarget", GetComponent<Targeting_Component>().currentTarget, SendMessageOptions.DontRequireReceiver);
-
         //take away the health damage (by percent) that the previous version of this unit took.
         if (damageAmount > 0.0f)
         {
             SendMessage("TakeDamage", damageAmount, SendMessageOptions.DontRequireReceiver);
         }
+
+        //Allow the unit to move now
+        navMeshAgent.isStopped = false;
+
+        //Make sure the targeting_component has a target (in case the first target was killed while we were finishing our animation
+        SendMessage("findTarget", GetComponent<Targeting_Component>().currentTarget, SendMessageOptions.DontRequireReceiver);
     }
 }

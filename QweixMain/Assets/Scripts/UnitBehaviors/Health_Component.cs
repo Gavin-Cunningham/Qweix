@@ -46,6 +46,7 @@ public class Health_Component : NetworkBehaviour
 
     [SerializeField] GameObject[] damageSplatter;
     [SerializeField] float splatterThreshold = 0.0f;
+    [SerializeField] private bool hasDeathAnimation = false;
     [SerializeField] private bool leaveDebris = false;
 
     //These are for making the characters flash red when getting hit.
@@ -164,15 +165,29 @@ public class Health_Component : NetworkBehaviour
 
     private void DeathAnimation()
     {
-        GetComponent<Targeting_Component>().isActiveTarget = false;
-        GetComponent<Attack_Component>().enabled = false;
+        if (!hasDeathAnimation) 
+        {
+            OnUnitDeath?.Invoke(thisUnit);
+            Die();
+        }
+        else if (hasDeathAnimation)
+        {
+            if (TryGetComponent<Targeting_Component>(out Targeting_Component myTargeting_Component))
+            {
+                myTargeting_Component.isActiveTarget = false;
+            }
+            if (TryGetComponent<Attack_Component>(out Attack_Component myAttackComponent))
+            {
+                myAttackComponent.enabled = false;
+            }
 
-        Collider2D[] colliders = GetComponents<Collider2D>();
-        foreach (Collider2D collider in colliders) { collider.enabled = false; }
-        gameObject.tag = "Untagged";
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders) { collider.enabled = false; }
+            gameObject.tag = "Untagged";
 
-        OnUnitDeath?.Invoke(thisUnit);
-        GetComponent<Animator>().Play("Death");
+            OnUnitDeath?.Invoke(thisUnit);
+            GetComponent<Animator>().Play("Death");
+        }
     }
 
     //Now called by "death" animation event

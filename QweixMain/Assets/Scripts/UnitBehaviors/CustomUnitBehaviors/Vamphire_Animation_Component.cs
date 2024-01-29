@@ -22,6 +22,8 @@ using UnityEngine;
 
 public class Vamphire_Animation_Component : Animation_Component
 {
+    private bool riseTimerRunning = false;
+
     //If we haven't dropped down yet, play the drop down animation. Otherwise just attack again.
     public override void BeginAttackAnimation()
     {
@@ -46,6 +48,21 @@ public class Vamphire_Animation_Component : Animation_Component
             controller.SetBool("isDropped", false);
             //controller.Play("Rise");
         }
+        StartCoroutine(RiseAnimationTimer(1.2f));
+    }
+
+    IEnumerator RiseAnimationTimer(float animationLength)
+    {
+        if (!riseTimerRunning)
+            {
+            riseTimerRunning = true;
+            Debug.Log("Coroutine Started at" + Time.time);
+            yield return new WaitForSeconds(animationLength);
+            Debug.Log("Coroutine Resumed at" + Time.time);
+            FinishedRising();
+            GetComponent<Vamphire_Movement_Component>().FinishedRising();
+            riseTimerRunning = false;
+            }
 
     }
 

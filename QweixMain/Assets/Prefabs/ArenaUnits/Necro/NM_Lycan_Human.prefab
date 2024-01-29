@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
@@ -196,13 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 20
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 1823474344423450926}
   damageSplatter: []
   splatterThreshold: 1
-  deathAnimation: 1
+  hasDeathAnimation: 1
   leaveDebris: 0
 --- !u!195 &3181648202535984095
 NavMeshAgent:
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackFrequency: 1
+  hasAttackAnimation: 1
   attackState: 0
   attackDamage: 3
 --- !u!114 &3181648202535984090

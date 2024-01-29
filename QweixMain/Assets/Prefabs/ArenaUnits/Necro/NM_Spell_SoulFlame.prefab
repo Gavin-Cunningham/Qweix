@@ -4938,10 +4938,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   triggerTime: 1
-  radiusAOE: 1
-  totalDamage: 10
+  radiusAOE: 2.5
+  totalDamage: 9
   ticksPerSecond: 1
-  spellEffectTime: 10
+  spellEffectTime: 9
 --- !u!114 &8315062454504150920
 MonoBehaviour:
   m_ObjectHideFlags: 0

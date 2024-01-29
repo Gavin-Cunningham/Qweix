@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3431885501068774730}
   - component: {fileID: -5813216496515068695}
-  - component: {fileID: 6501732238312621234}
+  - component: {fileID: 8159169890112199324}
   - component: {fileID: 3431885501068774727}
   - component: {fileID: 3431885501068774726}
   - component: {fileID: 3431885501068774725}
@@ -65,7 +65,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &6501732238312621234
+--- !u!114 &8159169890112199324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d9603b88b06ae448c69ea9ae414af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasInitialAnimation: 1
-  initializeTimer: 0.1
+  hasInitialAnimation: 0
+  initializeTimer: 1.16
+  damageAmount: 0
 --- !u!114 &3431885501068774727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamCheck: 1
+  isActiveTarget: 1
   targetInRange: 0
   canTargetFlying: 1
   canTargetGround: 1
@@ -110,13 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c875206b9df200f419b15ba86191cff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 1930273758070423476}
   damageSplatter: []
   splatterThreshold: 0
-  deathAnimation: 1
+  hasDeathAnimation: 1
   leaveDebris: 0
 --- !u!195 &3431885501068774725
 NavMeshAgent:
@@ -166,9 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c50d4b65e0efab41bb88744f9c2fa71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackFrequency: 1
+  attackFrequency: 0
+  hasAttackAnimation: 1
   attackState: 0
-  attackDamage: 3
+  attackDamage: 6
 --- !u!114 &3431885501068774720
 MonoBehaviour:
   m_ObjectHideFlags: 0

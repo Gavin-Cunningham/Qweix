@@ -4948,8 +4948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   triggerTime: 1
-  radiusAOE: 1
-  spellDamage: 8
+  radiusAOE: 2.5
+  spellDamage: 7.5
 --- !u!114 &3346664671455063958
 MonoBehaviour:
   m_ObjectHideFlags: 0
