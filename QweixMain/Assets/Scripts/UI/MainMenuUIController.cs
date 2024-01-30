@@ -32,10 +32,10 @@ public class MainMenuUIController : MonoBehaviour
     private VisualElement deckBuildingPanel;
 
     // List of lobbies
-    private List<Lobby> lobbyList;
+    private List<menuLobby> lobbyList;
 
     // Lobby the user has joined
-    private Lobby joinedLobby;
+    private menuLobby joinedLobby;
 
     void Awake()
     {
@@ -74,7 +74,7 @@ public class MainMenuUIController : MonoBehaviour
 
     void Start()
     {
-        lobbyList = new List<Lobby>();
+        lobbyList = new List<menuLobby>();
 
         ShowPanel(MenuPanel.QwiexLogo);
     }
@@ -149,7 +149,7 @@ public class MainMenuUIController : MonoBehaviour
         if (GetPlayerName() != "" && lobbyNameField.value != "")
         {
             // Create a new player object and set its values
-            LobbyPlayer player = new LobbyPlayer();
+            menuLobbyPlayer player = new menuLobbyPlayer();
             player.ready = false;
 
             player.lobbyPlayerName = GetPlayerName();
@@ -161,7 +161,7 @@ public class MainMenuUIController : MonoBehaviour
             player.lobbyPlayerFaction = "Iron Creek Gang";
 
             // Create a new lobby object and set its values
-            Lobby lobby = new Lobby();
+            menuLobby lobby = new menuLobby();
             lobby.player1 = player;
 
             lobby.lobbyName = lobbyNameField.value;
@@ -185,7 +185,7 @@ public class MainMenuUIController : MonoBehaviour
     }
 
     // Adds a lobby panel to the Join Game scrollview
-    private void AddLobbyPanel(Lobby lobby)
+    private void AddLobbyPanel(menuLobby lobby)
     {
         // Load the lobby panel asset file and instantiate one
         VisualTreeAsset lobbyPanelAsset = Resources.Load<VisualTreeAsset>("Assets/UI/Templates/LobbyPanel.uxml");
@@ -230,14 +230,14 @@ public class MainMenuUIController : MonoBehaviour
         string lobbyName = joinLobbyButton.parent.parent.Q<Label>("LobbyNameLabel").text;
 
         // Find the lobby with the matching name in the list
-        foreach(Lobby lobby in lobbyList)
+        foreach(menuLobby lobby in lobbyList)
         {
             if (lobby.lobbyName == lobbyName)
             {
                 // If the player is not already in the lobby and Player 2 slot is not filled, add them as Player 2
                 if (lobby.player1.lobbyPlayerName != GetPlayerName() && lobby.player2 == null)
                 {
-                    LobbyPlayer newPlayer = new LobbyPlayer();
+                    menuLobbyPlayer newPlayer = new menuLobbyPlayer();
 
                     newPlayer.lobbyPlayerName = GetPlayerName();
 
@@ -331,7 +331,7 @@ public class MainMenuUIController : MonoBehaviour
 
         lobbyScrollView.Clear();
 
-        foreach(Lobby lobby in lobbyList)
+        foreach(menuLobby lobby in lobbyList)
         {
             AddLobbyPanel(lobby);
         }
@@ -441,15 +441,15 @@ public class MainMenuUIController : MonoBehaviour
 public enum MenuPanel { QwiexLogo, CreateGame, JoinGame, InLobby, DeckBuilding };
 
 
-public class Lobby
+public class menuLobby
 {
     public string lobbyName;
     public string lobbyMap;
-    public LobbyPlayer player1;
-    public LobbyPlayer player2;
+    public menuLobbyPlayer player1;
+    public menuLobbyPlayer player2;
 }
 
-public class LobbyPlayer
+public class menuLobbyPlayer
 {
     public string lobbyPlayerName;
     public string lobbyPlayerFaction;
