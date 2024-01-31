@@ -1,6 +1,7 @@
 using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
@@ -11,9 +12,21 @@ public class LobbyManager : MonoBehaviour
 {
     private Lobby hostLobby;
     private float heartbeatTimer;
+    private string playerName;
+
+    public LobbyManager instance {  get; private set; }
 
     private async void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
@@ -21,6 +34,9 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("Signed in" + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        playerName = "CodeMonkey" + Random.Range(10, 99);
+        Debug.Log(playerName);
     }
 
     private void Update()
@@ -49,11 +65,21 @@ public class LobbyManager : MonoBehaviour
         {
             string lobbyName = "MyLobby";
             int maxPlayers = 2;
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                IsPrivate = false,
+                Player = GetPlayer()
+            };
+
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
 
             hostLobby = lobby;
 
             Debug.Log("Created Lobby!" + lobby.Name + " " + lobby.MaxPlayers);
+
+            PrintPlayers(hostLobby);
+
         } catch (LobbyServiceException e)
         {
             Debug.Log(e);
@@ -90,13 +116,35 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    private async void JoinLobby(Lobby lobby)
+    public async void GetLobbies()
     {
         try
         {
             QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
 
-            await Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id);
+    }
+
+    private async void JoinLobby(Lobby lobby)
+    {
+        try
+        {
+            JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
+            {
+                Player = GetPlayer()
+            };
+
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+
+            Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
+
+            Debug.Log("Joined Lobby: " + lobby.Id);
+
+            PrintPlayers(joinedLobby);
         }
         catch (LobbyServiceException e)
         {
@@ -104,6 +152,26 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    //Left off at 23:07 https://www.youtube.com/watch?v=-KDlEBfCBiU
+
+
+    private Player GetPlayer()
+    {
+        return new Player
+        {
+            Data = new Dictionary<string, PlayerDataObject>
+                    {
+                        { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) }
+                    }
+        };
+    }
+
+    private void PrintPlayers(Lobby lobby)
+    {
+        Debug.Log("Players in Lobby " + lobby.Name);
+        foreach (Player player in lobby.Players)
+        {
+            Debug.Log(player.Id + " " + player.Data["PlayerName"].Value);
+        }
+    }
 
 }

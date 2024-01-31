@@ -18,9 +18,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
+using QFSW.QC;
 
 public class MainMenuUIController : MonoBehaviour
 {
+    #region UIVariables
+
     // Reference to UI Root
     private VisualElement uiRoot;
 
@@ -32,10 +39,23 @@ public class MainMenuUIController : MonoBehaviour
     private VisualElement deckBuildingPanel;
 
     // List of lobbies
-    private List<menuLobby> lobbyList;
+    private List<menuLobby> menulobbyList;
 
     // Lobby the user has joined
     private menuLobby joinedLobby;
+
+    #endregion
+
+    #region LobbyVariables
+
+    // Lobby Management Variables
+    private Lobby hostLobby;
+    private float heartbeatTimer;
+    private string playerName;
+
+    #endregion
+
+    #region UnityMethods
 
     void Awake()
     {
@@ -72,17 +92,29 @@ public class MainMenuUIController : MonoBehaviour
         refreshBtn.RegisterCallback<ClickEvent>(RefreshClick);
     }
 
-    void Start()
+    private async void Start()
     {
-        lobbyList = new List<menuLobby>();
+        menulobbyList = new List<menuLobby>();
 
         ShowPanel(MenuPanel.QwiexLogo);
+
+        await UnityServices.InitializeAsync();
+
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            Debug.Log("Signed in" + AuthenticationService.Instance.PlayerId);
+        };
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
     void Update()
     {
-        
+        HandleLobbyHeartBeat();
     }
+
+    #endregion
+
+    #region UIManagement
 
     // Shows a particular menu panel, hiding the rest
     private void ShowPanel(MenuPanel panel)
@@ -171,10 +203,10 @@ public class MainMenuUIController : MonoBehaviour
 
             // Add Set this lobby as the joined lobby and add it to the list
             joinedLobby = lobby;
-            lobbyList.Add(lobby);
+            menulobbyList.Add(lobby);
 
             // Add the lobby panel to the UI
-            AddLobbyPanel(lobby);
+            //AddLobbyPanel(lobby);
 
             // Navigate to the InLobby menu panel
             ShowPanel(MenuPanel.InLobby);
@@ -230,7 +262,7 @@ public class MainMenuUIController : MonoBehaviour
         string lobbyName = joinLobbyButton.parent.parent.Q<Label>("LobbyNameLabel").text;
 
         // Find the lobby with the matching name in the list
-        foreach(menuLobby lobby in lobbyList)
+        foreach(menuLobby lobby in menulobbyList)
         {
             if (lobby.lobbyName == lobbyName)
             {
@@ -331,7 +363,7 @@ public class MainMenuUIController : MonoBehaviour
 
         lobbyScrollView.Clear();
 
-        foreach(menuLobby lobby in lobbyList)
+        foreach(menuLobby lobby in menulobbyList)
         {
             AddLobbyPanel(lobby);
         }
@@ -359,7 +391,7 @@ public class MainMenuUIController : MonoBehaviour
             if (joinedLobby.player2.ready)
             {   
                 // Remove the lobby from the list
-                lobbyList.Remove(joinedLobby);
+                menulobbyList.Remove(joinedLobby);
 
                 // Go to the next scene and start the game
 
@@ -386,7 +418,7 @@ public class MainMenuUIController : MonoBehaviour
             // If there is no second player, remove the Lobby from the list
             else
             {
-                lobbyList.Remove(joinedLobby);
+                menulobbyList.Remove(joinedLobby);
                 joinedLobby = null;
             }
         }
@@ -397,7 +429,7 @@ public class MainMenuUIController : MonoBehaviour
         }
 
         // If the lobby is still in the list, refresh the In Lobby page
-        if(lobbyList.Contains(joinedLobby))
+        if(menulobbyList.Contains(joinedLobby))
         {
             RefreshInLobby();
         };
@@ -435,7 +467,147 @@ public class MainMenuUIController : MonoBehaviour
         RefreshJoinGame();
         RefreshInLobby();
     }
+
+    #endregion
+
+    #region LobbyManagment
+
+    private async void HandleLobbyHeartBeat()
+    {
+        if (hostLobby != null)
+        {
+            heartbeatTimer -= Time.deltaTime;
+            if (heartbeatTimer < 0f)
+            {
+                heartbeatTimer = 15f;
+
+                await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+            }
+        }
+    }
+
+    [Command]
+    private async void CreateLobby(string lobbyNameInput)
+    {
+        try
+        {
+            string lobbyName = lobbyNameInput;
+            int maxPlayers = 2;
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                IsPrivate = false,
+                Player = GetPlayer()
+            };
+
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
+
+            hostLobby = lobby;
+
+            Debug.Log("Created Lobby!" + lobby.Name + " " + lobby.MaxPlayers);
+
+            PrintPlayers(hostLobby);
+
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    [Command]
+    private async void ListLobbies()
+    {
+        try
+        {
+            QueryLobbiesOptions queryLobbiesOptions = new QueryLobbiesOptions
+            {
+                Count = 25,
+                Filters = new List<QueryFilter>
+                {
+                    new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
+                },
+                Order = new List<QueryOrder>
+                {
+                    new QueryOrder(false, QueryOrder.FieldOptions.Created)
+                }
+            };
+
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+
+            Debug.Log("Lobbies found: " + queryResponse.Results.Count);
+            foreach (Lobby lobby in queryResponse.Results)
+            {
+                Debug.Log(lobby.Name + " " + lobby.MaxPlayers);
+            }
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    public async void GetLobbies()
+    {
+        try
+        {
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+
+    }
+
+    private async void JoinLobby(Lobby lobby)
+    {
+        try
+        {
+            JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
+            {
+                Player = GetPlayer()
+            };
+
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+
+            Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
+
+            Debug.Log("Joined Lobby: " + lobby.Id);
+
+            PrintPlayers(joinedLobby);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    private Player GetPlayer()
+    {
+        return new Player
+        {
+            Data = new Dictionary<string, PlayerDataObject>
+                    {
+                        { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) }
+                    }
+        };
+    }
+
+    private void PrintPlayers(Lobby lobby)
+    {
+        Debug.Log("Players in Lobby " + lobby.Name);
+        foreach (Player player in lobby.Players)
+        {
+            Debug.Log(player.Id + " " + player.Data["PlayerName"].Value);
+        }
+    }
+
+    #endregion
+
 }
+
+#region Enums&Classes
 
 // Different menu panels to display
 public enum MenuPanel { QwiexLogo, CreateGame, JoinGame, InLobby, DeckBuilding };
@@ -455,3 +627,5 @@ public class menuLobbyPlayer
     public string lobbyPlayerFaction;
     public bool ready;
 }
+
+#endregion
