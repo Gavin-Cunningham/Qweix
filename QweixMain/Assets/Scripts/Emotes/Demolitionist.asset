@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549872d62ec9be47a46eff35134a204, type: 3}
+  m_Name: Demolitionist
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: ab81024937f196c4fb119298f4f7cbe7, type: 3}
+  team: 0
+  dissappointedSprite: {fileID: 21300000, guid: ea77dab008847af4e9f34c36ad297c9e, type: 3}
+  dissappointedPrefab: {fileID: 1024003544599017959, guid: f8f94d397f5a9f641aa26ea6c513a539, type: 3}
+  frustratedSprite: {fileID: 21300000, guid: ace21b7d94599bd4a96083537fcb9229, type: 3}
+  frustratedPrefab: {fileID: 2695652303466053020, guid: 3f5170851696efe4f8126a191e674029, type: 3}
+  laughingSprite: {fileID: 21300000, guid: db4cd2a955931104f9dde442dbfbca16, type: 3}
+  laughingPrefab: {fileID: 7558181308787480731, guid: a046fceb552d8054894f2537b37e91dc, type: 3}
+  smugSprite: {fileID: 21300000, guid: b1d5bd71679651c4ab08ac36ffd4e994, type: 3}
+  smugPrefab: {fileID: 7618593230934710642, guid: 180f75111895f0f4ebb32d1e3d92f393, type: 3}

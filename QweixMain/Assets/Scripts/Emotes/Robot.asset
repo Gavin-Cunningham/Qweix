@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549872d62ec9be47a46eff35134a204, type: 3}
+  m_Name: Robot
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: 102e8dfc951974c4083d39cd1699db5b, type: 3}
+  team: 0
+  dissappointedSprite: {fileID: 21300000, guid: c9d798e1d31fd4b4680e2b1341d5f431, type: 3}
+  dissappointedPrefab: {fileID: 1627150773252214987, guid: 1825c3412b5b3fa4baeaefe64d69795e, type: 3}
+  frustratedSprite: {fileID: 21300000, guid: e90b64f0081f66e45ba5acb1472d16d3, type: 3}
+  frustratedPrefab: {fileID: 5302113799480322516, guid: 0154512ac02dd8e4bbcf1a1f44da6d14, type: 3}
+  laughingSprite: {fileID: 21300000, guid: 730521aa58420424c93e68afcb82eefa, type: 3}
+  laughingPrefab: {fileID: 4096663634759342352, guid: a5b44b63a87f21c4d90cfa00a2c5619f, type: 3}
+  smugSprite: {fileID: 21300000, guid: 880c73016ffe93d4abeea1a5a2afb534, type: 3}
+  smugPrefab: {fileID: 2278425680286137051, guid: ed9cdd533555e0f4da329ea6496c174e, type: 3}

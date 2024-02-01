@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549872d62ec9be47a46eff35134a204, type: 3}
+  m_Name: DarkPrincess
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: dc61537c025b8b8418780b84ce76f723, type: 3}
+  team: 1
+  dissappointedSprite: {fileID: 21300000, guid: b03fbb98a9400d04c9716d300856cced, type: 3}
+  dissappointedPrefab: {fileID: 724912532412809161, guid: ae3eb17a14a755e4795cd5adbee52feb, type: 3}
+  frustratedSprite: {fileID: 21300000, guid: 738e9b2df87bf1b4390ff6bf05564864, type: 3}
+  frustratedPrefab: {fileID: 3931679204816241567, guid: a6dcc181b3af88a4581dcaa59c6eecdd, type: 3}
+  laughingSprite: {fileID: 21300000, guid: 2b8b8700baf2e7d44b096c025b966cb8, type: 3}
+  laughingPrefab: {fileID: 7211810111560989542, guid: f4a13a8a61693a74985d08ee232d378b, type: 3}
+  smugSprite: {fileID: 21300000, guid: 29ed1d26abf25ed4cafad2953f8f4333, type: 3}
+  smugPrefab: {fileID: 8654474616030945743, guid: 3e9c0c903bad88644968ca30fd8818c3, type: 3}

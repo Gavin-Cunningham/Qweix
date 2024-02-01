@@ -52,7 +52,7 @@ public class EmoteUIController : MonoBehaviour
         // Set reference to the root UI element
         uiRoot = GetComponent<UIDocument>().rootVisualElement;
 
-        AddUIChildren();
+        //AddUIChildren();
     }
 
     private void AddUIChildren()

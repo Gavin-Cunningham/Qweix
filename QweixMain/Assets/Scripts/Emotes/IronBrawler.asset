@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549872d62ec9be47a46eff35134a204, type: 3}
+  m_Name: IronBrawler
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: ec4de7472e12bc3419cc84daff01a4b2, type: 3}
+  team: 0
+  dissappointedSprite: {fileID: 21300000, guid: cf568feadbcfdef4c90815377d5dd39f, type: 3}
+  dissappointedPrefab: {fileID: 4588046877058272913, guid: 06a5b232faa06de40aec6be8896b9de2, type: 3}
+  frustratedSprite: {fileID: 21300000, guid: 2abf0a4781653b84e9ebdc5dc6d8b6dc, type: 3}
+  frustratedPrefab: {fileID: 7373396861818370965, guid: e0c78d11a6eaf6e4fa41f4864d63e36e, type: 3}
+  laughingSprite: {fileID: 21300000, guid: 0be9e76cb4973bf448fdf0a609fe8c79, type: 3}
+  laughingPrefab: {fileID: 791042585400188243, guid: 67b93159770feb44cb2cf681fa630593, type: 3}
+  smugSprite: {fileID: 21300000, guid: b95d552c87c545240920b7473c50ef54, type: 3}
+  smugPrefab: {fileID: 1571833216843009078, guid: 7875f04d28fe4ce4992d2442380eefde, type: 3}

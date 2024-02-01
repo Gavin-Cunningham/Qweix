@@ -73,6 +73,8 @@ public class LocalManager : NetworkBehaviour
     // Which deck to use for testing
     public CardTribe testTribe;
 
+    [SerializeField] public int localPlayerTeam;
+
     private List<QwiexPlayer> players = new List<QwiexPlayer>();
 
 
@@ -163,6 +165,10 @@ public class LocalManager : NetworkBehaviour
 
     public void PlayerRegister(QwiexPlayer newPlayer)
     {
+        if (newPlayer.teamNum.Value == ((int)NetworkManager.Singleton.LocalClientId + 1))
+        {
+            localPlayerTeam = newPlayer.teamNum.Value;
+        }
         Debug.Log("player team number is " + newPlayer.teamNum.Value);
         players.Add(newPlayer);
         SetupPlayerTowers(newPlayer);
