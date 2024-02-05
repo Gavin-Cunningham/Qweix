@@ -52,8 +52,8 @@ public class LocalManager : NetworkBehaviour
     [SerializeField] private GameObject teamTwoDefSpawnPoint1;
     [SerializeField] private GameObject teamTwoDefSpawnPoint2;
 
-    private GameObject player1KT;
-    private GameObject player2KT;
+    public GameObject player1KT { get; private set; }
+    public GameObject player2KT { get; private set; }
 
     [SerializeField] private GameObject victoryPopUp;
     [SerializeField] private GameObject defeatPopUp;

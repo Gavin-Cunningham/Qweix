@@ -6,15 +6,31 @@ using Unity.Netcode;
 public class DestroySelf_Component : NetworkBehaviour
 {
     [SerializeField] float timeToDestroy = 3.0f;
+    [SerializeField] private bool fadeOut = false;
+    private float fadeOutTime = 1.0f;
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        
+        if (fadeOut)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+    }
 
     private void Update()
     {
-        if (!IsServer) { return; }
-        if (timeToDestroy > 0.0f)
+        timeToDestroy -= Time.deltaTime;
+        if (fadeOut)
         {
-            timeToDestroy -= Time.deltaTime;
+            spriteRenderer.color = new (1, 1, 1, (timeToDestroy / fadeOutTime));
         }
-        else
+
+        if (!IsServer) { return; }
+
+        if (timeToDestroy <= 0f)
         {
             GetComponent<NetworkObject>().Despawn(true);
         }
